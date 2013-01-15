@@ -1,0 +1,65 @@
+/* CSS Document */
+#header {
+	color: #039;
+	font-family: "Lucida Sans Unicode", "Lucida Grande",`   sans-serif;
+	font-style: oblique;
+	width: 800px;
+}
+
+#layout {
+	margin-left: 20%;
+	margin-right: 20%;
+	width: 800px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#blogcontent {
+	width: 500px;
+	float: left;
+}
+
+#searchcontent {
+	width: 280px;
+	float: right;
+}
+
+#sidebar {
+	width: 280px;
+	float: right;
+}
+
+#title {
+	color: #609;
+	font-size: 19px;
+}
+
+#date {
+	color: #36F;
+	font-size: 12px;
+}
+
+#content {
+	font-size: 15px;
+}
+
+#categories {
+	background-color: #CFF;
+	font-size: 12px;
+}
+
+#toprated {
+	background-color: #CFF;
+	font-size: 12px;
+}
+
+#archive {
+	background-color: #CFF;
+	font-size: 12px;
+}
+
+#headingforsidebar {
+	font-size: 16px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif,
+		"Adobe Gothic Std B";
+	font-weight: bold;
+}
