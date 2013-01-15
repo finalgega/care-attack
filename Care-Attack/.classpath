@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src" />
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.launching.JRE_CONTAINER" />
+	<classpathentry kind="con"
+		path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0" />
+	<classpathentry kind="con"
+		path="org.eclipse.jst.j2ee.internal.module.container" />
+	<classpathentry kind="con"
+		path="org.eclipse.jst.j2ee.internal.web.container" />
+	<classpathentry kind="lib" path="commons-fileupload-1.2.2.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency"
+				value="/WEB-INF/lib" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack/WebContent/WEB-INF/lib/commons-io-2.4-javadoc.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency"
+				value="/WEB-INF/lib" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack/WebContent/WEB-INF/lib/commons-io-2.4-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency"
+				value="/WEB-INF/lib" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack/WebContent/WEB-INF/lib/commons-io-2.4-test-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency"
+				value="/WEB-INF/lib" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack/WebContent/WEB-INF/lib/commons-io-2.4-tests.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency"
+				value="/WEB-INF/lib" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack/WebContent/WEB-INF/lib/commons-io-2.4.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency"
+				value="/WEB-INF/lib" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="build/classes" />
+</classpath>

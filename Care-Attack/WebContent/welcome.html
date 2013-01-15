@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="Login" />
+<title>Care-Attack</title>
+<script src="scripts/jquery-1.8.2.js" type="text/javascript"
+	language="javascript"></script>
+<!-- script to do a filter on the page such that the background gets a tint -->
+<link href="styles/welcome.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="container">
+		<div id="welcomeMsg">
+			<b>Welcome to Care-Attack</b><br />
+			<p>Find out what you need to care for your loved ones, right
+				here, right now.</p>
+		</div>
+		<div id="rightPanel">
+			<div class="signin">
+				<form method="post" action="index.html">
+					<input type="text" name="siginUsername" placeholder="Username"
+						id="signinUsername" autocomplete="off" /> <input type="password"
+						name="signinPassword" placeholder="Password" id="signinPassword"
+						autocomplete="off" />
+					<button value="Login" type="submit" id="loginBtn" title="Login">Login</button>
+					<input type="checkbox" value="Remember Me" title="RememberMe" />
+					Remember Me
+				</form>
+			</div>
+			<div class="signup">
+				<h5>New to Care-Attack? Signup Here!</h5>
+				<form method="post">
+					<input type="text" name="signupName" placeholder="Full name" /> <input
+						type="email" name="email" placeholder="Email address" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="styles/rentalSvc.css" rel="stylesheet" type="text/css" />
+<title>Rental Services</title>
+</head>
+<body>
+
+	<script language="JavaScript">
+function checkQuantity()
+{
+	var qty = document.getElementById("quantity").value;
+	if(qty == null){
+		alert( 'Please enter the quantity!' );
+	}
+}
+
+</script>
+	<center>
+		<h1>Rental Services</h1>
+	</center>
+
+	<div id="container">
+		<div id="info">
+			<div id="words">
+				<p>A wheelchair is a chair with wheels, designed to be a
+					replacement for walking. The device comes in variations where it is
+					propelled by motors or by the seated occupant turning the rear
+					wheels by hand. Often there are handles behind the seat for someone
+					else to do the pushing. Wheelchairs are used by people for whom
+					walking is difficult or impossible due to illness (physiological or
+					physical), injury, or disability. People with both sitting and
+					walking disability often need to use a wheelbench.</p>
+			</div>
+			<div id="picture">
+				<img src="images/wheelchair.jpg" />
+			</div>
+		</div>
+		<div id="rent">
+			<form id="indivForm" name="form1" method="post" action="">
+				<p>
+					<strong>Items For Rental:&nbsp; </strong> <select name="list"
+						id="list">
+						<option value="Wheel Chair">Wheel Chair</option>
+						<option value="Walking Stick">Walking Stick</option>
+					</select>
+				</p>
+				<p>
+					<strong>Quantity: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp;</strong> <input type="text" name="quantity" id="quantity" />
+				</p>
+				<p>
+					<strong>Rental Start Date:</strong> <label for="start"></label> <input
+						type="text" name="start" id="start" />
+				</p>
+				<p>
+					<strong>Rental End Date:&nbsp;&nbsp; </strong> <label for="end"></label>
+					<input type="text" name="end" id="end" contenteditable="false" />
+				</p>
+				<br /> <input type="submit" name="button" id="button"
+					value="Submit"
+					onClick="confirm( 'Are you sure you want to rent these items?' )" />
+
+				<br />
+
+
+
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>
