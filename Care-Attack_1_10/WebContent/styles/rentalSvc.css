@@ -1,0 +1,66 @@
+/* CSS Document */
+body {
+	background-color: black;
+}
+
+h1 {
+	color: white;
+}
+
+p {
+	color: white;
+}
+
+#container {
+	border: 5px solid black;
+	width: 800px;
+	height: 700px;
+	float: center;
+	margin-left: 270px;
+}
+
+#image {
+	width: 500px;
+	height: 530px;
+	border: 5px solid black;
+	margin-top: 50px;
+	margin-left: 390px;
+}
+
+#form1 {
+	float: right;
+}
+
+#info {
+	width: 780px;
+	height: 250px;
+	margin-left: 8px;
+}
+
+#rent {
+	width: 780px;
+	height: 300px;
+	margin-left: 8px;
+	margin-top: 10px;
+}
+
+#picture {
+	border: 2px solid black;
+	width: 200px;
+	height: 200px;
+	float: right;
+	margin-top: -205px;
+	margin-right: 5px;
+}
+
+#indivForm {
+	margin-left: 5px;
+	margin-top: 40px;
+}
+
+#words {
+	height: 200px;
+	width: 550px;
+	margin-top: 20px;
+	margin-left: 3px;
+}

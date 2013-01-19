@@ -1,0 +1,36 @@
+/* CSS Document */
+.content {
+	height: 100%;
+	width: 50%;
+	padding-top: 3px;
+	padding-bottom: 8px;
+	padding-left: 10px;
+	padding-right: 1%;
+	background: white;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: inherit;
+	position: relative;
+	float: left;
+}
+
+.sideContent {
+	padding-top: 3px;
+	padding-bottom: 8px;
+	padding-left: 1%;
+	padding-right: 10px;
+	float: right;
+	height: 300px;
+	width: 35%;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: inherit;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	position: relative;
+	background: #FFF;
+}

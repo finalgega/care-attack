@@ -1,0 +1,99 @@
+/* CSS Document */
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0%;
+	height: 100%;
+	width: 100%;
+}
+
+.container {
+	height: 100%;
+	width: 100%;
+	background: url(../images/sunlightSKHoriCrop-bg.jpg) no-repeat;
+	/* To apply a tint to background #000 #111 */
+	position: absolute;
+	overflow: auto;
+	visibility: inherit;
+}
+
+#welcomeMsg {
+	color: #fff;
+	text-wrap: normal;
+	width: 35%;
+	height: auto;
+	float: none;
+	padding: 2%;
+	margin-top: 15%;
+	margin-left: 15%;
+	background-color: #90F;
+	margin-right: 0%;
+}
+
+#rightPanel {
+	float: right;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	margin-left: 59%;
+}
+
+.signin {
+	height: auto;
+	width: 25%;
+	background-color: #DEDEDE;
+	padding-top: 1.5%;
+	padding-left: 1.5%;
+	padding-bottom: 1.5%;
+	-moz-box-shadow: -5px 10px 20px #999;
+	-webkit-box-shadow: -5px 10px 20px #999;
+	box-shadow: -5px 10px 20px #999;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-top: 10%;
+	position: absolute;
+}
+
+.signin input {
+	padding: 5px;
+	border-radius: 5px;
+	height: 25px;
+}
+
+.signin #signinUsername,.signup #signupUsername {
+	width: 90%;
+	margin-bottom: 2%;
+	font-size: 16px;
+}
+
+.signin #signinPassword {
+	width: 68%;
+	font-size: 16px;
+}
+
+#loginBtn {
+	background-color: #09F;
+	font: "Comic Sans MS", cursive;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	height: 35px;
+	font-size: 16px;
+	color: white;
+	width: auto;
+}
+
+.signup {
+	height: auto;
+	position: absolute;
+	margin-top: 30%;
+	width: 15%;
+	background-color: #EAEAEA;
+	padding: 2%;
+	-moz-box-shadow: -5px 10px 20px #999;
+	-webkit-box-shadow: -5px 10px 20px #999;
+	box-shadow: -5px 10px 20px #999;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
