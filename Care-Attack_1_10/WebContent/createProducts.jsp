@@ -17,7 +17,7 @@
 	<form id="createProducts" method="POST" action="ProductServlet">
 		<table>
 			<tr>
-				<a href="javascript:TINY.box.hide()">close it</a>
+				<!--  <a href="javascript:TINY.box.hide()">close it</a>-->
 				<td>Quantity</td>
 				<td><input type="text" name="quantity" autocomplete="off"
 					formnovalidate /></td>

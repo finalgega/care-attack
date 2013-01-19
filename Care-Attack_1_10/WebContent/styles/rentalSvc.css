@@ -1,66 +1,103 @@
-/* CSS Document */
 body {
 	background-color: black;
-}
-
-h1 {
-	color: white;
-}
-
-p {
-	color: white;
-}
-
-#container {
-	border: 5px solid black;
-	width: 800px;
-	height: 700px;
-	float: center;
-	margin-left: 270px;
 }
 
 #image {
 	width: 500px;
 	height: 530px;
 	border: 5px solid black;
-	margin-top: 50px;
-	margin-left: 390px;
+	margin-left: 260px;
 }
 
 #form1 {
 	float: right;
 }
 
-#info {
-	width: 780px;
-	height: 250px;
-	margin-left: 8px;
+h1 {
+	color: white;
+	font-family: paprika;
 }
 
-#rent {
-	width: 780px;
-	height: 300px;
-	margin-left: 8px;
-	margin-top: 10px;
-}
-
-#picture {
-	border: 2px solid black;
-	width: 200px;
-	height: 200px;
-	float: right;
-	margin-top: -205px;
-	margin-right: 5px;
-}
-
-#indivForm {
-	margin-left: 5px;
-	margin-top: 40px;
-}
-
-#words {
-	height: 200px;
-	width: 550px;
+#container {
+	width: 1000px;
+	height: 550px;
+	margin-left: 150px;
 	margin-top: 20px;
-	margin-left: 3px;
+}
+
+#left {
+	height: 10px;
+	width: 100px;
+	margin-top: 230px;
+	float: left;
+}
+
+#right {
+	height: 10px;
+	width: 100px;
+	float: right;
+	margin-top: -300px;
+}
+
+h2 {
+	font-size: 12px;
+	font-weight: normal;
+	font-style: italic;
+	margin: 0 0 20px
+}
+
+p {
+	margin-top: 0
+}
+
+ul {
+	margin: 0;
+	padding-left: 20px
+}
+
+#testdiv {
+	width: 600px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	padding: 20px 25px;
+	background: grey;
+	margin-left: 350px;
+}
+
+#tinybox {
+	position: absolute;
+	display: none;
+	padding: 10px;
+	background: #fff url(images/preload.gif) no-repeat 50% 50%;
+	border: 10px solid #e3e3e3;
+	z-index: 2000
+}
+
+#tinymask {
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	z-index: 1500
+}
+
+#tinycontent {
+	background: #fff
+}
+
+.button {
+	font: 14px Georgia, Verdana;
+	margin-bottom: 10px;
+	padding: 8px 10px 9px;
+	border: 1px solid #ccc;
+	background: #eee;
+	cursor: pointer
+}
+
+.button:hover {
+	border: 1px solid #bbb;
+	background: #e3e3e3
 }
