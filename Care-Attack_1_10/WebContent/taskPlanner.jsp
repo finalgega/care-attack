@@ -13,7 +13,7 @@
 <link href="styles/taskPlanner.css" rel="stylesheet" />
 <link href="styles/jquery-ui-1.9.1.custom.css" rel="stylesheet" />
 <link href="styles/fullcalendar.css" rel="stylesheet" />
-	<script>
+<script>
 	$(function(){
 	    $('#calendar').fullCalendar({
 	        header: {
@@ -29,7 +29,7 @@
 	    });
 	});
 	</script>
-    <script>
+<script>
     function callServlet(e)
     {
     $.get('taskplanner',function(data){
@@ -40,7 +40,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-    <button onclick="callServlet()">Click Me!</button>
+	<button onclick="callServlet()">Click Me!</button>
 	<div class="taskMgr">
 		<div id="calendar"></div>
 		<div id="eventDialog" class="dialog ui-helper-hidden">
@@ -58,8 +58,8 @@
 		event creations,etc
 	 -->
 	</div>
-    
-    <!-- to construct events for the events: 
+
+	<!-- to construct events for the events: 
     events : [
     <jsp:iftest:arrayList<TaskPlannerEvents>.size() != reach >
         {

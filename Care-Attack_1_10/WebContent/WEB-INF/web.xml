@@ -66,7 +66,7 @@
 		</description>
     <display-name>ProductServlet</display-name>
     <servlet-name>ProductServlet</servlet-name>
-    <servlet-class>Servlet.ProductServlet</servlet-class>
+    <servlet-class>Servlets.ProductServlet</servlet-class>
   </servlet>
   <servlet>
     <description>
@@ -99,14 +99,14 @@
 		</description>
     <display-name>CreateBlogPostServlet</display-name>
     <servlet-name>CreateBlogPostServlet</servlet-name>
-    <servlet-class>servlet.CreateBlogPostServlet</servlet-class>
+    <servlet-class>servlets.CreateBlogPostServlet</servlet-class>
   </servlet>
   <servlet>
     <description>
 		</description>
     <display-name>searchEngineServlet</display-name>
     <servlet-name>searchEngineServlet</servlet-name>
-    <servlet-class>servlet.searchEngineServlet</servlet-class>
+    <servlet-class>servlets.searchEngineServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreatePostServlet</servlet-name>

@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8 "/>
+<meta charset="UTF-8" "/>
 <title>Welcome to Care-Attack</title>
 <link href="styles/layout.css" rel="stylesheet" />
 <link href="styles/index.css" rel="stylesheet" />
-<script src="scripts/jquery-1.8.2.js"></script>
-<script>
+<script src="scripts/jquery-1.8.2.js" type="text/javascript"></script>
+<script type="text/javascript">
 	
 </script>
 </head>
@@ -55,7 +55,7 @@
 		</div>
 		<div id="lettersOfGratitude">
 			<!--  letters of gratitude code here -->
-				<h1>Letters Of Gratitude</h1>
+			<h1>Letters Of Gratitude</h1>
 			<div id="letters">
 				<div id="appear"></div>
 				<div id="text">

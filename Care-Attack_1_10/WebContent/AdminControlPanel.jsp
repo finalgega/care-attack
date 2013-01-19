@@ -17,9 +17,9 @@
 		<a href="createAnnouncements.jsp">Create Announcements</a> <a
 			href="CreateBlogPost.jsp">Create Blog Post</a> <a
 			href="createProducts.jsp">Create Products</a> <a
-			href="CreateQuestions.jsp">Create Questions</a>
-			<a href="CreateMedicine.jsp">Create Medicine</a>
-			<a href="CreateIllness.jsp">Create Illness</a>
-		</div>
+			href="CreateQuestions.jsp">Create Questions</a> <a
+			href="CreateMedicine.jsp">Create Medicine</a> <a
+			href="CreateIllness.jsp">Create Illness</a>
+	</div>
 </body>
 </html>

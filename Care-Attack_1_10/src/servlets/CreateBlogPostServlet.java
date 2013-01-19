@@ -44,9 +44,9 @@ public class CreateBlogPostServlet extends HttpServlet {
 			BlogPost createblogpost  = new BlogPost();
 			boolean success = createblogpost.createABlogPost(title, content);
 			if(success)
-			{
-				response.getWriter().println("Creation Success");
-				response.getWriter().println("<a href='MainBlogPage.jsp'>Go To Blog</a>");
+			response.getWriter().println("Creation Success");
+			else{
+				response.getWriter().println("<script>alert('Something went wrong! ')</script>");
 			}
 		}catch(Exception e)
 		{
