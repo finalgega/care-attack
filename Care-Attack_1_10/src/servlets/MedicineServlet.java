@@ -1,24 +1,21 @@
 package servlets;
 
-import illness.Illness;
-
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class IllnessServlet
+ * Servlet implementation class MedicineServlet
  */
-public class IllnessServlet extends HttpServlet {
+public class MedicineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IllnessServlet() {
+    public MedicineServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,20 +31,7 @@ public class IllnessServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String illnessName = request.getParameter("illnessName");
-		String illnessDescription = request.getParameter("illnessDescription");
-		String illnessCategory = request.getParameter("illnessCategory");
-		String severity = request.getParameter("severity");
-		Illness illness = new Illness(illnessName,illnessDescription,illnessCategory,severity);
-		boolean success = illness.createIllness();
-		if(success)
-		{
-			response.getWriter().println("<script>alert('Illness Created Successfully!');</script>");
-		}
-		else
-		{
-			response.getWriter().println("<script>alert('Something went wrong : ( ')</script");
-		}
+		
 	}
 
 }

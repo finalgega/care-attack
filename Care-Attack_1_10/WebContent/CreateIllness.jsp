@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<th>Illness Description :</th>
-				<td><input type="text" col=5 /></td>
+				<td><textarea name="illnessDescription"></textarea></td>
 			</tr>
 			<tr>
 				<th>Severity *If Applicable*</th>

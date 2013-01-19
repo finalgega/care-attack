@@ -5,44 +5,49 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database.MySQLController;
-
+/**
+ * This java bean Medicine provides the necessary accessor and mutator methods
+ * to access the Medicine Object and provides instance methods to perform
+ * CRUD functions on the database schema
+ * @author macpro
+ * @category Java Bean
+ */
 public class Medicine {
 
 
     private int medicineID,timesperDay;
-    private String medicineName, medicineDescription,sideEffects,instructions,allergy;
+    private String medicineName, medicineDescription,contraindications,instructions,sideEffects;
 	public Medicine() {
-		// TODO Auto-generated constructor stub
 	}
     
-    public Medicine(int medicineID,String medicineName,String medicineDescription,String sideEffects,String instructions, String allergy)
+    public Medicine(int medicineID,String medicineName,String medicineDescription,String contraindications,String instructions, String sideEffects)
     {
         this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicineDescription = medicineDescription;
-        this.sideEffects = sideEffects;
+        this.contraindications = contraindications;
         this.instructions = instructions;
-        this.allergy = allergy;
+        this.sideEffects = sideEffects;
     }
     
-    public Medicine(String medicineName,String medicineDescription,String sideEffects,String instructions,int timesperDay,String allergy)
+    public Medicine(String medicineName,String medicineDescription,String contraindications,String instructions,int timesperDay,String sideEffects)
     {
         this.medicineName = medicineName;
         this.medicineDescription = medicineDescription;
-        this.sideEffects = sideEffects;
+        this.contraindications = contraindications;
         this.instructions = instructions;
         this.timesperDay = timesperDay;
-        this.allergy = allergy;
+        this.sideEffects = sideEffects;
     }
-    public Medicine(int medicineID,String medicineName,String medicineDescription,String sideEffects,String instructions,int timesperDay,String allergy)
+    public Medicine(int medicineID,String medicineName,String medicineDescription,String contraindications,String instructions,int timesperDay,String sideEffects)
     {
     	this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicineDescription = medicineDescription;
-        this.sideEffects = sideEffects;
+        this.contraindications = contraindications;
         this.instructions = instructions;
         this.timesperDay = timesperDay;
-        this.allergy = allergy;
+        this.sideEffects = sideEffects;
     }
     
     public int getMedicineID() {
@@ -77,12 +82,12 @@ public class Medicine {
 		this.medicineDescription = medicineDescription;
 	}
 
-	public String getSideEffects() {
-		return sideEffects;
+	public String getContraindications() {
+		return contraindications;
 	}
 
-	public void setSideEffects(String sideEffects) {
-		this.sideEffects = sideEffects;
+	public void setContraindications(String contraindications) {
+		this.contraindications = contraindications;
 	}
 
 	public String getInstructions() {
@@ -93,12 +98,12 @@ public class Medicine {
 		this.instructions = instructions;
 	}
 
-	public String getAllergy() {
-		return allergy;
+	public String getSideEffects() {
+		return sideEffects;
 	}
 
-	public void setAllergy(String allergy) {
-		this.allergy = allergy;
+	public void setSideEffects(String sideEffects) {
+		this.sideEffects = sideEffects;
 	}
 
 	public boolean createMedicine(Medicine med)
@@ -106,8 +111,8 @@ public class Medicine {
     	boolean success = false;
         MySQLController mysql = new MySQLController();
         mysql.setUp();
-        String dbQuery = "INSERT INTO medicine(medicineName,medicineDescription,sideEffects,instructions,timesperDay) VALUES('" + med.medicineName  + "','" + med.medicineDescription + "','";
-        dbQuery += med.sideEffects + "','" + med.instructions + "','" + med.timesperDay +"')";
+        String dbQuery = "INSERT INTO medicine(medicineName,medicineDescription,contraindications,instructions,timesperDay) VALUES('" + med.medicineName  + "','" + med.medicineDescription + "','";
+        dbQuery += med.contraindications + "','" + med.instructions + "','" + med.timesperDay +"')";
         try{
         if(mysql.updateRequest(dbQuery) == 1)
         {
@@ -121,6 +126,41 @@ public class Medicine {
         return success;
     }
     
+	/**
+	 * This method createMedicine prepares a SQL statement to create a medicine record in the database
+	 * @param medicineName
+	 * @param medicineDescription
+	 * @param contraindications
+	 * @param instructions
+	 * @param timesPerDay
+	 * @return success (boolean)
+	 */
+	public boolean createMedicine(String medicineName,String medicineDescription,String contraindications,String instructions,int timesPerDay)
+    {
+    	boolean success = false;
+        MySQLController mysql = new MySQLController();
+        mysql.setUp();
+        String dbQuery = "INSERT INTO medicine(medicineName,medicineDescription,contraindications,instructions,timesperDay) VALUES('" + medicineName  + "','" + medicineDescription + "','";
+        dbQuery += contraindications + "','" + instructions + "','" + timesPerDay +"')";
+        try{
+        if(mysql.updateRequest(dbQuery) == 1)
+        {
+        	success = true;
+        }
+        }catch(SQLException sqlErr)
+        {
+        	sqlErr.printStackTrace();
+        	System.out.println("Couldn't create record!");
+        }
+        return success;
+    }
+	
+	/**
+	 * This method retrieveMedicine gets the entire medicine db schema
+	 * and wraps it in an ArrayList<Medicine> and returns it for further
+	 * processing.
+	 * @return medicineArrayList (ArrayList<Medicine>)
+	 */
     public ArrayList<Medicine> retrieveMedicine()
     {
     	 ArrayList<Medicine> medArr = new ArrayList<Medicine>();
@@ -133,7 +173,7 @@ public class Medicine {
     		 rs = mysql.readRequest(dbQuery);
     		 while(rs.next())
     		 {
-    			 Medicine med = new Medicine(rs.getInt("medicineID"),rs.getString("medicineName"),rs.getString("medicineDescription"),rs.getString("sideEffects"),rs.getString("instructions"),rs.getInt("timesperDay"),rs.getString("allergy"));
+    			 Medicine med = new Medicine(rs.getInt("medicineID"),rs.getString("medicineName"),rs.getString("medicineDescription"),rs.getString("contraindications"),rs.getString("instructions"),rs.getInt("timesperDay"),rs.getString("sideEffects"));
     			 medArr.add(med);
     		 }
     	 }catch(SQLException sqlErr)

@@ -7,6 +7,35 @@
 <title>Create Medicine</title>
 </head>
 <body>
-
+	<form>
+		<table>
+			<tr>
+				<th>Medicine Name :</th>
+				<td><input type="text" name="medicineName" />
+			</tr>
+			<tr>
+				<th>Medicine Description :</th>
+				<td><textarea name="medicineDescription"></textarea></td>
+			</tr>
+			<tr>
+				<th>Contraindications :</th>
+				<td><textarea name="contraindications"></textarea></td>
+			<tr>
+				<th>Instructions :</th>
+				<td><textarea name="instructions"></textarea>
+			</tr>
+			<tr>
+				<th>Times per Day :</th>
+				<td><input type="text" name="timesPerDay" /></td>
+			</tr>
+			<tr>
+				<th>Side Effects :</th>
+				<td><textarea name="sideEffects"></textarea>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Create Medicine" />
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

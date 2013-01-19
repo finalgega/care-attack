@@ -59,18 +59,7 @@
 	 -->
 	</div>
 
-	<!-- to construct events for the events: 
-    events : [
-    <jsp:iftest:arrayList<TaskPlannerEvents>.size() != reach >
-        {
-            id : "<jsp:getParameter:id />",
-            title: "<jsp:getParameter:title />"
-            start: "<jsp:getParameter:start_date/time" format="%HH-%MM-%SS" />",
-            end: "<jsp:getParameter:end_date/time format=" ''''"  />",
-            url: "<jsp:path url='/calendar/event' />",
-            allDay: "<jsp:getParameter:allDay />"
-        }<jsp:endiftest/>
-        ]-->
+
 
 </body>
 </html>
