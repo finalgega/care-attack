@@ -47,7 +47,7 @@
 	left: 0;
 	position: absolute;
 	opacity: 0;
-	filter: Alpha(Opacity =   0);
+	filter: Alpha(Opacity =     0);
 }
 
 /* Interaction Cues
@@ -1019,19 +1019,19 @@ body .ui-tooltip {
 .ui-priority-secondary,.ui-widget-content .ui-priority-secondary,.ui-widget-header .ui-priority-secondary
 	{
 	opacity: .7;
-	filter: Alpha(Opacity =   70);
+	filter: Alpha(Opacity =     70);
 	font-weight: normal;
 }
 
 .ui-state-disabled,.ui-widget-content .ui-state-disabled,.ui-widget-header .ui-state-disabled
 	{
 	opacity: .35;
-	filter: Alpha(Opacity =   35);
+	filter: Alpha(Opacity =     35);
 	background-image: none;
 }
 
 .ui-state-disabled .ui-icon {
-	filter: Alpha(Opacity =   35);
+	filter: Alpha(Opacity =     35);
 } /* For IE8 - See #6059 */
 
 /* Icons
@@ -1806,7 +1806,7 @@ body .ui-tooltip {
 	background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50%
 		repeat-x;
 	opacity: .3;
-	filter: Alpha(Opacity =   30);
+	filter: Alpha(Opacity =     30);
 }
 
 .ui-widget-shadow {
@@ -1815,7 +1815,7 @@ body .ui-tooltip {
 	background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50%
 		repeat-x;
 	opacity: .3;
-	filter: Alpha(Opacity =   30);
+	filter: Alpha(Opacity =     30);
 	-moz-border-radius: 8px;
 	-khtml-border-radius: 8px;
 	-webkit-border-radius: 8px;

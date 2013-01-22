@@ -1,10 +1,14 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Scanner;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import medicine.Medicine;
 
 /**
  * Servlet implementation class MedicineServlet
@@ -31,7 +35,17 @@ public class MedicineServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String medicineName = request.getParameter("medicineName");
+		String medicineDescription = request.getParameter("medicineDescription");
+		String contraindications = request.getParameter("contraindications");
+		String instructions = request.getParameter("instructions");
+		String strtimesPerDay = request.getParameter("timesPerDay");
+		Scanner sc = new Scanner(strtimesPerDay);
+		int timesPerDay = sc.nextInt();
+		String sideEffects = request.getParameter("sideEffects");
+		Medicine med = new Medicine();
+		med.createMedicine(medicineName,medicineDescription,contraindications,instructions,timesPerDay,sideEffects);
 	}
+	
 
 }

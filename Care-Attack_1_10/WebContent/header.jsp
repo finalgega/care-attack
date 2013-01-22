@@ -4,8 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<link href="styles/layout.css" rel="stylesheet">
+<title>Header</title>
+<link href="styles/header.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
+<script src="scripts/jquery-1.8.2.js"></script>
+<script src="scripts/jquery-ui-1.9.1.custom.js"></script>
+<script src="scripts/jquery.easing.1.3.js"></script>
+<script src="scripts/animated-menu.js"></script>
 </head>
 <body>
 	<header>
@@ -51,7 +57,7 @@
 		<%
 			}
 		%>
-		<nav id="globalNav">
+		<!-- 	<nav id="globalNav">
 		<table>
 			<tr>
 				<td><a href="index.jsp">Home</a></td>
@@ -64,6 +70,40 @@
 					id="searchBar" class="search" /></td>
 			</tr>
 		</table>
+		</nav>-->
+		<nav class="gummyBar">
+		<ul>
+			<li class="green">
+				<p>
+					<a href="index.jsp">Home</a>
+				</p>
+				<p class="subtext">The front page</p>
+			</li>
+			<li class="yellow">
+				<p>
+					<a href="taskPlanner.jsp">Task Planner</a>
+				</p>
+				<p class="subtext">Visit the App</p>
+			</li>
+			<li class="red">
+				<p>
+					<a href="#">Meals &#x26; Meal Plans</a>
+				</p>
+				<p class="subtext">Find out what they can eat!</p>
+			</li>
+			<li class="blue">
+				<p>
+					<a href="MainBlogPage.jsp">Blog</a>
+				</p>
+				<p class="subtext">Read Personal Stories!</p>
+			</li>
+			<li class="purple">
+				<p>
+					<a href="RentalService.jsp">Rental Service</a>
+				</p>
+				<p class="subtext">Stuff to rent!</p>
+			</li>
+		</ul>
 		</nav>
 	</div>
 	</header>

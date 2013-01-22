@@ -14,33 +14,59 @@
 <link href="styles/jquery-ui-1.9.1.custom.css" rel="stylesheet" />
 <link href="styles/fullcalendar.css" rel="stylesheet" />
 <script>
-	$(function(){
+	function createCalendar(e){
 	    $('#calendar').fullCalendar({
+	    	  dayClick: function(date, allDay, jsEvent, view) {
+
+	    	        if (allDay) {
+	    	            alert('Clicked on the entire day: ' + date);
+	    	        }else{
+	    	            alert('Clicked on the slot: ' + date);
+	    	        }
+
+	    	        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+	    	        alert('Current view: ' + view.name);
+
+	    	        // change the day's background color just for fun
+	    	   //     $(this).css('background-color', 'red');
+
+	    	    },
 	        header: {
 	            left: 'prev,next today',
 	            center: 'title',
-	            right: 'month,basicWeek,basicDay',
 	            ignoreTimezone: false
 	        },
 	        selectable: true,
 	        selectHelper: true,
-	        editable: true,
-	        events: 'events'
+	        editable: false,
+	        events: [{
+	            title: 'Inject insulin',
+	            start: '2013-01-22 13:00:00 GMT +0800',
+	            end: '2013-01-22 14:00:00 GMT +0800'
+	            
+	        },
+	        {
+	            title: 'Event2',
+	            start: '2013-01-23 12:30:00'
+	        }
+	        ],
+	        defaultView: 'agendaDay',
+	        defaultEventMinutes : 60
 	    });
-	});
+	};
+	   function callServlet(e)
+	    {
+	    $.get('taskplanner',function(data){
+	    alert(data);
+	    });
+	    }
 	</script>
-<script>
-    function callServlet(e)
-    {
-    $.get('taskplanner',function(data){
-    alert(data);
-    });
-    }
-    </script>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<!-- 	<jsp:include page="header.jsp"></jsp:include> -->
 	<button onclick="callServlet()">Click Me!</button>
+	<button onclick="createCalendar()">Populate Calendar!</button>
 	<div class="taskMgr">
 		<div id="calendar"></div>
 		<div id="eventDialog" class="dialog ui-helper-hidden">

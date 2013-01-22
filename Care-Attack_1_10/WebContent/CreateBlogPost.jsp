@@ -22,8 +22,8 @@
 			<div id="title">
 
 				<p>
-					Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					<input type='text' id='title' name='title' />
+					Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='text'
+						id='title' name='title' />
 
 				</p>
 

@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Administrator Control Panel</title>
-<link href="styles/layout.css" rel="stylesheet">
 <link href="styles/index.css" rel="stylesheet">
 
 </head>

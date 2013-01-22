@@ -12,16 +12,18 @@
 
 		<div id="heading">
 
-			<img src="images/question.jpg" width="53" height="50" /> Add A Question
+			<img src="images/question.jpg" width="53" height="50" /> Add A
+			Question
 
 		</div>
 
-		<form id="createQuestion" method="POST" action="createQuestionsServlet">
+		<form id="createQuestion" method="POST"
+			action="createQuestionsServlet">
 			<div id="createTitle">
 
 				<h2>
-					Topic &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					<select name="topicDDL" id="topicDDL">
+					Topic &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select name="topicDDL"
+						id="topicDDL">
 
 						<option value="Elderly">Elderly</option>
 						<option value="Diabetes">Diabetes</option>
@@ -37,8 +39,8 @@
 
 			<div id="createSubject">
 				<h2>
-					Subject&nbsp;&nbsp;&nbsp;&nbsp; 
-					<input type="text" name="subject" id="subject" />
+					Subject&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="subject"
+						id="subject" />
 				</h2>
 			</div>
 
@@ -50,8 +52,9 @@
 			</div>
 
 			<div id="button">
-				<input type="submit" name="SubmitButton" id="SubmitButton" value="Submit" /> 
-				<input type="submit" name="CloseButton" id="CloseButton" value="Close" />
+				<input type="submit" name="SubmitButton" id="SubmitButton"
+					value="Submit" /> <input type="submit" name="CloseButton"
+					id="CloseButton" value="Close" />
 			</div>
 
 		</form>

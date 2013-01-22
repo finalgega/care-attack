@@ -7,7 +7,7 @@
 <title>Create Medicine</title>
 </head>
 <body>
-	<form>
+	<form method="POST" action="MedicineServlet">
 		<table>
 			<tr>
 				<th>Medicine Name :</th>

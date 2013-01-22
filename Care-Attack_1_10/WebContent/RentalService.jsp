@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Paprika" />
-<link href ="styles/layout.css " rel ="stylesheet" type ="text/css"/>
-<link rel="stylesheet" type="text/css" href="styles/rentalSvc.css"/>
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Paprika" />
+<link href="styles/layout.css " rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="styles/rentalSvc.css" />
 <title>Rental Services</title>
 <script type="text/javascript" src="scripts/tinybox.js"></script>
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<center>
 		<h1>Rental Services</h1>
 	</center>
@@ -25,15 +26,17 @@
 			</center>
 		</div>
 		<div class="button" id="testclick2">
-		<center>
-				<strong>&hearts;&hearts;&hearts;&hearts;&hearts;VIEW IMAGES HERE!&hearts;&hearts;&hearts;&hearts;&hearts;</strong>
+			<center>
+				<strong>&hearts;&hearts;&hearts;&hearts;&hearts;VIEW IMAGES
+					HERE!&hearts;&hearts;&hearts;&hearts;&hearts;</strong>
 			</center>
 		</div>
 
 		<div class="button" id="testclick3">
-		<center>
-			<strong>&hearts;&hearts;&hearts;&hearts;&hearts;VIEW MESSAGE HERE!&hearts;&hearts;&hearts;&hearts;&hearts;</strong>
-		</center>
+			<center>
+				<strong>&hearts;&hearts;&hearts;&hearts;&hearts;VIEW
+					MESSAGE HERE!&hearts;&hearts;&hearts;&hearts;&hearts;</strong>
+			</center>
 		</div>
 	</div>
 

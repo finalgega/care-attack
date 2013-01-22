@@ -110,10 +110,9 @@
 							 for (int i = 0; i < monthlySessions.size(); i++) {
 								 createMonthlySessions = monthlySessions.get(i);
 							%>
-			
+
 			<p>
-				<a href="#"><%=createMonthlySessions.getTopic()%></a>
-				<a href="#"><%=createMonthlySessions.getSubject()%></a>
+				<a href="#"><%=createMonthlySessions.getTopic()%></a> <a href="#"><%=createMonthlySessions.getSubject()%></a>
 				<a href="#"><%=createMonthlySessions.getQuestion()%></a>
 
 			</p>

@@ -118,7 +118,7 @@ html .fc,.fc table {
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
 	background: #9cf;
 	opacity: .2;
-	filter: alpha(opacity =     20); /* for IE */
+	filter: alpha(opacity =       20); /* for IE */
 }
 
 /* Buttons
@@ -187,7 +187,7 @@ html .fc,.fc table {
 	border-color: #fff;
 	background: #444;
 	opacity: .09;
-	filter: alpha(opacity =     9);
+	filter: alpha(opacity =       9);
 }
 
 /* button states (determines colors)  */
@@ -392,7 +392,7 @@ table.fc-border-separate {
 
 .fc-grid .fc-other-month .fc-day-number {
 	opacity: 0.3;
-	filter: alpha(opacity =     30); /* for IE */
+	filter: alpha(opacity =       30); /* for IE */
 	/* opacity with small font can sometimes look too faded
 	   might want to set the 'color' property instead
 	   making day-numbers bold also fixes the problem */
@@ -523,7 +523,7 @@ table.fc-border-separate {
 	height: 100%;
 	background: #fff;
 	opacity: .3;
-	filter: alpha(opacity =     30);
+	filter: alpha(opacity =       30);
 }
 
 .fc .ui-draggable-dragging .fc-event-bg,

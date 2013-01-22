@@ -3,6 +3,7 @@ package servlets;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,8 +26,6 @@ import database.MySQLController;
  */
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String dsn = "careattack";
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -50,24 +49,50 @@ public class UploadImage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		if(processFileForm(request) != null)
+		{
+			response.getWriter().println("<script>alert('Sucess at file upload!')</script>");
+		}
+		else
+		{
+			response.getWriter().println("<script>alert('Something went wrong =( ')</script>");
+		}
+	}
+	
+	public ArrayList<String> processFileForm(HttpServletRequest request)
+	{
+		ArrayList<String> arrList = new ArrayList<String>();
+		System.out.println("In Method processFileForm!");
+		boolean success = false;
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart) {
+			System.out.println("In if(isMultiPart)");
 			FileItemFactory factory = new DiskFileItemFactory();
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			System.out.println("Request :  " + request);
 			System.out.println("Request End! ");
 			List<?> items;
 			try {
+				System.out.println("In try for processFileForm");
 				items = upload.parseRequest(request);
 				Iterator<?> iterator = items.iterator();
 				while (iterator.hasNext()) {
 					FileItem item = (FileItem) iterator.next();
-
-					if (!item.isFormField()) {
+					if(item.isFormField())
+					{
+						System.out.println("We're in item.isFormField()");
+						String name = item.getFieldName();
+					    String value = item.getString();
+					    arrList.add(value);
+					    System.out.println("Name of Field : " + name);
+					    System.out.println("Value of Field : " + value);
+					}
+					else if (!item.isFormField()) {
+						System.out.println("We're in !tem.isFormField()");
 						String fileName = item.getName();
 						System.out.println("File Name of uploaded file : "
 								+ fileName);
-						uploadFile(item, fileName);
+						success = uploadFile(item, fileName);
 					}
 				}
 			} catch (FileUploadException e) {
@@ -85,6 +110,7 @@ public class UploadImage extends HttpServlet {
 			}
 
 		}
+		return arrList;
 	}
 
 	/**
@@ -103,14 +129,15 @@ public class UploadImage extends HttpServlet {
 	 * @throws SQLException
 	 */
 	private boolean uploadFile(FileItem item, String fileName) throws FileUploadException,IOException,SQLException {
+		System.out.println("In Method uploadFile!");
 		boolean success = false;
 			// String root = getServletContext().getRealPath("/");
 			// Note that for File path, please replace the path name
 			// in the constructor with the path of your directory
 			// Note that it is temporary until a soln is found.
 		try{
-			File path = new File(
-					"C:\\Users\\user\\Desktop\\Care-Attack_1_10\\WebContent\\images");
+			System.out.println("In try for uploadFile");
+			File path = new File("/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack_1_10/WebContent/images");
 			File uploadedFile = new File(path + "/" + fileName);
 			System.out.println("path of uploaded file : "
 					+ uploadedFile.getAbsolutePath());
@@ -120,8 +147,7 @@ public class UploadImage extends HttpServlet {
 				path.mkdirs();
 				item.write(uploadedFile);
 			}
-			uploadFileDataToDB(fileName);
-			success = true; 
+			success =uploadFileDataToDB(fileName); 
 			}catch(Exception e)
 			{
 				System.out.println("Something went wrong :(");
@@ -140,7 +166,7 @@ public class UploadImage extends HttpServlet {
 	 */
 	private boolean uploadFileDataToDB(String fileName) throws SQLException {
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "INSERT INTO image(imagePath)";
 		dbQuery += "VALUES('" + fileName + "')";
 		boolean success = false;

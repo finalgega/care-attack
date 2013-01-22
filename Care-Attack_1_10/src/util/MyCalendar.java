@@ -6,7 +6,10 @@ Admin No:		001234A
 Module Group:	IT1204-99
 =====================================================================*/
 package util;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 /**
@@ -141,6 +144,15 @@ public class MyCalendar {
 		default : monthStr = "Err"; break;
 		}
 		return monthStr;
+	}
+	
+	public String getCurrentTime()
+	{
+		GregorianCalendar gc = new GregorianCalendar();
+		Date date =	gc.getTime();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+		String strDate = df.format(date);
+		return strDate;
 	}
 }
 

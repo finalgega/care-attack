@@ -135,13 +135,13 @@ public class Medicine {
 	 * @param timesPerDay
 	 * @return success (boolean)
 	 */
-	public boolean createMedicine(String medicineName,String medicineDescription,String contraindications,String instructions,int timesPerDay)
+	public boolean createMedicine(String medicineName,String medicineDescription,String contraindications,String instructions,int timesPerDay,String sideEffects)
     {
     	boolean success = false;
         MySQLController mysql = new MySQLController();
         mysql.setUp();
-        String dbQuery = "INSERT INTO medicine(medicineName,medicineDescription,contraindications,instructions,timesperDay) VALUES('" + medicineName  + "','" + medicineDescription + "','";
-        dbQuery += contraindications + "','" + instructions + "','" + timesPerDay +"')";
+        String dbQuery = "INSERT INTO medicine(medicineName,medicineDescription,contraindications,instructions,timesperDay,sideEffects) VALUES('" + medicineName  + "','" + medicineDescription + "','";
+        dbQuery += contraindications + "','" + instructions + "','" + timesPerDay + "','" + sideEffects +"')";
         try{
         if(mysql.updateRequest(dbQuery) == 1)
         {

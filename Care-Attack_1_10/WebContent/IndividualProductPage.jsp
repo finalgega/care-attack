@@ -112,16 +112,23 @@
 					<p><%=pro.getProductDescription()%></p>
 				</div>
 				<%
+						}
+					%>
+
+				<%
 					}
 				%>
 				<div id="picture">
 					<img src="images/wheelchair.jpg" />
 				</div>
 			</div>
+			<br /> <br />
 		</div>
 		<br />
 		<div id="rentrent">
 			<h3>RENT YOUR ITEMS HERE!</h3>
+			<br />
+			<form id="IndividualProductPage" method="POST" action="RentalServlet">
 			<form id="IndividualProductPage" method="POST" action="RentalServlet"
 				onSubmit="return validateForms()">
 				<table width="394" border="1">

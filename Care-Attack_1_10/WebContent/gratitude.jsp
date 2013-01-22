@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="styles/gratitude.css"/>
+<link rel="stylesheet" type="text/css" href="styles/gratitude.css" />
 <title>Letters Of Gratitude</title>
 </head>
 <body>
 	<center>
 		<h1>Letters Of Gratitude</h1>
 	</center>
-	<div id="kitty"><img src="images/hk.jpg"/></div>
+	<div id="kitty">
+		<img src="images/hk.jpg" />
+	</div>
 	<div id="letters">
 		<div id="appear"></div>
 		<div id="text">

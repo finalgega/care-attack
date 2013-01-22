@@ -6,35 +6,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Create Announcements</title>
 <script type="text/javascript" language="javascript"></script>
+<link href="styles/index.css" rel="stylesheet" />
 </head>
 <body>
-	<script language="javascript">
+	<script>
 	function clear() 
 	{
-		$("#createAnnouncements").prop('input')
+		//$("#createAnnouncements").prop('input')
+		alert("Testing bash 1,2,3");
 	};
 </script>
 	<jsp:include page="header.jsp"></jsp:include>
-	<form id="createAnnouncements" method="POST"
-		action="AnnouncementServlet">
-		<table>
-			<tr>
-				<td>Topic</td>
-				<td><input type="text" name="annon-topic" id="annon-topic"
-					placeholder="Topic goes here" /></td>
-			</tr>
-			<tr>
-				<td>Announcement</td>
-				<td><input type="text" name="annon-content" autocomplete="off"
-					formnovalidate /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Post Announcement"
-					id="postAnnouncement" name="postAnnouncement" /></td>
-				<td><input type="reset" value="Clear" id="clearAll"
-					name="clearAll" /></td>
-			</tr>
-		</table>
-	</form>
+	<div class="content">
+		<form id="createAnnouncements" method="POST"
+			action="AnnouncementServlet" onsubmit="clear()" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>Topic</td>
+					<td><input type="text" name="annon-topic" id="annon-topic"
+						placeholder="Topic goes here" /></td>
+				</tr>
+				<tr>
+					<td>Announcement</td>
+					<td><input type="text" name="annon-content" autocomplete="off"
+						formnovalidate /></td>
+				</tr>
+				<tr>
+					<td><input type="file" name="sy" value="uploadimage" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="submit" /></td>
+					<td><input type="reset" value="Clear" id="clearAll"
+						name="clearAll" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
