@@ -8,9 +8,12 @@ import database.*;
 public class Rental {
 	private final String dsn = "careattack";
 	private String rentalName = null;
-	private String rentalQuantity = null;
+	private int rentalQuantity = 0;
 	private String startDate = null;
+	private String endDate = null;
 	
+
+
 	public Rental(){}
 	
 	public String getRentalName() {
@@ -23,12 +26,12 @@ public class Rental {
 	}
 
 
-	public String getRentalQuantity() {
+	public int getRentalQuantity() {
 		return rentalQuantity;
 	}
 
 
-	public void setRentalQuantity(String rentalQuantity) {
+	public void setRentalQuantity(int rentalQuantity) {
 		this.rentalQuantity = rentalQuantity;
 	}
 
@@ -41,22 +44,31 @@ public class Rental {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 
 
-	public Rental(String rentalName, String rentalQuantity, String startDate)
+	public Rental(String rentalName, int rentalQuantity, String startDate, String endDate)
 	{
 		this.rentalName = rentalName;
 		this.rentalQuantity = rentalQuantity;
 		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 		
-	public boolean createRental(String rentalName, String rentalQuantity, String startDate)
+	public boolean createRental(String rentalName, int rentalQuantity, String startDate, String endDate)
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
-		String sql ="INSERT INTO rental(rentalName, rentalQuantity, startDate)";
-		sql += "VALUES('" + rentalName + "','" + rentalQuantity + "','" + startDate +"')";
+		String sql ="INSERT INTO rental(rentalName, rentalQuantity, startDate) INNERJOIN product";
+		sql += "VALUES('" + rentalName + "','" + rentalQuantity + "','" + startDate +"','" + endDate +"')";
 		try{
 			if(mysql.updateRequest(sql) == 1)
 			{

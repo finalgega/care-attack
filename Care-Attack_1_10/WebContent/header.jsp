@@ -58,7 +58,7 @@
 				<td><a href="taskPlanner.jsp">Task Planner</a></td>
 				<td>Meals &#x26; Meal Plans</td>
 				<td><a href="MainBlogPage.jsp">Blog</a></td>
-				<td><a href="RentalService.jsp">Rental Service</a></td>
+				<td><a href="IndividualProductPage.jsp">Rental Service</a></td>
 				<td><input type="search"
 					placeholder="Enter your search terms here" name="searchBar"
 					id="searchBar" class="search" /></td>

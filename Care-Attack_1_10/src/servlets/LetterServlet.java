@@ -2,22 +2,24 @@ package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import entity.Rental;
+import entity.Products;
+import entity.letters;
 
 /**
- * Servlet implementation class RentalServlet
+ * Servlet implementation class LetterServlet
  */
-public class RentalServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+public class LetterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RentalServlet() {
+    public LetterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,27 +36,25 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String rentalName = request.getParameter("rentalName");
-		int rentalQuantity = Integer.parseInt(request.getParameter("rentalQuantity"));
-		String startDate = request.getParameter("startDate");
-		String endDate = request.getParameter("endDate");
+		String name = request.getParameter("name");
+		String message = request.getParameter("message");
 		String referer = request.getHeader("referer");
-		System.out.println("Name : " + rentalName);
-		System.out.println("Quantity : " + rentalQuantity);
-		System.out.println("Start Date : " + startDate);
-		System.out.println("End Date : " + endDate);
-
+		
+		
+		System.out.println("Name : " + name);
+		System.out.println("Message : " + message);
+		
 		
 		try
 		{
-			Rental rent = new Rental();
-			boolean success = rent.createRental(rentalName, rentalQuantity, startDate, endDate);
+			letters l = new letters();
+			boolean success = l.createLetters(name, message);
 			if(success)
 			{
-				session.setAttribute("rentalName", rentalName);
+				session.setAttribute("name", name);
+				//response.getWriter().println("<script>alert('Lettters Created Successfully!')</script>");
 				response.sendRedirect(referer);
 			}
-			//response.getWriter().println("Product Created Successfully!");
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -66,5 +66,6 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 		}
 	
 	}
+	  	    
 
 }

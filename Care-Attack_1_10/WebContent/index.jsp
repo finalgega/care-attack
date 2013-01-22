@@ -4,22 +4,58 @@
 <html>
 <head>
 <meta charset="UTF-8" "/>
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Paprika" />
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
 <title>Welcome to Care-Attack</title>
 <link href="styles/layout.css" rel="stylesheet" />
 <link href="styles/index.css" rel="stylesheet" />
+<link rel="stylesheet" href="styles/gratitude.css" />
 <script src="scripts/jquery-1.8.2.js" type="text/javascript"></script>
-<script type="text/javascript">
-	
-</script>
+
 </head>
 <body>
+
 	<jsp:include page="header.jsp"></jsp:include>
+	<script language="javascript">
+		function clear() {
+			$("#createLetters").prop('input')
+		}
+
+		function validateForm() {
+			var name = document.forms["createLetters"]["name"].value;
+			var message = document.forms["createLetters"]["message"].value;
+			if (name == null || name == "") {
+				alert("Please enter your name!");
+				return false;
+			}
+			
+			else if (message == null || message == "") {
+				alert("Please enter your message!");
+				return false;
+			}
+			
+			else{
+				alert("Message sent");
+			}
+		}
+		
+		function hideshow() {
+		    var toggle = document.getElementById('boxer');
+		    toggle.style.display = toggle.style.display == "block" ? "none" : "block";
+		}
+
+	</script>
+
+
 	<div class="content">
 		<form name="uploadForm" id="uploadForm" method="POST"
 			action="UploadImage" enctype="multipart/form-data">
 			<input type="file" value="sy" name="sy"></input> <input type="submit" />
 		</form>
 		<%@ page import="announcements.*,java.util.*"%>
+		<%@ page import="entity.*, java.util.*"%>
 		<%
 			ArrayList<Announcement> announceArrList = new ArrayList<Announcement>();
 			Announcement annon = new Announcement();
@@ -54,18 +90,69 @@
 			</aside>
 		</div>
 		<div id="lettersOfGratitude">
-			<!--  letters of gratitude code here -->
-			<h1>Letters Of Gratitude</h1>
-			<div id="letters">
-				<div id="appear"></div>
+
+				<h1>Letters Of Gratitude</h1>
+
+			
+			<form id="createLetters" name="createLetters" method="post" action="LetterServlet" onSubmit="return validateForm()">
+			<img src="images/heart.png" id="heart" />
+			<div id="contain">
+				<div id="name">
+						Name<br /> <input type="text" id="name" name="name" height="10px" />
+				</div>
+				<br /> <br />
+
 				<div id="text">
-					<form id="form1" name="form1" method="post" action="">
-						<label for="text"></label>
-						<textarea name="text" id="text" cols="45" rows="5"></textarea>
-						<input id="go" name="goButton" type="submit" value="Go" />
-					</form>
+
+						Messages <br />
+						<textarea name="message" id="message" cols="45" rows="5"></textarea>
+						<br /> <input type="submit" name="goButton" value="SEND MESSAGE!" />
+
+					
 				</div>
 			</div>
+						
+			</form>
+			<br/>
+			
+				<div class="button" id="testclick1" onclick="hideshow()">
+
+				<center><strong>CLICK HERE TO SHOW/HIDE MESSAGES!</strong></center>
+
+		</div>
+		
+	
+			<div id="boxer">
+			<div id="kitty">
+				<img src="images/hk.jpg" />
+			</div>
+			<div id="letters">
+				<div id="appear">
+					<%
+						ArrayList<letters> l = new ArrayList<letters>();
+						letters letter = new letters();
+						l = letter.retrieveData();
+					%>
+					<%
+						for (int i = 0; i < l.size(); i++) {
+							letter = l.get(i);
+					%>
+
+					<div id="nametext">
+		
+							<h3><%=letter.getName()%></h3>
+							<p><%=letter.getMessage()%></p>
+					
+					</div>
+
+					<%
+						}
+					%>
+				</div>
+				<br />
+			</div>
+			</div>
+
 		</div>
 	</div>
 </body>

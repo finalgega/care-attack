@@ -25,7 +25,7 @@ import database.MySQLController;
  */
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String dsn = "CareAttack";
+	private static final String dsn = "careattack";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -110,7 +110,7 @@ public class UploadImage extends HttpServlet {
 			// Note that it is temporary until a soln is found.
 		try{
 			File path = new File(
-					"/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack/WebContent/images");
+					"C:\\Users\\user\\Desktop\\Care-Attack_1_10\\WebContent\\images");
 			File uploadedFile = new File(path + "/" + fileName);
 			System.out.println("path of uploaded file : "
 					+ uploadedFile.getAbsolutePath());

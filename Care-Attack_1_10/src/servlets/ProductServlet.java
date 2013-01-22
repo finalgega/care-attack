@@ -38,6 +38,7 @@ import entity.Products;
 		String productName = request.getParameter("productName");
 		String productDescription = request.getParameter("productDescription");
 		String status = request.getParameter("status");
+		String referer = request.getHeader("referer");
 		System.out.println("Quantity : " + quantity);
 		System.out.println("Name : " + productName);
 		System.out.println("Description : " + productDescription);
@@ -50,8 +51,9 @@ import entity.Products;
 			if(success)
 			{
 				session.setAttribute("productName", productName);
+				response.sendRedirect(referer);
 			}
-			response.getWriter().println("Product Created Successfully!");
+			
 		}catch(Exception e)
 		{
 			e.printStackTrace();

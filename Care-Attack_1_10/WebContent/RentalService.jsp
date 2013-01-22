@@ -11,25 +11,13 @@
 <script type="text/javascript" src="scripts/tinybox.js"></script>
 </head>
 <body>
+
 <jsp:include page="header.jsp"></jsp:include>
 	<center>
 		<h1>Rental Services</h1>
 	</center>
-	<div id="container">
-		<div id="left">
-			<img src="images/left.png" />
-		</div>
-		<div id="image">
-			<img src="images/wheelchair1.jpg" />
-			<button style="width: 100; height: 10; float: right;">
-				<a href="IndividualProductPage.jsp">Read more>></a>
-			</button>
-		</div>
-		<div id="right">
-			<img src="images/right.png" />
-		</div>
-	</div>
-	<div id="testdiv">
+	<form id="createProducts" method="POST" action="ProductServlet">
+		<div id="testdiv">
 		<div class="button" id="testclick1">
 			<center>
 				<strong>&hearts;&hearts;&hearts;&hearts;&hearts;CREATE NEW
@@ -50,11 +38,12 @@
 	</div>
 
 	<script type="text/javascript">
-	T$('testclick1').onclick = function(){TINY.box.show('createProducts.jsp',1,300,150,1)}
+	T$('testclick1').onclick = function(){TINY.box.show('createProducts.jsp',1,400,200,1)}
 	var content2 = "<img src='images/walkingstick.jpg' width='298' height='373' alt='' />";
 	T$('testclick2').onclick = function(){TINY.box.show(content2,0,0,0,1)}
 	var content3 = "Hello, welcome to our rental services! Over here, you can rent our items for the disabled people at a lower price! <br/><br/> *Terms & Conditions apply.";
 	T$('testclick3').onclick = function(){TINY.box.show(content3,0,0,0,0,15)}
 </script>
+</form>
 </body>
 </html>
