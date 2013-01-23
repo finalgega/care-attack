@@ -8,7 +8,7 @@ import database.MySQLController;
 
 public class archive {
 
-	private final static String dsn = "CareAttack";
+	private final static String dsn = "careattack";
 	private String year = null;
 	private String month = null;
 	private String date = null;
@@ -56,7 +56,7 @@ public class archive {
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
 		ResultSet rs = null;
-		String dbQuery ="select MONTHNAME(substring(blog.date,1,10)),substring(blog.date,1,4) from careattack.blog";
+		String dbQuery ="select distinct MONTHNAME(substring(blog.date,1,10)),substring(blog.date,1,4) from careattack.blog";
 		
 		try {
 			rs = mysql.readRequest(dbQuery);

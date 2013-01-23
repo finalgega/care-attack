@@ -6,59 +6,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Create Blog Post</title>
+<link rel="stylesheet" type="text/css" href="styles/Project.css">
+<script type="text/javascript" language="javascript"></script>
 </head>
 <body>
+<!-- <script language="javascript">
+	function clear() 
+	{
+		$("#createBlogPost").prop('input')
+	};
+</script> -->
 
-	<div id="layout">
+
+	<div id="layoutCreateBlogPost">
 
 		<div id="heading">
-
 			<img src="images/add.png" width="44" height="35" /> Add New Post
-
 		</div>
 
 		<form id="createBlogPost" method="POST" action="CreateBlogPostServlet">
-
 			<div id="title">
-
-				<p>
-					Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='text'
-						id='title' name='title' />
-
-				</p>
-
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Title: &nbsp;  <input type='text' id='title' name='title' /> </p>
 			</div>
-
-
-
 			<div id="content">
-
-				<p>Content &nbsp;&nbsp;</p>
-
-				<textarea name="content" id="content" cols="45" rows="5"></textarea>
+				<p>Content: &nbsp; <textarea name="content" rows="5" cols="16"> </textarea> </p>			
 			</div>
-
-
-
-			<div id="insertimage">
-
-				<p>
-					Insert Image <input type="file" name="fileImage" id="fileImage" />
-
-				</p>
-
-
-				<label for="fileImage"></label>
-			</div>
-
 			<div id="button">
-
-				<input type="submit" id="publish" value="Publish" /> <input
-					type="button" id="close" value="Close" /> <br />
-
+				<input type="submit" id="publish" value="Publish" /> 
 			</div>
 		</form>
-
+		
 	</div>
 
 </body>

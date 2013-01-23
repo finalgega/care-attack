@@ -47,6 +47,8 @@ width:auto;
 					<%= useInfo.getEmail() %></p></td>
 		</tr>
 	</table>
+	
+	<a href="CreateBlogPost.jsp"> Link Here</a>
 	<% }else
 	{
 %>

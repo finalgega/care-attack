@@ -161,4 +161,14 @@
     <servlet-name>MedicineServlet</servlet-name>
     <url-pattern>/MedicineServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateCommentsServlet</display-name>
+    <servlet-name>CreateCommentsServlet</servlet-name>
+    <servlet-class>servlets.CreateCommentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCommentsServlet</servlet-name>
+    <url-pattern>/CreateCommentsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

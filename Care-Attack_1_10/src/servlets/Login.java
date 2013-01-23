@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 
 import javax.security.auth.login.LoginException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,6 +49,7 @@ import login.User;
 			status = user.isExist(id, pwd);
 			System.out.println("username = " + id);
 			System.out.println("password = " + pwd);
+			
 			if(status)
 			{
 				session.setAttribute("username", id);
@@ -65,5 +67,5 @@ import login.User;
 		{
 			e.printStackTrace();
 		}
-	}   	  	    
-}
+	}
+ }

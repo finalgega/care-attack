@@ -1,53 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="announcements.*,java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" "/>
-<link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/css?family=Paprika" />
-<link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
+<meta charset="UTF-8" />
 <title>Welcome to Care-Attack</title>
+<link href="styles/layout.css" rel="stylesheet" />
 <link href="styles/index.css" rel="stylesheet" />
-<link rel="stylesheet" href="styles/gratitude.css" />
 <script src="scripts/jquery-1.8.2.js" type="text/javascript"></script>
 <script type="text/javascript">
+function clear() {
+	$("#createLetters").prop('input')
+}
+
+function validateForm() {
+	var name = document.forms["createLetters"]["name"].value;
+	var message = document.forms["createLetters"]["message"].value;
+	if (name == null || name == "") {
+		alert("Please enter your name!");
+		return false;
+	}
 	
+	else if (message == null || message == "") {
+		alert("Please enter your message!");
+		return false;
+	}
+	
+	else{
+		alert("Message sent");
+	}
+}
+
+function hideshow() {
+    var toggle = document.getElementById('boxer');
+    toggle.style.display = toggle.style.display == "block" ? "none" : "block";
+}
 </script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<script language="javascript">
-		function clear() {
-			$("#createLetters").prop('input')
-		}
-
-		function validateForm() {
-			var name = document.forms["createLetters"]["name"].value;
-			var message = document.forms["createLetters"]["message"].value;
-			if (name == null || name == "") {
-				alert("Please enter your name!");
-				return false;
-			}
-			
-			else if (message == null || message == "") {
-				alert("Please enter your message!");
-				return false;
-			}
-			
-			else{
-				alert("Message sent");
-			}
-		}
-		
-		function hideshow() {
-		    var toggle = document.getElementById('boxer');
-		    toggle.style.display = toggle.style.display == "block" ? "none" : "block";
-		}
-
-	</script>
-
+	<div class="content">
+		<form name="uploadForm" id="uploadForm" method="POST"
+			action="UploadImage" enctype="multipart/form-data">
+			<input type="file" value="sy" name="sy"></input> <input type="submit" />
+		</form>
 
 		<div class="content">
 			<%@ page import="announcements.*,entity.*,java.util.*"%>
@@ -64,26 +61,26 @@
 					annon = announceArrList.get(i);
 			%>
 
-				<h2><%=annon.getaTopic()%></h2>
-				<p>
-					Posted on :
-					<%=annon.getaDate()%></p>
-				<p><%=annon.getaContent()%></p>
-				<hr />
-				<%
+			<h2><%=annon.getaTopic()%></h2>
+			<p>
+				Posted on :
+				<%=annon.getaDate()%></p>
+			<p><%=annon.getaContent()%></p>
+			<hr />
+			<%
 				}
 			%>
 
-			</article>
+		</article>
+	</div>
+	<div class="sideContent">
+		<div class="auntSarahCorner">
+			<aside>
+				<h1>Auntie Sarah's Corner</h1>
+				<h2>Tip Per Day</h2>
+				<p>Some text here~</p>
+			</aside>
 		</div>
-		<div class="sideContent">
-			<div class="auntSarahCorner">
-				<aside>
-					<h1>Auntie Sarah's Corner</h1>
-					<h2>Tip Per Day</h2>
-					<p>Some text here~</p>
-				</aside>
-			</div>
 		<div id="lettersOfGratitude">
 
 				<h1>Letters Of Gratitude</h1>
@@ -146,5 +143,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

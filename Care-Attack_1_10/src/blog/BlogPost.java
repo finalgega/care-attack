@@ -1,9 +1,9 @@
 package blog;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Random;
 
 import util.*;
@@ -17,7 +17,7 @@ public class BlogPost {
 	private String date = null;
 	private String username = null;
 	private String count = null;
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -79,6 +79,26 @@ public class BlogPost {
 	}
 	
 
+	public ArrayList<BlogPost> retrieveBlogTitle()
+	{
+		ArrayList<BlogPost> retrieveTitle = new ArrayList<BlogPost>();
+		MySQLController mysql = new MySQLController();
+		mysql.setUp(dsn);
+		ResultSet rs = null;
+		String dbQuery = "select distinct blogTitle from careattack.blog group by blogID order by rand() limit 3";
+		
+		try{
+			rs = mysql.readRequest(dbQuery);
+				while(rs.next()){
+					BlogPost rbt = new BlogPost(rs.getString("blogTitle"));
+					retrieveTitle.add(rbt);
+					}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return retrieveTitle;
+	}
+	
 	public ArrayList<BlogPost> retrieveBlogPost()
 	{
 		ArrayList<BlogPost> retrieveBlogPost = new ArrayList<BlogPost>();
@@ -99,28 +119,6 @@ public class BlogPost {
 		return retrieveBlogPost;
 	}
 
-	
-	
-	public ArrayList<BlogPost> retrieveBlogTitle()
-	{
-		ArrayList<BlogPost> retrieveTitle = new ArrayList<BlogPost>();
-		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
-		ResultSet rs = null;
-		String dbQuery = "select blogTitle from careattack.blog group by blog.blogID";
-		
-		try{
-			rs = mysql.readRequest(dbQuery);
-				while(rs.next()){
-					BlogPost rbt = new BlogPost(rs.getString("blogTitle"));
-					retrieveTitle.add(rbt);
-					}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return retrieveTitle;
-	}
-	
 	public ArrayList<BlogPost> retrieveTopRatedBlogTitle()
 	{
 		ArrayList<BlogPost> retrieveTopRatedTitle = new ArrayList<BlogPost>();
@@ -166,65 +164,49 @@ public class BlogPost {
 		return searchBlogPost;
 	}
 	
-	public ArrayList<BlogPost> searchTitle(String words)
-	{
-		String searchTerm = "%";
-		searchTerm += words;
-		searchTerm += "%";
-		ArrayList<BlogPost> searchBlogPost = new ArrayList<BlogPost>();
-		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
-		ResultSet rs = null;
-		String dbQuery = "select blog.blogTitle , blog.blogContent,blog.date,account.username from careattack.blog inner join careattack.account on blog.accID = account.accID where blog.blogTitle LIKE '" + searchTerm + "' or blog.blogContent LIKE '" + searchTerm+ "'" ;
+
+public boolean createABlogPost(String title, String content,String username){
 		
-		try{
-			rs = mysql.readRequest(dbQuery);
-				while(rs.next()){
-					BlogPost rbp = new BlogPost(rs.getString("blog.blogTitle"),rs.getString("blog.blogContent"),rs.getString("blog.date"),rs.getString("account.username"));
-					searchBlogPost.add(rbp);
-					}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return searchBlogPost;
-	}
-	
-	public boolean createABlogPost(String title, String content)
-	{
 		boolean success = false;
+		ResultSet rs = null;
 		MySQLController mysql = new MySQLController();
+		String owner = null;
 		Cal date = new Cal();
 		mysql.setUp(dsn);
-		String sql ="INSERT INTO blog(blogTitle, blogContent, accID,date)";
-		sql += "VALUES('" + title + "','" + content + "','" + 2 + "','" + date.dated() + "')";
-		try{
-			if(mysql.updateRequest(sql) == 1)
-			{
-				success = true;
-			}
-		}catch(Exception e)
-		{
-			e.printStackTrace();
+		String dbQuery ="select accID from account where username = '"+username+"'";
+		try {
+			rs = mysql.readRequest(dbQuery);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
+		try {
+			if(rs.next()){
+				 owner= rs.getString("accID");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			}
+		try{
+			String sql ="INSERT INTO blog(blogTitle, blogContent, accID,date)";
+			sql += "VALUES('" + title + "','" + content + "','" + owner + "','" + date.dated() + "')";
+		
+			try{
+				rs = mysql.readRequest(sql);
+				if(mysql.updateRequest(sql) == 1)
+				{
+					success = true;
+				}
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+	}finally
+	{
 		mysql.terminate();
+	
+	}
 		return success;
-	}
-	
-	/*
-	public BlogPost anyItem(ArrayList<BlogPost> retrieveBlogTitle){
-		int index = randomGenerator.nextInt(retrieveBlogTitle.size());
-		if(index >-1)
-			return retrieveBlogTitle.get(index);
-		return retrieveBlogTitle.get(index);
-	}
-	
-	public  BlogPost selectItems( ArrayList<BlogPost> retrieveBlogTitle) {
-		Collections.shuffle(retrieveBlogTitle);
-		return retrieveBlogTitle;
-	}
-	*/
-	
-	/*public BlogPost removeDup(ArrayList<BlogPost> retrieveBlogTitle){
-		retrieveBlogTitle = new ArrayList<BlogPost>(new LinkedHashSet<String>retrieveBlogTitle);
-	}*/
+}
+
 }

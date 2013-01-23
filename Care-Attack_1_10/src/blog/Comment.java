@@ -3,6 +3,8 @@ package blog;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import util.Cal;
 import database.MySQLController;
 
 /**
@@ -111,6 +113,52 @@ public class Comment {
 		}
 		return commentArr;
 	}
+	
+	
+	
+public boolean createAComment(String comment,String username){
+		
+		boolean success = false;
+		ResultSet rs = null;
+		MySQLController mysql = new MySQLController();
+		String owner = null;
+		Cal date = new Cal();
+		mysql.setUp(dsn);
+		String dbQuery ="select accID from account where username = '"+username+"'";
+		try {
+			rs = mysql.readRequest(dbQuery);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			if(rs.next()){
+				 owner= rs.getString("accID");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			}
+		try{
+			String sql ="INSERT INTO comment(accID,commentContent,date)";
+			sql += "VALUES('" + owner + "','" + comment +  "','" + date.dated() + "')";
+		
+			try{
+				rs = mysql.readRequest(sql);
+				if(mysql.updateRequest(sql) == 1)
+				{
+					success = true;
+				}
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+	}finally
+	{
+		mysql.terminate();
+	
+	}
+		return success;
+}
 
 	
 }

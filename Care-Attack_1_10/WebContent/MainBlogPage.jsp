@@ -1,38 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*,blog.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="CSS/Project.css">
-<link rel="stylesheet" type="text/css" href="CSS/layout.css">
+<link rel="stylesheet" type="text/css" href="styles/Project.css">
+<link rel="stylesheet" type="text/css" href="styles/layout.css">
 
+<script type="text/javascript" src="scripts/tinybox.js"></script>
 <title>Main Blog Page</title>
 </head>
+
+
 <body>
-
-	<header>
-	<div id="globalHeader">
-		<img src="images/Care-Attack-Logo-Transparent.png" id="careAttackIcon"
-			alt="" />
-		<h1>Welcome to Care-Attack!</h1>
-		<nav id="globalNav">
-		<table>
-			<tr>
-				<td><a href="Project/index.html">Home</a></td>
-				<td><a href="taskPlanner.html">Task Planner</a></td>
-				<td>Meals & Meal Plans</td>
-				<td><a href="MainBlogPage.html">Blog</a></td>
-				<td><a href="Rental Service.html">Rental Service</a></td>
-				<td><input type="search"
-					placeholder="Enter your search terms here" /></td>
-			</tr>
-		</table>
-		</nav>
-	</div>
-	</header>
-
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div id="layout">
 		<div id="heed">
@@ -46,8 +27,10 @@
 			<img src="images/care.jpg" width="750" height="140px" />
 		</div>
 
-
 		<div id="blogcontent">
+			<img src="images/button.png" onclick="TINY.box.show('CreateBlogPost.jsp',1,220,160,1)"  width="150" height="50"/>
+		
+			<%@ page import="blog.*, java.util.*" %>
 			<%
 				if (session.getAttribute("searchResult") == null) {
 			%>
@@ -69,7 +52,11 @@
 				</p>
 			</div>
 			<p><%=create.getContent()%></p>
+			
+			<p><input type="button" value="Create Comment" id="commentButton" onclick="TINY.box.show('CommentBox.jsp',1,220,160,1)" >
+			</p>
 			<hr>
+			
 			<%
 				}
 			%> <%
@@ -146,6 +133,7 @@
 				<div id="headingforsidebar">
 					<%@ page import="blog.*,java.util.*"%>
 					<%
+					
 						ArrayList<BlogPost> retrieveTopPosts = new ArrayList<BlogPost>();
 						BlogPost bp = new BlogPost();
 						retrieveTopPosts = bp.retrieveTopRatedBlogTitle();
