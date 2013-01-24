@@ -16,7 +16,7 @@ h1 {
 	margin-bottom: 10px;
 	margin-top: -30px;
 	padding: 8px 10px 9px;
-	border: 5px solid #F7819F;
+	border: 5px solid black;
 	background: #F8E0EC;
 	cursor: pointer;
 	width: 312px;
@@ -35,17 +35,16 @@ h1 {
 }
 
 #letters {
-	margin-top: -25px;
-	width: 323px;
+	margin-top: 0px;
+	width: 325px;
 	height: 743px;
-	border: 10px solid black;
-	margin-left: 60px;
+	border: 5px solid black;
 }
 
 #contain{
 	height: 240px;
 	width: 332px;
-	border: 5px solid pink;
+	border: 5px solid black;
 	margin-top: -35px;
 }
 
@@ -59,10 +58,9 @@ h1 {
 }
 
 #nametext{
-	width: 310px;
+	width: 314px;
 	height: auto;
-	border: 2px solid black;
-	margin-left: -25px;
+	border: 1px solid black;
 }
 
 #name{
@@ -72,8 +70,18 @@ h1 {
 	
 }
 
+#names{
+	margin-top: -30px;
+	margin-left: 5px;
+}
+
 #text{
 	margin-left: 10px;
+}
+
+#texts{
+	margin-top: -47px;
+	margin-left: 5px;
 }
 
 #message {
@@ -101,10 +109,16 @@ h1 {
 	float: right;
 }
 
+.goButton{
+	float:right;
+}
+
 #appear {
 	margin-left: 0px;
-	width: 325px;
+	width: 332px;
 	height: 746px;
 	overflow: scroll;
+	border: 5px solid black;
+	margin-top: -13px;
 }
 
