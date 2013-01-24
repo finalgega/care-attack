@@ -1,6 +1,19 @@
 /* CSS Document */
+.content{
+	height:100%;
+	margin-top:2%;
+	width:auto;
+		background: white;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	position: relative;
+}
+
 .taskMgr {
-	height: 100%;
+	height: 90%;
 	width: 95%;
 	padding-top: 3px;
 	padding-bottom: 8px;

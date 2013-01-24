@@ -8,17 +8,20 @@
 <link href="styles/header.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
+	<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Paprika" />
 <script src="scripts/jquery-1.8.2.js"></script>
 <script src="scripts/jquery-ui-1.9.1.custom.js"></script>
 <script src="scripts/jquery.easing.1.3.js"></script>
 <script src="scripts/animated-menu.js"></script>
+<script src="scripts/fullcalendar.js"></script>
 </head>
 <body>
 	<header>
 	<div id="globalHeader">
 		<img src="images/Care-Attack-Logo-Transparent.png" id="careAttackIcon"
 			alt="" />
-		<h1>Welcome to Care-Attack!</h1>
+		<h1 id="bannerTitle">Welcome to Care-Attack!</h1>
 		<!--  Login code here -->
 		<%
 			if (session.getAttribute("username") == null) {
@@ -57,20 +60,6 @@
 		<%
 			}
 		%>
-		<!-- 	<nav id="globalNav">
-		<table>
-			<tr>
-				<td><a href="index.jsp">Home</a></td>
-				<td><a href="taskPlanner.jsp">Task Planner</a></td>
-				<td>Meals &#x26; Meal Plans</td>
-				<td><a href="MainBlogPage.jsp">Blog</a></td>
-				<td><a href="IndividualProductPage.jsp">Rental Service</a></td>
-				<td><input type="search"
-					placeholder="Enter your search terms here" name="searchBar"
-					id="searchBar" class="search" /></td>
-			</tr>
-		</table>
-		</nav>-->
 		<nav class="gummyBar">
 		<ul>
 			<li class="green">

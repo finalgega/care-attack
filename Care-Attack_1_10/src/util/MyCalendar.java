@@ -105,6 +105,11 @@ public class MyCalendar {
 		date = year + "-" + month + "-" + day;
 		return date;
 	}
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	@SuppressWarnings("unused")
 	public String getCurrentGCMonth(String date)
 	{

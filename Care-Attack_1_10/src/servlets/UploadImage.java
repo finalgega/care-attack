@@ -23,7 +23,10 @@ import database.MySQLController;
 
 /**
  * Servlet implementation class UploadImage
- */
+ * @category Servlet
+ * @author Aaron Goy Ding Xian
+*/
+
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String dsn = "careattack";
@@ -33,7 +36,6 @@ public class UploadImage extends HttpServlet {
 	 */
 	public UploadImage() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -51,6 +53,26 @@ public class UploadImage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		if(processFileForm(request) != null)
+		{
+			response.getWriter().println("<script>alert('Sucess at file upload!')</script>");
+		}
+		else
+		{
+			response.getWriter().println("<script>alert('Something went wrong =( ')</script>");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public ArrayList<String> processFileForm(HttpServletRequest request)
+	{
+		ArrayList<String> arrList = new ArrayList<String>();
+		System.out.println("In Method processFileForm!");
+		boolean success = false;
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart) {
 			FileItemFactory factory = new DiskFileItemFactory();
@@ -69,6 +91,10 @@ public class UploadImage extends HttpServlet {
 						System.out.println("File Name of uploaded file : "
 								+ fileName);
 						uploadFile(item, fileName);
+						if(success)
+						{
+							System.out.println("File creation success!");
+						}
 					}
 				}
 			} catch (FileUploadException e) {
@@ -86,6 +112,7 @@ public class UploadImage extends HttpServlet {
 			}
 
 		}
+		return arrList;
 	}
 
 	/**

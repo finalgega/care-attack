@@ -1,31 +1,35 @@
 package taskPlanner;
 
-import java.sql.Time;
 import java.util.ArrayList;
-
-import medicine.Medicine;
 
 import com.sun.jmx.snmp.tasks.Task;
 
-public class TaskPlanner extends Medicine {
+public class TaskPlanner{
 	
-	private String eventName;
+	private String title;
 	private int id;
 	private String eventDescription;
     private boolean allDay;
-    private Time startTime;
+    private String start;
     private int duration;
-    private Medicine med;
-	public TaskPlanner()
-	{}
+//	public TaskPlanner()
+//	{}
+//	
+//	public TaskPlanner(ArrayList<Task> task)
+//	{
+//	}
+//	
+//	public TaskPlanner(String title)
+//	{
+//		this.title = title;
+//	}
 	
-	public TaskPlanner(ArrayList<Task> task)
+	public TaskPlanner(String title,boolean allDay, String start)
 	{
-	}
-	
-	public TaskPlanner(String eventName)
-	{
-		this.eventName = eventName;
+		this.title = title;
+		this.allDay = allDay;
+		this.start = start;
+		System.out.println("We're in TaskPlanner(String title,boolean allDay,String start)");
 	}
     
     /**
@@ -34,34 +38,35 @@ public class TaskPlanner extends Medicine {
     public TaskPlanner(int id, String title, boolean allDay)
     {
         this.id = id;
-        this.eventName = title;
+        this.title = title;
         this.allDay = allDay;
-    }
-    
-    public TaskPlanner(int id, String title,boolean allDay, Time startTime, int duration )
+		System.out.println("We're in TaskPlanner(int id,String title,boolean allDay)");
+    }  
+    public TaskPlanner(int id, String title,boolean allDay, String start, int duration )
     {
     	this.id= id;
-    	this.eventName = title;
+    	this.title = title;
     	this.allDay = allDay;
-    	this.startTime = startTime;
+    	this.start = start;
     	this.duration = duration;
+		System.out.println("We're in TaskPlanner(int id,String title,boolean allDay,String start,int duration)");
     }
-    public TaskPlanner(int id, String title,String eventDescription,boolean allDay, Time startTime, int duration )
+    public TaskPlanner(int id, String title,String eventDescription,boolean allDay, String start, int duration )
     {
     	this.id= id;
-    	this.eventName = title;
+    	this.title = title;
     	this.allDay = allDay;
-    	this.startTime = startTime;
+    	this.start = start;
     	this.duration = duration;
     	this.eventDescription = eventDescription;
+		System.out.println("We're in TaskPlanner(int id,String title, String eventDescription, boolean allDay,String start, int duration)");
     }
-    
-    public String getEventName() {
-		return eventName;
+    public String getTitle() {
+		return title;
 	}
 
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public int getId() {
@@ -88,12 +93,12 @@ public class TaskPlanner extends Medicine {
 		this.allDay = allDay;
 	}
 
-	public Time getStartTime() {
-		return startTime;
+	public String getStart() {
+		return start;
 	}
 
-	public void setStartTime(Time startTime) {
-		this.startTime = startTime;
+	public void setStart(String start) {
+		this.start = start;
 	}
 
 	public int getDuration() {
@@ -104,18 +109,9 @@ public class TaskPlanner extends Medicine {
 		this.duration = duration;
 	}
 
-	public Medicine getMed() {
-		return med;
-	}
-
-	public void setMed(Medicine med) {
-		this.med = med;
-	}
-
 	public ArrayList<TaskPlanner> retrieveTasks(String medication)
     {
     	ArrayList<TaskPlanner> tasks = new ArrayList<TaskPlanner>();
-    	med.getTimesperDay();
     	
     	return null;
     }
