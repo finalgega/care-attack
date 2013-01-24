@@ -1,6 +1,19 @@
+#content{
+	height: 120%;
+	margin-top:2%;
+	width:auto;
+		background: white;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	position: relative;
+}
+
 #container {
 	width: 800px;
-	height: 800px;;
+	height: auto;
 	float: center;
 	margin-left: 80px;
 	margin-top: 20px;
@@ -24,11 +37,10 @@
 
 body {
 	background-color: pink;
-	font-family: Shadows Into Light Two, serif;
 }
 
 #list{
-	font-family: Shadows Into Light Two, serif;
+	
 }
 
 /* p { */
@@ -97,7 +109,7 @@ table {
 	-moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
 	box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
 	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
-	color: white;
+	color: black;
 	font-size: 12px;
 	font-family: Shadows Into Light Two, serif;
 	text-decoration: none;
@@ -116,6 +128,6 @@ table {
 }
 
 h3 {
-	color: white;
+	color: black;
 	font-family: Shadows Into Light Two, serif;
 }

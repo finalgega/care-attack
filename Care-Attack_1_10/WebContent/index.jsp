@@ -11,6 +11,10 @@
 <title>Welcome to Care-Attack</title>
 <link href="styles/index.css" rel="stylesheet" />
 <link rel="stylesheet" href="styles/gratitude.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Paprika" />
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
 <script src="scripts/jquery-1.8.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 	
@@ -123,7 +127,7 @@
 						l = letter.retrieveData();
 					%>
 					<%
-						for (int i = 0; i < l.size(); i++) {
+						for (int i = l.size()-1; i > 0 ;i--) {
 							letter = l.get(i);
 					%>
 

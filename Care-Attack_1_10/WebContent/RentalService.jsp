@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Paprika" />
-<link href="styles/layout.css " rel="stylesheet" type="text/css" />
+<link href="styles/index.css " rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="styles/rentalSvc.css" />
 <title>Rental Services</title>
 <script type="text/javascript" src="scripts/tinybox.js"></script>
@@ -17,7 +17,7 @@
 	<center>
 		<h1>Rental Services</h1>
 	</center>
-	<form id="createProducts" method="POST" action="ProductServlet">
+	<form id="createProducts" method="POST" action="ProductServlet" >
 		<div id="testdiv">
 		<div class="button" id="testclick1">
 			<center>

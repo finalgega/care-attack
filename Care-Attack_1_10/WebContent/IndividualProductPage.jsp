@@ -8,7 +8,7 @@
 	href="http://fonts.googleapis.com/css?family=Paprika" />
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
-
+<link rel="stylesheet" type="text/css" href="styles/index.css" />
 <link rel="stylesheet" type="text/css" href="styles/IndividualPage.css" />
 <title>Rental Services</title>
 </head>
@@ -66,21 +66,13 @@
 		rent.createRental(rentalName, rentalQuantity, startDate);
 	}
 %> --%>
-	<center>
+
+<div id ="content">
+	<div id="container">
+		<center>
 		<br />
 		<h1>Rental Services</h1>
 	</center>
-	
-				<%
-							ArrayList<Products> p = new ArrayList<Products>();
-							Products pro = new Products();
-							p = pro.retrieveData();
-						%>
-						<%
-							for (int i = 0; i < p.size(); i++) {
-								pro = p.get(i);
-						%>
-	<div id="container">
 
 		<h3>Hello! Welcome to care attack rental services. Over here, we
 			are renting products for disabled people at a lower price! You can
@@ -95,6 +87,16 @@
 						<td width="132" style="width: 191px;"><strong>Product Name:&nbsp; </strong></td>
 						<td width="154" style="width: 127px;"><select name="list"
 							id="list">
+								
+				<%
+							ArrayList<Products> p = new ArrayList<Products>();
+							Products pro = new Products();
+							p = pro.retrieveData();
+						%>
+						<%
+							for (int i = 0; i < p.size(); i++) {
+								pro = p.get(i);
+						%>
 								<option><%=pro.getProductName()%></option>
 
 						</select></td>
@@ -115,9 +117,6 @@
 						}
 					%>
 
-				<%
-					}
-				%>
 				<div id="picture">
 					<img src="images/wheelchair.jpg" />
 				</div>
@@ -127,8 +126,6 @@
 		<br />
 		<div id="rentrent">
 			<h3>RENT YOUR ITEMS HERE!</h3>
-			<br />
-			<form id="IndividualProductPage" method="POST" action="RentalServlet">
 			<form id="IndividualProductPage" method="POST" action="RentalServlet"
 				onSubmit="return validateForms()">
 				<table width="394" border="1">
@@ -143,6 +140,7 @@
 					<tr>
 						<td><strong>Quantity available: &nbsp;</strong></td>
 						<td><%=pro.getQuantity()%></td>
+										
 					</tr>
 
 					<tr>
@@ -167,6 +165,7 @@
 							id="button" name="clearAll" /></td>
 					</tr>
 				</table>
+				<br/><br/>
 			</form>
 
 		</div>
@@ -174,6 +173,7 @@
 
 	<div id="cartoon">
 		<img src="images/help.jpg" /> <br /> <img src="images/help1.jpg" />
+	</div>
 	</div>
 </body>
 </html>
