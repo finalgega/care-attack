@@ -8,6 +8,7 @@
 <title>Welcome to Care-Attack</title>
 <link href="styles/layout.css" rel="stylesheet" />
 <link href="styles/index.css" rel="stylesheet" />
+<link href="styles/gratitude.css" rel="stylesheet" />
 <script src="scripts/jquery-1.8.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 function clear() {
@@ -90,18 +91,16 @@ function hideshow() {
 			<img src="images/heart.png" id="heart" />
 			<div id="contain">
 				<div id="name">
-						Name<br /> <input type="text" id="name" name="name" height="10px" />
+						Name<br /> <input type="text" name="name" height="10px" />
 				</div>
 				<br /> <br />
 
 				<div id="text">
-
 						Messages <br />
 						<textarea name="message" id="message" cols="45" rows="5"></textarea>
-						<br /> <input type="submit" name="goButton" value="SEND MESSAGE!" />
-
-					
+						<br /> 
 				</div>
+				<div class="goButton"><input type="submit" value="SEND MESSAGE!" /></div>
 			</div>
 						
 			</form>
@@ -115,10 +114,8 @@ function hideshow() {
 		
 	
 			<div id="boxer">
-			<div id="kitty">
-				<img src="images/hk.jpg" />
-			</div>
-			<div id="letters">
+
+
 				<div id="appear">
 					<%
 						ArrayList<letters> l = new ArrayList<letters>();
@@ -132,8 +129,8 @@ function hideshow() {
 
 					<div id="nametext">
 		
-							<h3><%=letter.getName()%></h3>
-							<p><%=letter.getMessage()%></p>
+							&nbsp; &nbsp; <div id="names"><h3><%=letter.getName()%></h3></div>
+							&nbsp; &nbsp; <div id="texts"><p><%=letter.getMessage()%></p></div>
 					
 					</div>
 
