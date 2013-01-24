@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,19 +24,21 @@ import database.MySQLController;
 
 /**
  * Servlet implementation class UploadImage
- * @category Servlet
+ * This servlet serves to process forms with an enc-type = multipart/form-data
+ * @category Servlets
+ * @category Utility
+ * @version 2.00
+ * @since 2012-12-02
  * @author Aaron Goy Ding Xian
-*/
-
+ */
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String dsn = "careattack";
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UploadImage() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -64,36 +67,49 @@ public class UploadImage extends HttpServlet {
 	}
 	
 	/**
+	 * This method processFileForm processes the form data with a file upload
+	 * and retrieves the form field data and calls uploadFile to create the file on the server
+	 * NOTE : It is up to the programmer who calls this function to process the data returned.
 	 * 
-	 * @param request
-	 * @return
+	 * @param request (HttpServletRequest)
+	 * @return dataArray (ArrayList<String>)
+	 * @see servlets.UploadImage#uploadFile(FileItem, String)
+	 * 
 	 */
 	public ArrayList<String> processFileForm(HttpServletRequest request)
 	{
 		ArrayList<String> arrList = new ArrayList<String>();
-		System.out.println("In Method processFileForm!");
-		boolean success = false;
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart) {
+			System.out.println("In if(isMultiPart)");
 			FileItemFactory factory = new DiskFileItemFactory();
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			System.out.println("Request :  " + request);
 			System.out.println("Request End! ");
 			List<?> items;
 			try {
+				System.out.println("In try for processFileForm");
 				items = upload.parseRequest(request);
 				Iterator<?> iterator = items.iterator();
 				while (iterator.hasNext()) {
 					FileItem item = (FileItem) iterator.next();
-
-					if (!item.isFormField()) {
+					if(item.isFormField())
+					{
+						System.out.println("We're in item.isFormField()");
+						String name = item.getFieldName();
+					    String value = item.getString();
+					    arrList.add(value);
+					    System.out.println("Name of Field : " + name);
+					    System.out.println("Value of Field : " + value);
+					}
+					else if (!item.isFormField()) {
+						System.out.println("We're in !tem.isFormField()");
 						String fileName = item.getName();
 						System.out.println("File Name of uploaded file : "
 								+ fileName);
-						uploadFile(item, fileName);
-						if(success)
+						if(uploadFile(item, fileName))
 						{
-							System.out.println("File creation success!");
+							System.out.println("File created!");
 						}
 					}
 				}
@@ -129,16 +145,18 @@ public class UploadImage extends HttpServlet {
 	 * @throws FileUploadException
 	 * @throws IOException
 	 * @throws SQLException
+	 * @see {@link servlets.UploadImage#uploadFileDataToDB(String)}
 	 */
 	private boolean uploadFile(FileItem item, String fileName) throws FileUploadException,IOException,SQLException {
+		System.out.println("In Method uploadFile!");
 		boolean success = false;
 			// String root = getServletContext().getRealPath("/");
 			// Note that for File path, please replace the path name
 			// in the constructor with the path of your directory
 			// Note that it is temporary until a soln is found.
 		try{
-			File path = new File(
-					"C:\\Users\\Evangeline\\Desktop\\Project\\Care-Attack_1_10\\WebContent\\images");
+			System.out.println("In try for uploadFile");
+			File path = new File("/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack_1_10/WebContent/images");
 			File uploadedFile = new File(path + "/" + fileName);
 			System.out.println("path of uploaded file : "
 					+ uploadedFile.getAbsolutePath());
@@ -148,8 +166,7 @@ public class UploadImage extends HttpServlet {
 				path.mkdirs();
 				item.write(uploadedFile);
 			}
-			uploadFileDataToDB(fileName);
-			success = true; 
+			success =uploadFileDataToDB(fileName); 
 			}catch(Exception e)
 			{
 				System.out.println("Something went wrong :(");
@@ -168,7 +185,7 @@ public class UploadImage extends HttpServlet {
 	 */
 	private boolean uploadFileDataToDB(String fileName) throws SQLException {
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "INSERT INTO image(imagePath)";
 		dbQuery += "VALUES('" + fileName + "')";
 		boolean success = false;
@@ -178,6 +195,24 @@ public class UploadImage extends HttpServlet {
 			success = true;
 		}
 		return success;
+	}
+	
+	public int getImgID()
+	{
+		int imgID = 0;
+		MySQLController mysql = new MySQLController();
+		ResultSet rs = null;
+		String dbQuery = "SELECT MAX(imgID) FROM image";
+		try
+		{
+			mysql.setUp();
+			rs = mysql.readRequest(dbQuery);
+			imgID = rs.getInt("imgID");
+		}catch(SQLException sqlErr)
+		{
+			sqlErr.printStackTrace();
+		}
+		return imgID;
 	}
 
 	// FIXME
@@ -197,11 +232,4 @@ public class UploadImage extends HttpServlet {
 			}
 		};
 	}
-
-	// Sample of how the upload image should be in html/jsp
-	// <form name="uploadForm" id="uploadForm" method="POST"
-	// action="UploadImage" enctype="multipart/form-data">
-	// <input type="file" value="sy" name="sy"></input> <input
-	// type="submit" />
-	// </form>
 }

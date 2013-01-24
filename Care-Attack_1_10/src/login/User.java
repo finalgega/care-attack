@@ -131,7 +131,7 @@ public class User {
 	 * @param password
 	 * @param email
 	 * @param secret
-	 * @return
+	 * @return success (boolean)
 	 */
 	public boolean createUser(String username, String password, String email, String secret)
 	{

@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class MySQLController {
 	private Connection con;
 	private final String sqlUserID = "root";	 //	Simply change to the appropriate userID to connect to DB
-	private final String sqlPwd = "it2299care";	//	Simply change to the appropriate pwd to connect to the Db
+	private final String sqlPwd = "it2299caring";	//	Simply change to the appropriate pwd to connect to the Db
 	
 	/**
 	 * Sets up connection to database
@@ -28,7 +28,6 @@ public class MySQLController {
 	 * point. This should be used if one needs to connect to several different
 	 * databases.
 	 *
-	 * @return void
 	 */
 	public void setUp()
 	{
@@ -43,7 +42,7 @@ public class MySQLController {
 		try
 		{
 			//String src = "jdbc:mysql://localhost:3306/" + dsn;
-			String src = "jdbc:mysql://it2299care.cyjvphgjvodb.ap-southeast-1.rds.amazonaws.com:3306/" + dsn;
+			String src = "jdbc:mysql://aa1lz9mwlm9kyah.cyjvphgjvodb.ap-southeast-1.rds.amazonaws.com:3306/" + dsn;
 			con = DriverManager.getConnection(src,sqlUserID,sqlPwd);
 		}catch(Exception conErr)
 		{
@@ -52,13 +51,14 @@ public class MySQLController {
 	}
 	/**
 	 * Method Name: SetUp Input Parameter: String (Data Source Name) 
-	 * 
+	 * This method should only be called when a multi-database structure is present
 	 * Purpose :
 	 * Load the database driver and establish connection
 	 * @see database.MySQLController#setUp()
 	 * @param dsn (String)
-	 * @return void
+	 * @deprecated replaced with setUp()
 	 */
+	@Deprecated
 	public void setUp(String dsn) {
 		// load the database driver
 		try {
@@ -71,7 +71,7 @@ public class MySQLController {
 			//	For Testing Server
 			//String s = "jdbc:mysql://localhost:3306/" + dsn;
 			//	For Production Server
-			String s = "jdbc:mysql://it2299care.cyjvphgjvodb.ap-southeast-1.rds.amazonaws.com:3306/" + dsn;
+			String s = "jdbc:mysql://aa1lz9mwlm9kyah.cyjvphgjvodb.ap-southeast-1.rds.amazonaws.com:3306/" + dsn;
 			con = DriverManager.getConnection(s, sqlUserID, sqlPwd); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +119,6 @@ public class MySQLController {
 
 	/**
 	 * Closes the database connection
-	 * @return void
 	 */
 	public void terminate() {
 		try {

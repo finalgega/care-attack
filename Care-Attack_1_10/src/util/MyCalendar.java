@@ -26,9 +26,9 @@ public class MyCalendar {
 	/**
 	 *Get the number of days for first date minus second date
 	 *
-	 * @param date1(GregorianCalendar)
-	 * @param date2(GregorianCalendar)
-	 * @return difference(long)
+	 * @param date1 (GregorianCalendar)
+	 * @param date2 (GregorianCalendar)
+	 * @return difference (long)
 	 */
 	public long getDifference (GregorianCalendar date1, 
 								GregorianCalendar date2){

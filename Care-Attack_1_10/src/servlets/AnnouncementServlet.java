@@ -45,7 +45,8 @@ import announcements.Announcement;
 		if(dataValues!= null)
 		{
 			System.out.println("In if(ui.processFileForm(request)!");
-			response.getWriter().println("<script>alert('Sucess at file upload! And Back to AnnouncementServlet!')</script>");
+			System.out.println("datavalues size : " + dataValues.size() );
+			response.getWriter().println("<script>alert('Sucess at file upload! And Back to AnnouncementServlet!');</script>");
 			String aTopic = dataValues.get(0).toString();
 			String aContent = dataValues.get(1).toString();
 			System.out.println("Topic : " + aTopic);
@@ -80,6 +81,7 @@ import announcements.Announcement;
 		}
 		finally
 		{
+			
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	
