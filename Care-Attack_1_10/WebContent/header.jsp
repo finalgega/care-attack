@@ -90,7 +90,7 @@
 				<p>
 					<a href="IndividualProductPage.jsp">Rental Service</a>
 				</p>
-				<p class="subtext">Stuff to rent!</p>
+				<p class="subtext">Rent your products here!</p>
 			</li>
 		</ul>
 		</nav>

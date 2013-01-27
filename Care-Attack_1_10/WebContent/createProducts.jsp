@@ -21,11 +21,7 @@
 		var desc = document.forms["createProducts"]["productDescription"].value;
 		var status = document.forms["createProducts"]["status"].value;
 		
-		if (qty == null || qty =="") {
-			alert("Please enter the product quantity!");
-			return false;
-		}
-		else if (name == null || name =="") {
+		 if (name == null || name =="") {
 			alert("Please enter the product name!");
 			return false;
 		}
@@ -34,11 +30,15 @@
 			alert("Please enter the product description!");
 			return false;
 		}
+		 
+		else if (qty == null || qty =="") {
+			alert("Please enter the product quantity!");
+			return false;
+		}
 		
 		else if (status == null || status =="") {
 			alert("Please enter the product status!");
 			return false;
-			
 		}
 		
 		else{
@@ -50,6 +50,18 @@
 </script>
 	<form id="createProducts" method="POST" action="ProductServlet" onSubmit="return validateForms()">
 		<table>
+		
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="productName" id="productName"
+					placeholder="Name of product" /></td>
+			</tr>
+			
+			<tr>
+				<td>Description</td>
+				<td><input type="text" name="productDescription" id="productDescription"
+					autocomplete="off" formnovalidate placeholder="Description of product"/></td>
+			</tr>
 			<tr>
 				<!--  <a href="javascript:TINY.box.hide()">close it</a>-->
 				<td>Quantity</td>
@@ -57,19 +69,9 @@
 					formnovalidate="formnovalidate" placeholder="Numberic digits" /></td>
 			</tr>
 			<tr>
-				<td>Name</td>
-				<td><input type="text" name="productName" id="productName"
-					placeholder="Name of products" /></td>
-			</tr>
-			<tr>
-				<td>Description</td>
-				<td><input type="text" name="productDescription" id="productDescription"
-					autocomplete="off" formnovalidate placeholder="Description of products"/></td>
-			</tr>
-			<tr>
 				<td>Status</td>
 				<td><input type="text" name="status" id ="status" autocomplete="off"
-					formnovalidate placeholder="Available/Unavailable" /></td>
+					formnovalidate placeholder="Available" /></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Create!" id="postProducts" name="postProducts"/></td>

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entity.Products;
 import entity.Rental;
 
 /**
@@ -26,7 +27,36 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		String productName = request.getParameter("list");
+		System.out.println("Product Name :  " + productName);
+		String referer = request.getHeader("referer");
+		System.out.println("Referer! : " + referer);
+		try{
+			Rental rent = new Rental();
+			Products p = rent.retrieveProduct(productName);
+			if (p !=null){
+				session.setAttribute("productName", productName);
+				session.setAttribute("productDescription", p.getProductDescription());
+				session.setAttribute("productQuantity", p.getQuantity());
+				session.setAttribute("status", p.getStatus());
+			
+			}else
+			{
+				System.out.println("NOthing returned in rent.retrieveProduct");
+			}
+		
+				}
+			
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				
+				finally
+				{
+					System.out.println("End of doGet");
+					response.sendRedirect(referer);
+				}
 	}
 
 	/**

@@ -12,8 +12,8 @@ public class Rental {
 	private String startDate = null;
 	private String endDate = null;
 	
-
-
+	
+	
 	public Rental(){}
 	
 	public String getRentalName() {
@@ -61,6 +61,31 @@ public class Rental {
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
+	
+	
+	public Products retrieveProduct(String productName){
+
+		ResultSet rs = null;
+		MySQLController db = new MySQLController();
+		db.setUp();
+		System.out.println("Product Name : " + productName);
+		String dbQuery = "SELECT * FROM product WHERE productName = '" + productName + "'";
+		System.out.println(" SQL Statement : " + dbQuery);
+		try{
+			rs = db.readRequest (dbQuery);
+			if(rs.next())
+			{		
+				Products p = new Products(rs.getString("productName"),rs.getString("productDescription"), rs.getInt("productQuantity"), rs.getString("status"));
+				
+				return p;
+			}
+		}
+		catch (Exception e){e.printStackTrace();}
+		db.terminate();
+		return null;
+	}
+	
+	
 		
 	public boolean createRental(String rentalName, int rentalQuantity, String startDate, String endDate)
 	{

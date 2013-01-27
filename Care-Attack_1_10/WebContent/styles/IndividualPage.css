@@ -1,32 +1,22 @@
 #content{
-	height: 120%;
+	height: 1000px;
 	margin-top:2%;
 	width:auto;
-		background: white;
+	background: white;
 	-moz-box-shadow: -5px 9px 18px #999;
 	-webkit-box-shadow: -5px 9px 18px #999;
 	box-shadow: -5px 9px 18px #999;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	position: relative;
 }
 
 #container {
 	width: 800px;
-	height: auto;
-	float: center;
-	margin-left: 80px;
-	margin-top: 20px;
+	height: 500px;
 	font-family: Shadows Into Light Two, serif;
-}
-
-#cartoon {
-	width: 300px;
-	height: 800px;;
-	float: center;
-	margin-left: 920px;
-	margin-top: -810px;
-	border: 5px solid white;
+	margin-top: 50px;
+	margin-left: 90px;
+	float: left;
 }
 
 #info {
@@ -54,23 +44,52 @@ body {
 
 #rent {
 	width: 790px;
-	height: 320px;
+	height: auto;
 	margin-left: -6px;
 }
 
-#rentrent{
-	margin-left: -5px;
-	margin-top: -20px;
+#info{
+	width: 790px;
+	height: 260px;
 }
+
+#rentrent{
+	margin-top: 20px;
+	display: none;
+	padding-top: 0px;
+}
+
+
+#cartoon {
+	width: 300px;
+	height: 800px;
+	margin-top: 50px;
+	float: right;
+	margin-right: 80px;
+}
+
 
 #picture {
 	border: 2px solid black;
 	width: 200px;
 	height: 200px;
-	margin-left: 563px;
-	margin-top: -210px;
-	float: right;
+	margin-left: 560px;
+	margin-top: -170px;
 }
+
+.button1 {
+	font: 14px Georgia, Verdana;
+	border: 5px solid black;
+	background: #F8E0EC;
+	cursor: pointer;
+	width: 312px;
+}
+
+.button1:hover {
+	border: 5px solid black;
+	background: #F8E0EC;
+}
+
 
 #form1 {
 	height: auto;
@@ -82,12 +101,10 @@ body {
 	width: 550px;
 	margin-left: 3px;
 	font-family: Shadows Into Light Two, serif;
-	border: 5px solid green;
-	'
 }
 
 table {
-	border-color: pink;
+	border-color: transparent;
 /* 	color: white; */
 /* 	font-family: Shadows Into Light Two, serif; */
 }

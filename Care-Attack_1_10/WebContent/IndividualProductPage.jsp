@@ -18,6 +18,11 @@
 		function clear() {
 			$("#IndividualProductPage").prop('input')
 		}
+		
+		function hideshow() {
+		    var toggle = document.getElementById('rentrent');
+		    toggle.style.display = toggle.style.display == "block" ? "none" : "block";
+		}
 
 		function validateForms() {
 			var quantity = document.forms["IndividualProductPage"]["quantity"].value;
@@ -45,8 +50,6 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
-
-
 	<%@ page import="entity.*, java.util.*"%>
 	<%-- <% 
 	Products pd = new Products();	
@@ -68,6 +71,24 @@
 %> --%>
 
 <div id ="content">
+<% if((session.getAttribute("productName") !=null)||(session.getAttribute("username")) != null){ %>
+				
+		<div id="cartoon">
+		<table>
+		<tr><td><img src="images/help.png" /></td></tr>
+		<tr><td><img src="images/help1.png" /></td></tr>
+		</table>
+		</div>
+		<%}else{ %>
+		
+		<div id="cartoon">
+		<table>
+		<tr><td><img src="images/help.png" /></td></tr>
+		<tr><td><img src="images/help1.png" /></td></tr>
+		</table>
+		</div>
+		<%} %>
+		
 	<div id="container">
 		<center>
 		<br />
@@ -81,65 +102,77 @@
 		<div id="rent">
 		<br/>
 		
-			<form id="form1" name="form1" method="post" action="">
-				<table width="302" border="1" style="width: 369px;">
-					<tr>
-						<td width="132" style="width: 191px;"><strong>Product Name:&nbsp; </strong></td>
-						<td width="154" style="width: 127px;"><select name="list"
-							id="list">
-								
-				<%
+			<form id="retrieveProducts" name="retrieveProducts" method="get" action="RentalServlet">
+						<%
 							ArrayList<Products> p = new ArrayList<Products>();
 							Products pro = new Products();
 							p = pro.retrieveData();
 						%>
-						<%
+					
+				<table width="302" border="1" style="width: 369px;">
+					<tr>
+						<td width="132" style="width: 191px;"><strong>Product Name:&nbsp; </strong></td>
+						<td width="154" style="width: 127px;">
+						<select name="list" id="list">
+							<option value="">Select an Item</option>
+									<%
 							for (int i = 0; i < p.size(); i++) {
 								pro = p.get(i);
 						%>
-								<option><%=pro.getProductName()%></option>
-
+								<option value="<%=pro.getProductName()%>"><%=pro.getProductName()%></option>
+			<%
+						}
+					%>
 						</select></td>
+				
 						<td style="width: 131px;"><input type="submit" name="button"
 							id="button" class="button" value="Submit" /></td>
+							
 					</tr>
 				</table>
 			</form>
 			<br />
-			<div id="info">
+			<% if(session.getAttribute("productName") != null){ %>
+				<div id="info">
+				
 				<div id="words">
 					<div id="name">
-						<h3><%=pro.getProductName()%></h3>
+						<h3><%=session.getAttribute("productName").toString()%></h3>
 					</div>
-					<p><%=pro.getProductDescription()%></p>
-				</div>
-				<%
-						}
-					%>
-
-				<div id="picture">
+					<p><%=session.getAttribute("productDescription").toString()%></p>
+					<div id="picture">
 					<img src="images/wheelchair.jpg" />
 				</div>
-			</div>
-			<br /> <br />
+				</div>
+				<%} else{ %>
+				<div id="words">
+					<div id="name">
+				</div>
+				</div>
+				<% } %>
+				</div>
+	
+		<% if(session.getAttribute("username") != null){ %>
+		<div class="button1" id="testclick1" onclick="hideshow()">
+				<center><strong>CLICK HERE TO RENT PRODUCTS!</strong></center>
 		</div>
-		<br />
+			</div>
+		<% if(session.getAttribute("productName") != null){ %>
 		<div id="rentrent">
 			<h3>RENT YOUR ITEMS HERE!</h3>
-			<form id="IndividualProductPage" method="POST" action="RentalServlet"
-				onSubmit="return validateForms()">
+			<form id="IndividualProductPage" method="POST" action="RentalServlet" onSubmit="return validateForms()">
 				<table width="394" border="1">
 					<tr>
 						<td><strong>Name of product: &nbsp;</strong></td>
-						<td><%=pro.getProductName()%></td>
+						<td><%=session.getAttribute("productName").toString()%></td>
 					</tr>
 					<tr>
 						<td><strong>Status:&nbsp;&nbsp; </strong> <label for="end"></label></td>
-						<td><%=pro.getStatus()%></td>
+						<td><%=session.getAttribute("status").toString()%></td>
 					</tr>
 					<tr>
 						<td><strong>Quantity available: &nbsp;</strong></td>
-						<td><%=pro.getQuantity()%></td>
+						<td><%=session.getAttribute("productQuantity").toString()%></td>
 										
 					</tr>
 
@@ -159,8 +192,8 @@
 
 					<tr>
 						<td><input type="submit" name="button" id="button"
-							class="button" value="Submit" /></td>
-						<!-- 							onclick="confirm( 'Are you sure you want to rent these items?' )"  -->
+							class="button" value="Submit"/></td>
+						<!--onclick="confirm( 'Are you sure you want to rent these items?' )"  -->
 						<td><input type="reset" value="Clear" class="button"
 							id="button" name="clearAll" /></td>
 					</tr>
@@ -169,11 +202,10 @@
 			</form>
 
 		</div>
+				<%}else{} %>
+		<%}else{}%>
+	
 	</div>
-
-	<div id="cartoon">
-		<img src="images/help.jpg" /> <br /> <img src="images/help1.jpg" />
-	</div>
-	</div>
+</div>
 </body>
 </html>

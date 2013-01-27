@@ -45,6 +45,11 @@
 			}
 		}
 		
+		function displayDate()
+		{
+		document.getElementById("nametext").innerHTML=Date();
+		}
+		
 		function hideshow() {
 		    var toggle = document.getElementById('boxer');
 		    toggle.style.display = toggle.style.display == "block" ? "none" : "block";
@@ -132,9 +137,10 @@
 					%>
 
 					<div id="nametext">
-		
+							
 							&nbsp; &nbsp; <div id="names"><h3><%=letter.getName()%></h3></div>
 							&nbsp; &nbsp; <div id="texts"><p><%=letter.getMessage()%></p></div>
+							<script><div id ="datedate">displayDate();</div></script>
 					
 					</div>
 
