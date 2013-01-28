@@ -44,6 +44,7 @@ import entity.Products;
 		System.out.println("Description : " + productDescription);
 		System.out.println("Status : " + status);
 		
+		
 		try
 		{
 			Products p = new Products();

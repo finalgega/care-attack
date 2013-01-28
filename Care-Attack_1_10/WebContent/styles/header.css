@@ -114,6 +114,10 @@ body {
 	padding: 0px 5px;
 }
 
+#cp{
+	font-family: Shadows Into Light Two, serif;
+}
+
 .gummyBar .subtext {
 	padding-top: -1px;
 	margin-top: -6px;

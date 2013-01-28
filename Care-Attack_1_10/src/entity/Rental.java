@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import database.*;
 public class Rental {
 	private final String dsn = "careattack";
+	private String name = null;
+	private String nric = null;
 	private String rentalName = null;
 	private int rentalQuantity = 0;
 	private String startDate = null;
@@ -15,6 +17,23 @@ public class Rental {
 	
 	
 	public Rental(){}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNric() {
+		return nric;
+	}
+
+	public void setNric(String nric) {
+		this.nric = nric;
+	}
+
 	
 	public String getRentalName() {
 		return rentalName;
@@ -54,8 +73,10 @@ public class Rental {
 	}
 
 
-	public Rental(String rentalName, int rentalQuantity, String startDate, String endDate)
+	public Rental(String name, String nric, String rentalName, int rentalQuantity, String startDate, String endDate)
 	{
+		this.name = name;
+		this.nric = nric;
 		this.rentalName = rentalName;
 		this.rentalQuantity = rentalQuantity;
 		this.startDate = startDate;
@@ -87,13 +108,13 @@ public class Rental {
 	
 	
 		
-	public boolean createRental(String rentalName, int rentalQuantity, String startDate, String endDate)
+	public boolean createRental(String name, String nric, String rentalName, int rentalQuantity, String startDate, String endDate)
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
-		String sql ="INSERT INTO rental(rentalName, rentalQuantity, startDate) INNERJOIN product";
-		sql += "VALUES('" + rentalName + "','" + rentalQuantity + "','" + startDate +"','" + endDate +"')";
+		String sql ="INSERT INTO rental(name, nric, rentalName, rentalQuantity, startDate, endDate)";
+		sql += "VALUES('" + name + "','" + nric + "','" + rentalName + "','" + rentalQuantity + "','" + startDate +"','" + endDate +"')";
 		try{
 			if(mysql.updateRequest(sql) == 1)
 			{

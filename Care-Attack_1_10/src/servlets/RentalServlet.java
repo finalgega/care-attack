@@ -64,12 +64,16 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String rentalName = request.getParameter("rentalName");
+		String name = request.getParameter("name");
+		String nric = request.getParameter("nric");
+		String rentalName = session.getAttribute("productName").toString();
 		int rentalQuantity = Integer.parseInt(request.getParameter("rentalQuantity"));
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String referer = request.getHeader("referer");
-		System.out.println("Name : " + rentalName);
+		System.out.println("Name : " + name);
+		System.out.println("NRIC : " + nric);
+		System.out.println("Rental Name : " + rentalName);
 		System.out.println("Quantity : " + rentalQuantity);
 		System.out.println("Start Date : " + startDate);
 		System.out.println("End Date : " + endDate);
@@ -78,7 +82,7 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 		try
 		{
 			Rental rent = new Rental();
-			boolean success = rent.createRental(rentalName, rentalQuantity, startDate, endDate);
+			boolean success = rent.createRental(name, nric, rentalName, rentalQuantity, startDate, endDate);
 			if(success)
 			{
 				session.setAttribute("rentalName", rentalName);

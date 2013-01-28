@@ -18,6 +18,11 @@ h1 {
 	margin-top: 20px;
 }
 
+#element_to_pop_up {
+	display:none; 
+	margin-top: 400px;
+	}
+
 #left {
 	height: 10px;
 	width: 100px;

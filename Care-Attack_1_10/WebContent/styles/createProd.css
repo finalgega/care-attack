@@ -1,0 +1,92 @@
+#createProducts{
+	margin-top: 20px;
+	margin-left: 450px;
+}
+
+#productName{
+	width: 300px;
+	height: 20px;
+	margin-left: 10px;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 2px;
+}
+
+#status{
+	width: 300px;
+	height: 20px;
+	margin-left: 10px;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 2px;
+}
+
+#quantity{
+	width: 300px;
+	height: 20px;
+	margin-left: 10px;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 2px;
+}
+
+#productDescription{
+	width: 300px;
+	height: 70px;
+	margin-left: 10px;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 2px;
+	border: transparent;
+}
+
+#text{
+	font-family: Paprika, serif;
+}
+
+table{
+	font-family: Shadows Into Light Two, serif;
+}
+
+.button {
+	border-top: 1px solid #02090d;
+	background: #8fa3b0;
+	background: -webkit-gradient(linear, left top, left bottom, from(#bca5d1),
+		to(#8fa3b0) );
+	background: -webkit-linear-gradient(top, #bca5d1, #8fa3b0);
+	background: -moz-linear-gradient(top, #bca5d1, #8fa3b0);
+	background: -ms-linear-gradient(top, #bca5d1, #8fa3b0);
+	background: -o-linear-gradient(top, #bca5d1, #8fa3b0);
+	padding: 2.0px 25px;
+	-webkit-border-radius: 40px;
+	-moz-border-radius: 40px;
+	border-radius: 40px;
+	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	-moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+	color: black;
+	font-size: 12px;
+	font-family: Shadows Into Light Two, serif;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.button:hover {
+	border-top-color: #828282;
+	background: #828282;
+	color: #ccc;
+}
+
+.button:active {
+	border-top-color: #1b435e;
+	background: #1b435e;
+}

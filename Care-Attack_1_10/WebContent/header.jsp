@@ -60,6 +60,8 @@
 		<%
 			}
 		%>
+		
+		
 		<nav class="gummyBar">
 		<ul>
 			<li class="green">
@@ -90,7 +92,15 @@
 				<p>
 					<a href="IndividualProductPage.jsp">Rental Service</a>
 				</p>
-				<p class="subtext">Rent your products here!</p>
+				<%
+			if (session.getAttribute("username") == null) {
+		%>
+		<p class="subtext">Items for rent!</p>
+		<%
+			} else {
+		%>
+				<p class="subtext"><a id="cp" href="createProducts.jsp">Create Products</a></p>
+			<%} %>
 			</li>
 		</ul>
 		</nav>

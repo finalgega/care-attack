@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="styles/index.css" />
 <link rel="stylesheet" type="text/css" href="styles/rentalSvc.css" />
 <title>Rental Services</title>
-<script type="text/javascript" src="scripts/tinybox.js"></script>
+<script type="text/javascript" src="scripts/tinyboxs.js"></script>
 </head>
 <body>
 
@@ -38,50 +38,15 @@
 					MESSAGE HERE!&hearts;&hearts;&hearts;&hearts;&hearts;</strong>
 			</center>
 		</div>
+
 	</div>
-	
-	
-	
-	<form id="createProducts" method="POST" action="ProductServlet" onSubmit="return validateForms()">
-		<table>
-		
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="productName" id="productName"
-					placeholder="Name of product" /></td>
-			</tr>
-			
-			<tr>
-				<td>Description</td>
-				<td><input type="text" name="productDescription" id="productDescription"
-					autocomplete="off" formnovalidate placeholder="Description of product"/></td>
-			</tr>
-			<tr>
-				<!--  <a href="javascript:TINY.box.hide()">close it</a>-->
-				<td>Quantity</td>
-				<td><input type="text" name="quantity" id="quantity" autocomplete="off"
-					formnovalidate="formnovalidate" placeholder="Numberic digits" /></td>
-			</tr>
-			<tr>
-				<td>Status</td>
-				<td><input type="text" name="status" id ="status" autocomplete="off"
-					formnovalidate placeholder="Available" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Create!" id="postProducts" name="postProducts"/></td>
-				<td><input type="reset" value="Clear" id="clearAll" name="clearAll" /></td>
-			</tr>
-		</table>
-	</form>
-	
-	
 
 	<script type="text/javascript">
-	T$('testclick1').onclick = function(){TINY.box.show("createProducts.jsp",1,400,200,1)}
+	T$('testclick1').onclick = function(){TINY.box.view("createProducts.jsp",1,400,200,1)}
 	var content2 = "<img src='images/walkingstick.jpg' width='298' height='373' alt='' />";
-	T$('testclick2').onclick = function(){TINY.box.show(content2,0,0,0,1)}
+	T$('testclick2').onclick = function(){TINY.box.view(content2,0,0,0,1)}
 	var content3 = "Hello, welcome to our rental services! Over here, you can rent our items for the disabled people at a lower price! <br/><br/> *Terms & Conditions apply.";
-	T$('testclick3').onclick = function(){TINY.box.show(content3,0,0,0,0,8)}
+	T$('testclick3').onclick = function(){TINY.box.view(content3,0,0,0,0,8)}
 </script>
 </form>
 </body>

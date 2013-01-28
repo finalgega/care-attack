@@ -25,14 +25,28 @@
 		}
 
 		function validateForms() {
+			var name = document.forms["IndividualProductPage"]["name"].value;
+			var nric = document.forms["IndividualProductPage"]["nric"].value;
 			var quantity = document.forms["IndividualProductPage"]["quantity"].value;
 			var start = document.forms["IndividualProductPage"]["start"].value;
 			var end = document.forms["IndividualProductPage"]["end"].value;
+			
 
-			if (quantity == null || quantity == "") {
+			if (name == null || name == "") {
+				alert("Please enter your name!");
+				return false;
+			} 
+			
+			else if (nric == null || nric == "") {
+				alert("Please enter your NRIC!");
+				return false;
+			} 
+			
+			else if (quantity == null || quantity == "") {
 				alert("Please enter the rental quantity!");
 				return false;
-			} else if (start == null || start == "") {
+			} 
+			else if (start == null || start == "") {
 				alert("Please enter the rental start date!");
 				return false;
 			}
@@ -91,14 +105,12 @@
 		
 	<div id="container">
 		<center>
-		<br />
 		<h1>Rental Services</h1>
 	</center>
 
 		<h3>Hello! Welcome to care attack rental services. Over here, we
-			are renting products for disabled people at a lower price! You can
-			select the items that you want to view and then enter the details of
-			rental at the table below.</h3>
+			provide rental services for disabled people at a lower price! You can
+			select the items that you want to view and if you want to rent our products, you have to log in or sign up now!</h3>
 		<div id="rent">
 		<br/>
 		
@@ -159,12 +171,12 @@
 			</div>
 		<% if(session.getAttribute("productName") != null){ %>
 		<div id="rentrent">
-			<h3>RENT YOUR ITEMS HERE!</h3>
+		<br/>
 			<form id="IndividualProductPage" method="POST" action="RentalServlet" onSubmit="return validateForms()">
 				<table width="394" border="1">
 					<tr>
 						<td><strong>Name of product: &nbsp;</strong></td>
-						<td><%=session.getAttribute("productName").toString()%></td>
+						<td><%=session.getAttribute("productName").toString() %></td>
 					</tr>
 					<tr>
 						<td><strong>Status:&nbsp;&nbsp; </strong> <label for="end"></label></td>
@@ -175,19 +187,29 @@
 						<td><%=session.getAttribute("productQuantity").toString()%></td>
 										
 					</tr>
+					
+					<tr>
+						<td><strong>Name: &nbsp;</strong></td>
+						<td><input type="text" name="name" id="name" /></td>
+					</tr>
+					
+					<tr>
+						<td><strong>NRIC: &nbsp;</strong></td>
+						<td><input type="text" name="nric" id="nric" /></td>
+					</tr>
 
 					<tr>
 						<td><strong>Quantity for rent: &nbsp;</strong></td>
-						<td><input type="text" name="quantity" id="quantity" /></td>
+						<td><input type="text" name="rentalQuantity" id="quantity" /></td>
 					</tr>
 					<tr>
 						<td><strong>Rental Start Date:</strong> <label for="start2"></label></td>
-						<td><input type="text" name="start" id="start" /></td>
+						<td><input type="text" name="startDate" id="start" /></td>
 					</tr>
 					<tr>
 						<td><strong>Rental End Date:&nbsp;&nbsp; </strong> <label
 							for="end"></label></td>
-						<td><input type="text" name="end" id="end" /></td>
+						<td><input type="text" name="endDate" id="end" /></td>
 					</tr>
 
 					<tr>
