@@ -53,7 +53,7 @@
 			<%
 				}
 			%>
-			<form action="Logout" method="POST" id="loggedout">
+			<form action="Logout" method="POST">
 				<input type="submit" name="logout" id="logout" value="Log out" />
 			</form>
 		</div>
@@ -78,7 +78,7 @@
 			</li>
 			<li class="red">
 				<p>
-					<a href="#">Meal Plans</a>
+					<a href="#">Meals &#x26; Meal Plans</a>
 				</p>
 				<p class="subtext">Find out what they can eat!</p>
 			</li>
@@ -90,7 +90,7 @@
 			</li>
 			<li class="purple">
 				<p>
-					<a href="IndividualProductPage.jsp">Rental Service</a>
+					<a href="RentalService.jsp">Rental Service</a>
 				</p>
 				<%
 			if (session.getAttribute("username") == null) {

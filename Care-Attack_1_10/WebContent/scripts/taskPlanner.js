@@ -1,6 +1,6 @@
-$(document).ready(function(){alert('page has finished loading! jquery working from another js');});
-
-function createCalendar(gsonObj){
+function createCalendar(){
+		$.get('taskplanner',function(gsonObj)
+		{
 		alert("gsonObj : " + gsonObj);
 		var calendarTasks = $.parseJSON(gsonObj);
 		alert(calendarTasks);
@@ -17,8 +17,8 @@ function createCalendar(gsonObj){
 
 	    	        alert('Current view: ' + view.name);
 
-	    	        // change the day's background color just for fun
-	    	   //     $(this).css('background-color', 'red');
+	    	     //    change the day's background color just for fun
+	    	        $(this).css('background-color', 'red');
 
 	    	    },
 	        header: {
@@ -29,10 +29,11 @@ function createCalendar(gsonObj){
 	        selectable: true,
 	        selectHelper: true,
 	        editable: false,
-	        events: calendarTasks,
+	        events: gsonObj,
 	        defaultView: 'agendaDay',
 	        defaultEventMinutes : 60
 	    });
+		});
 	}
 function callServlet()
 	    {

@@ -35,9 +35,9 @@ public class TaskPlannerServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		Gson gson = new Gson();
 		TaskPlanner t = new TaskPlanner("Bash Test",false,"Wed, 23 Jan 2013 22:00:00 GMT");
-		String json = gson.toJson(t).toString();
-		session.setAttribute("gsonObj", json);
+		String json = gson.toJson(t) .toString();
 		System.out.println("JSON : " + json);
+		session.setAttribute("gsonObj", json);
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(json);

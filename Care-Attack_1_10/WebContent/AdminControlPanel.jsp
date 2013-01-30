@@ -9,16 +9,24 @@
 
 </head>
 <body>
+<% if((session.getAttribute("username") == null) || ((String)session.getAttribute("privilege") != "admin"))
+	{%>
+	
+	<%
+	}else
+	{
+	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="content">
 		<h1>Administrator Control Panel</h1>
 		<p>Test area</p>
 		<a href="createAnnouncements.jsp">Create Announcements</a> <a
-			href="CreateBlogPost.jsp">Create Blog Post</a> <a
-			href="createProducts.jsp">Create Products</a> <a
-			href="CreateQuestions.jsp">Create Questions</a> <a
-			href="CreateMedicine.jsp">Create Medicine</a> <a
-			href="CreateIllness.jsp">Create Illness</a>
+			href="CreateBlogPost.jsp">Create Blog Post</a> 
+			<a href="createProducts.jsp">Create Products</a> 
+			<a href="CreateQuestions.jsp">Create Questions</a> 
+			<a href="CreateMedicine.jsp">Create Medicine</a> 
+			<a href="CreateIllness.jsp">Create Illness</a>
 	</div>
+	<%} %>
 </body>
 </html>
