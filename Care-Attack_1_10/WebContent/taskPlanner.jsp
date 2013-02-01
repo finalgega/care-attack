@@ -17,7 +17,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="content">
 	<button onclick="callServlet()">Click Me!</button>
-	<button onclick="createCalendar(<%= session.getAttribute("gsonObj")%>)">Populate Calendar!</button>
+	<button onclick="createCalendar()">Populate Calendar!</button>
 	<div class="taskMgr">
 		<div id="calendar"></div>
 		<div id="eventDialog" class="dialog ui-helper-hidden">

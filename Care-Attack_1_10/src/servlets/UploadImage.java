@@ -208,6 +208,7 @@ public class UploadImage extends HttpServlet {
 			mysql.setUp();
 			rs = mysql.readRequest(dbQuery);
 			imgID = rs.getInt("imgID");
+			System.out.println("Image ID is : " + imgID);
 		}catch(SQLException sqlErr)
 		{
 			sqlErr.printStackTrace();

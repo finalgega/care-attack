@@ -49,6 +49,7 @@ import announcements.Announcement;
 			response.getWriter().println("<script>alert('Sucess at file upload! And Back to AnnouncementServlet!');</script>");
 			String aTopic = dataValues.get(0).toString();
 			String aContent = dataValues.get(1).toString();
+			int imageID = ui.getImgID();
 			System.out.println("Topic : " + aTopic);
 			System.out.println("Content : " + aContent);
 			try
@@ -56,7 +57,8 @@ import announcements.Announcement;
 				Announcement annon = new Announcement();
 				MyCalendar cal = new MyCalendar();
 				String date = cal.getCurrentDate();
-				boolean success = annon.createAnnouncement(aTopic, aContent, date);
+				System.out.println("Current Date : " + date);
+				boolean success = annon.createAnnouncement(aTopic, aContent, date,imageID);
 				if(success)
 				{
 					session.setAttribute("aTopic", aTopic);
@@ -81,7 +83,6 @@ import announcements.Announcement;
 		}
 		finally
 		{
-			
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	

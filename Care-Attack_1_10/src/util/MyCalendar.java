@@ -99,9 +99,10 @@ public class MyCalendar {
 	public String getCurrentDate()
 	{
 		String date;
-		int day = Calendar.DAY_OF_MONTH;
-		int month = Calendar.MONTH;
-		int year = Calendar.YEAR;
+		GregorianCalendar gc1 = new GregorianCalendar();
+		int day = gc1.get(Calendar.DATE);
+		int month = gc1.get(Calendar.MONTH) + 1;
+		int year = gc1.get(Calendar.YEAR);
 		date = year + "-" + month + "-" + day;
 		return date;
 	}

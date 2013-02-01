@@ -18,7 +18,8 @@ public class MySQLController {
 	private Connection con;
 	private final String sqlUserID = "root";	 //	Simply change to the appropriate userID to connect to DB
 	private final String sqlPwd = "it2299caring";	//	Simply change to the appropriate pwd to connect to the Db
-	
+//	private final String sqlPwd = "careattack";
+//	private final String sqlUserID = "CareAttack"
 	/**
 	 * Sets up connection to database
 	 * 
@@ -41,7 +42,7 @@ public class MySQLController {
 		}
 		try
 		{
-			//String src = "jdbc:mysql://localhost:3306/" + dsn;
+		//	String src = "jdbc:mysql://localhost:3306/" + dsn;
 			String src = "jdbc:mysql://aa1lz9mwlm9kyah.cyjvphgjvodb.ap-southeast-1.rds.amazonaws.com:3306/" + dsn;
 			con = DriverManager.getConnection(src,sqlUserID,sqlPwd);
 		}catch(Exception conErr)

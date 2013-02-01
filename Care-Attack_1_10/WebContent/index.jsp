@@ -54,7 +54,7 @@
 			<%
 			ArrayList<Announcement> announceArrList = new ArrayList<Announcement>();
 			Announcement annon = new Announcement();
-			announceArrList = annon.retrieveAnnouncement();
+			announceArrList = annon.retrieveAnnouncements();
 		%>
 
 			<article>
@@ -68,7 +68,16 @@
 				<p>
 					Posted on :
 					<%=annon.getaDate()%></p>
-				<p><%=annon.getaContent()%></p>
+
+				<div class="flex">	
+				<p class="annonContent"><%=annon.getaContent()%></p>
+				
+				<%if(annon.getaImageID() != 0) {
+					Image img = new Image();%>
+				<img class="annonImage" src="<%= img.getImagePath(annon.getaImageID()) %>" height="200px" width="150px"/>
+			
+				<%}else{} %>
+					</div>
 				<hr />
 				<%
 				}

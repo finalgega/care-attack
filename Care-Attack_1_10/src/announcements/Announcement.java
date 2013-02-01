@@ -14,10 +14,11 @@ import database.MySQLController;
  * @category Java Bean
  */
 public class Announcement {
-	private final String dsn = "careattack";
 	private String aTopic = null;
 	private String aContent = null;
 	private String aDate = null;
+	private int aID = 0;
+	private int aImageID = 0;
 	
 	public Announcement()
 	{
@@ -37,6 +38,37 @@ public class Announcement {
 		this.aDate = date;
 	}
 	
+	public Announcement(int aID,String aTopic,String aContent,String date)
+	{
+		this.setaID(aID);
+		this.aTopic = aTopic;
+		this.aContent = aContent;
+		this.aDate = date;
+	}
+	
+	public Announcement(int aID,String aTopic,String aContent,String date,int aImageID)
+	{
+		this.setaID(aID);
+		this.aTopic = aTopic;
+		this.aContent = aContent;
+		this.aDate = date;
+		this.setaImageID(aImageID);
+	}
+	
+	/**
+	 * @return the aID
+	 */
+	public int getaID() {
+		return aID;
+	}
+
+	/**
+	 * @param aID the aID to set
+	 */
+	public void setaID(int aID) {
+		this.aID = aID;
+	}
+
 	public String getaTopic() {
 		return aTopic;
 	}
@@ -61,28 +93,81 @@ public class Announcement {
 		this.aDate = aDate;
 	}
 
+	public int getaImageID() {
+		return aImageID;
+	}
+
+	public void setaImageID(int aImageID) {
+		this.aImageID = aImageID;
+	}
+
 	/**
 	 * Creates announcements and stores them in the database
 	 * 
 	 * @param aTopic (String)
 	 * @param aContent (String)
 	 * @param date (String)
+	 * @param imageID 
 	 * @return success (boolean)
 	 * @throws SQLException
 	 */
-	public boolean createAnnouncement(String aTopic, String aContent, String date) throws SQLException
+	public boolean createAnnouncement(String aTopic, String aContent, String date, int imageID) throws SQLException
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
-		String sql ="INSERT INTO announcement(announceTopic, announceContent,announceDate)";
-		sql += "VALUES('" + aTopic + "','" + aContent + "','" + date + "')";
+		mysql.setUp();
+		String sql ="INSERT INTO announcement(announceTopic, announceContent,announceDate,imageID)";
+		sql += "VALUES('" + aTopic + "','" + aContent + "','" + date + "','" + imageID +"')";
 		if(mysql.updateRequest(sql) == 1)
 		{
 			success = true;
 		}
 		mysql.terminate();
 		return success;
+	}
+	
+	public ArrayList<Integer> retrieveAnnouncementIDs()
+	{
+		ArrayList<Integer> annonIDs = new ArrayList<Integer>();
+		MySQLController mysql = new MySQLController();
+		mysql.setUp();
+		ResultSet rs = null;
+		String dbQuery = "SELECT announceID FROM announcement";
+		try
+		{
+			rs = mysql.readRequest(dbQuery);
+			while(rs.next())
+			{
+				int annonID = rs.getInt("announceID");
+				annonIDs.add(annonID);
+			}
+		}catch(SQLException sqlErr)
+		{
+			sqlErr.printStackTrace();
+		}
+		return annonIDs;
+		
+	}
+	public Announcement retrieveAnnouncement(int aID)
+	{
+		Announcement annon = null;
+		MySQLController mysql = new MySQLController();
+		mysql.setUp();
+		ResultSet rs = null;
+		String dbQuery = "SELECT * FROM announcement WHERE announceID = '" + aID + "'";
+		try
+		{
+			rs = mysql.readRequest(dbQuery);
+				if(rs.next())
+				{
+					Announcement a = new Announcement(rs.getInt("announceID"),rs.getString("announceTopic"),rs.getString("announceContent"),rs.getString("announceDate"),rs.getInt("imageID"));
+					annon = a;
+				}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return annon;
 	}
 
 	/**
@@ -91,11 +176,11 @@ public class Announcement {
 	 * 
 	 * @return ArrayList<Announcement>
 	 */
-	public ArrayList<Announcement> retrieveAnnouncement()
+	public ArrayList<Announcement> retrieveAnnouncements()
 	{
 		ArrayList<Announcement> announce = new ArrayList<Announcement>();
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		ResultSet rs = null;
 		String dbQuery = "SELECT * FROM announcement";
 		try
@@ -103,7 +188,7 @@ public class Announcement {
 			rs = mysql.readRequest(dbQuery);
 				while(rs.next())
 				{
-					Announcement a = new Announcement(rs.getString("announceTopic"),rs.getString("announceContent"),rs.getString("announceDate"));
+					Announcement a = new Announcement(rs.getInt("announceID"),rs.getString("announceTopic"),rs.getString("announceContent"),rs.getString("announceDate"),rs.getInt("imageID"));
 					announce.add(a);
 				}
 		}catch(Exception e)
@@ -111,5 +196,25 @@ public class Announcement {
 			e.printStackTrace();
 		}
 		return announce;
+	}
+	
+	public boolean deleteAnnouncement(int aID)
+	{
+		boolean success = false;
+		MySQLController mysql = new MySQLController();
+		mysql.setUp();
+		String dbQuery = "DELETE FROM announcement WHERE announceID = '" + aID + "'";
+		try
+		{
+			if(mysql.updateRequest(dbQuery) == 1)
+			{
+				success = true;
+			}
+		}catch(SQLException sqlErr)
+		{
+			System.out.println("Unable to delete record. Connection to DB terminated unexpectedly.");
+			sqlErr.printStackTrace();
+		}
+		return success;
 	}
 }

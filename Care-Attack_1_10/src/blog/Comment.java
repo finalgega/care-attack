@@ -84,8 +84,8 @@ public class Comment {
 	 * This method retrieveComments serves to get comments and the author of
 	 * the comments from the configured DB and table and store all the comments
 	 * retrieved into an ArrayList<Comment> for ease of use
-	 * @param int blogid 
-	 * @return ArrayList<Comment> commentArrList
+	 * @param blogid (int) 
+	 * @return  commentArrList (ArrayList<Comment>)
 	 */
 	public ArrayList<Comment> retrieveComments(int blogid)
 	{

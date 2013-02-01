@@ -9,9 +9,26 @@
 
 </head>
 <body>
-<% if((session.getAttribute("username") == null) || ((String)session.getAttribute("privilege") != "admin"))
+<% System.out.println("What is my privilege level? " + (String)session.getAttribute("privilege"));
+if(((String)session.getAttribute("privilege") != "admin") || (session.getAttribute("username") == null))
 	{%>
-	
+		<h1>You are not authorized to view this page!</h1>
+	<script type="text/javascript">
+	var count = 6;
+	var redirect="index.jsp";
+	  
+	function countDown(){  
+	 if (count <=0){  
+	  window.location = redirect;  
+	 }else{  
+	  count--;  
+	  document.getElementById("timer").innerHTML = "This page will redirect in "+count+" seconds.";  
+	  setTimeout("countDown()", 1000)  ;
+	 }  
+	}  
+	</script>  
+	<span id="timer"></span>
+	<script type="text/javascript">countDown();</script>
 	<%
 	}else
 	{
@@ -20,7 +37,7 @@
 	<div class="content">
 		<h1>Administrator Control Panel</h1>
 		<p>Test area</p>
-		<a href="createAnnouncements.jsp">Create Announcements</a> <a
+		<a href="CreateAnnouncements.jsp">Create Announcements</a> <a
 			href="CreateBlogPost.jsp">Create Blog Post</a> 
 			<a href="createProducts.jsp">Create Products</a> 
 			<a href="CreateQuestions.jsp">Create Questions</a> 

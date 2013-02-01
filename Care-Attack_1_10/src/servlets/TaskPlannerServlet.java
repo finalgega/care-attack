@@ -34,8 +34,17 @@ public class TaskPlannerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		Gson gson = new Gson();
-		TaskPlanner t = new TaskPlanner("Bash Test",false,"Wed, 23 Jan 2013 22:00:00 GMT");
-		String json = gson.toJson(t) .toString();
+		MyCalendar mc = new MyCalendar();
+		ArrayList<TaskPlanner> tasks = new ArrayList<TaskPlanner>();
+		TaskPlanner t = new TaskPlanner("Bash Test",false,mc.getCurrentTime());
+		TaskPlanner t1 = new TaskPlanner("Sad life",false,"2013-02-01T14:00Z");
+		TaskPlanner t3 = new TaskPlanner("Calendar TEst!",false,"2013-02-01T17:45Z");
+		TaskPlanner t2 = new TaskPlanner("YAY",false,"2013-02-02T14:00Z");
+		tasks.add(t);
+		tasks.add(t1);
+		tasks.add(t2);
+		tasks.add(t3);
+		String json = gson.toJson(tasks);
 		System.out.println("JSON : " + json);
 		session.setAttribute("gsonObj", json);
 		response.setContentType("text/plain");

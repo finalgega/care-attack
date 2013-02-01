@@ -2,8 +2,6 @@ package servlets;
 
 import java.io.IOException;
 
-import javax.security.auth.login.LoginException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,17 +53,21 @@ import login.User;
 				session.setAttribute("username", id);
 				privilege = user.getPrivilegeLevel(id);
 				session.setAttribute("privilege", privilege);
-				System.out.println("Privilege level : " + privilege);
+				System.out.println("Username stored in session : " + (String)session.getAttribute("username"));
+				System.out.println("Privilege level : " + (String)session.getAttribute("privilege"));
 				System.out.println("Success!");
-				response.sendRedirect(referer);
 			}
 			else
 			{
+				response.getWriter().println("<script>alert('Login Failure! Please check your username and password!');</script>");
 				System.out.println("Failure!");
 			}
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}finally
+		{
+			response.sendRedirect(referer);
 		}
 	}
  }

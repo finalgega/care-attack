@@ -38,3 +38,26 @@
 h1{
 	font-family: Paprika,serif;
 }
+
+.flex
+{
+		display:-moz-box; /* Firefox */
+display:-webkit-box; /* Safari and Chrome */
+display:box;
+}
+.annonContent
+{
+	-moz-box-flex:2.0; /* Firefox */
+-webkit-box-flex:2.0; /* Safari and Chrome */
+box-flex:2.0;
+	
+}
+.annonImage
+{
+	-moz-box-flex:1.0; /* Firefox */
+-webkit-box-flex:1.0; /* Safari and Chrome */
+box-flex:1.0;
+border-radius:10px;
+padding:3px;
+border:#fff;
+}

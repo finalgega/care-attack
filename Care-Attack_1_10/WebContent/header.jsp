@@ -78,7 +78,7 @@
 			</li>
 			<li class="red">
 				<p>
-					<a href="#">Meals &#x26; Meal Plans</a>
+					<a href="#">Meal Plans</a>
 				</p>
 				<p class="subtext">Find out what they can eat!</p>
 			</li>
@@ -90,7 +90,7 @@
 			</li>
 			<li class="purple">
 				<p>
-					<a href="RentalService.jsp">Rental Service</a>
+					<a href="IndividualProductPage.jsp">Rental Service</a>
 				</p>
 				<%
 			if (session.getAttribute("username") == null) {

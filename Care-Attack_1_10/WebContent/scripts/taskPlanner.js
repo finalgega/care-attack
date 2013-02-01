@@ -1,10 +1,14 @@
 function createCalendar(){
-		$.get('taskplanner',function(gsonObj)
-		{
-		alert("gsonObj : " + gsonObj);
-		var calendarTasks = $.parseJSON(gsonObj);
-		alert(calendarTasks);
+//		$.get('taskplanner',function(gsonObj)
+//		{
+//		alert("gsonObj : " + gsonObj);
+//		var obj = $.parseJSON(gsonObj);
+//		for(var i = 0;i<obj.length;i++)
+//			{
+//		alert("title of event : " + obj[i].title);
+//			}
 	    $('#calendar').fullCalendar({
+	    	
 	    	  dayClick: function(date, allDay, jsEvent, view) {
 
 	    	        if (allDay) {
@@ -18,7 +22,7 @@ function createCalendar(){
 	    	        alert('Current view: ' + view.name);
 
 	    	     //    change the day's background color just for fun
-	    	        $(this).css('background-color', 'red');
+//	    	        $(this).css('background-color', 'red');
 
 	    	    },
 	        header: {
@@ -29,11 +33,14 @@ function createCalendar(){
 	        selectable: true,
 	        selectHelper: true,
 	        editable: false,
-	        events: gsonObj,
+	        events:'taskplanner',
 	        defaultView: 'agendaDay',
 	        defaultEventMinutes : 60
 	    });
-		});
+	    console.log("Current data in gsonObj : " + gsonObj);
+
+//		});
+		
 	}
 function callServlet()
 	    {
