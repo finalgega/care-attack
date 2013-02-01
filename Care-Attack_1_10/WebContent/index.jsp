@@ -8,13 +8,12 @@
 	href="http://fonts.googleapis.com/css?family=Paprika" />
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
-<title>Welcome to Care-Attack</title>
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Rambla"/>
+	
+	<title>Welcome to Care-Attack</title>
 <link href="styles/index.css" rel="stylesheet" />
 <link rel="stylesheet" href="styles/gratitude.css" />
-<link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/css?family=Paprika" />
-<link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
 <script src="scripts/jquery-1.8.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 	
@@ -44,12 +43,6 @@
 				alert("Message sent");
 			}
 		}
-		
-		function displayDate()
-		{
-		document.getElementById("nametext").innerHTML=Date();
-		}
-		
 		function hideshow() {
 		    var toggle = document.getElementById('boxer');
 		    toggle.style.display = toggle.style.display == "block" ? "none" : "block";
@@ -57,7 +50,7 @@
 
 	</script>
 		<div class="content">
-			<%@ page import="announcements.*,entity.*,java.util.*"%>
+			<%@ page import="announcements.*,entity.*,java.util.*, util.*"%>
 			<%
 			ArrayList<Announcement> announceArrList = new ArrayList<Announcement>();
 			Announcement annon = new Announcement();
@@ -91,16 +84,17 @@
 					<p>Some text here~</p>
 				</aside>
 			</div>
-		<div id="lettersOfGratitude">
-
-				<h1>Letters Of Gratitude</h1>
-
 			
+			<aside><h1>Letters Of Gratitude</h1>
+			
+		<div id="lettersOfGratitude">
 			<form id="createLetters" name="createLetters" method="post" action="LetterServlet" onSubmit="return validateForm()">
+			
+			<% if(session.getAttribute("username") != null){ %>
 			<img src="images/heart.png" id="heart" />
 			<div id="contain">
 				<div id="name">
-						Name<br /> <input type="text" name="name" height="10px" />
+						Name<br /> <input type="text" name="name" height="10px" id="namee"/>
 				</div>
 				<br /> <br />
 
@@ -109,12 +103,9 @@
 						<textarea name="message" id="message" cols="45" rows="5"></textarea>
 						<br /> 
 				</div>
-				<div class="goButton"><input type="submit" value="SEND MESSAGE!" /></div>
-			</div>
-						
-			</form>
-			<br/>
-			
+				<div class="goButton"><input type="submit" id="button" value="SEND MESSAGE!" /></div>
+				</div>
+					
 				<div class="button" id="testclick1" onclick="hideshow()">
 
 				<center><strong>CLICK HERE TO SHOW/HIDE MESSAGES!</strong></center>
@@ -137,11 +128,9 @@
 					%>
 
 					<div id="nametext">
-							
 							&nbsp; &nbsp; <div id="names"><h3><%=letter.getName()%></h3></div>
 							&nbsp; &nbsp; <div id="texts"><p><%=letter.getMessage()%></p></div>
-							<script><div id ="datedate">displayDate();</div></script>
-					
+							<hr/>
 					</div>
 
 					<%
@@ -149,9 +138,46 @@
 					%>
 				</div>
 			</div>
+				<%}else{%>
+					<div class="button" id="testclick1" onclick="hideshow()">
+
+					<center><strong>CLICK HERE TO SHOW/HIDE MESSAGES!</strong></center>
+
+			</div>
+				<div id="boxer">
+
+					<div id="appear">
+						<%
+							ArrayList<letters> l = new ArrayList<letters>();
+							letters letter = new letters();
+							l = letter.retrieveData();
+						%>
+						<%
+							for (int i = l.size()-1; i > 0 ;i--) {
+								letter = l.get(i);
+						%>
+
+						<div id="nametext">
+								&nbsp; &nbsp; <div id="names"><h3><%=letter.getName()%></h3></div>
+								&nbsp; &nbsp; <div id="texts"><p><%=letter.getMessage()%></p></div>
+								<hr/>
+						</div>
+
+						<%
+							}
+						%>
+					</div>
+				</div>
+					
+				<%} %>
+				
+						
+			</form>
+			<br/>
+		
 		</div>
-	</div>
-	</div>
+		
+		</aside>
 	</div>
 </body>
 </html>

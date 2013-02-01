@@ -8,6 +8,10 @@
 	href="http://fonts.googleapis.com/css?family=Paprika" />
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
+	
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Rambla"/>
+		
 <link rel="stylesheet" type="text/css" href="styles/index.css" />
 <link rel="stylesheet" type="text/css" href="styles/IndividualPage.css" />
 <title>Rental Services</title>
@@ -28,8 +32,7 @@
 			var name = document.forms["IndividualProductPage"]["name"].value;
 			var nric = document.forms["IndividualProductPage"]["nric"].value;
 			var quantity = document.forms["IndividualProductPage"]["quantity"].value;
-			var start = document.forms["IndividualProductPage"]["start"].value;
-			var end = document.forms["IndividualProductPage"]["end"].value;
+			var end = document.forms["IndividualProductPage"]["endDate"].value;
 			
 
 			if (name == null || name == "") {
@@ -46,11 +49,7 @@
 				alert("Please enter the rental quantity!");
 				return false;
 			} 
-			else if (start == null || start == "") {
-				alert("Please enter the rental start date!");
-				return false;
-			}
-
+			
 			else if (end == null || end == "") {
 				alert("Please enter the rental end date!");
 				return false;
@@ -64,7 +63,7 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<%@ page import="entity.*, java.util.*"%>
+	<%@ page import="entity.*, util.*, java.util.*"%>
 	<%-- <% 
 	Products pd = new Products();	
 	Rental rent = new Rental();
@@ -109,21 +108,21 @@
 	</center>
 
 		<h3>Hello! Welcome to care attack rental services. Over here, we
-			provide rental services for disabled people at a lower price! You can
-			select the items that you want to view and if you want to rent our products, you have to log in or sign up now!</h3>
+			provide rental services for disabled people for FREE! You can
+			select the items that you want to view and log in to rent the products!<br/> If the product is faulty, please let us know as soon as possible.</h3>
 		<div id="rent">
-		<br/>
-		
+
 			<form id="retrieveProducts" name="retrieveProducts" method="get" action="RentalServlet">
 						<%
 							ArrayList<Products> p = new ArrayList<Products>();
 							Products pro = new Products();
+							CalendarC c = new CalendarC();
 							p = pro.retrieveData();
 						%>
 					
-				<table width="302" border="1" style="width: 369px;">
+				<table width="302" border="1" style="width: 410px;">
 					<tr>
-						<td width="132" style="width: 191px;"><strong>Product Name:&nbsp; </strong></td>
+						<td width="132" style="width: 464px;"><h3><strong>Product Name:&nbsp; </strong></h3></td>
 						<td width="154" style="width: 127px;">
 						<select name="list" id="list">
 							<option value="">Select an Item</option>
@@ -146,15 +145,14 @@
 			<br />
 			<% if(session.getAttribute("productName") != null){ %>
 				<div id="info">
-				
 				<div id="words">
 					<div id="name">
 						<h3><%=session.getAttribute("productName").toString()%></h3>
 					</div>
 					<p><%=session.getAttribute("productDescription").toString()%></p>
-					<div id="picture">
-					<img src="images/wheelchair.jpg" />
-				</div>
+<!-- 					<div id="picture"> -->
+<!-- 					<img src="images/wheelchair.jpg" /> -->
+<!-- 				</div> -->
 				</div>
 				<%} else{ %>
 				<div id="words">
@@ -197,19 +195,18 @@
 						<td><strong>NRIC: &nbsp;</strong></td>
 						<td><input type="text" name="nric" id="nric" /></td>
 					</tr>
-
 					<tr>
 						<td><strong>Quantity for rent: &nbsp;</strong></td>
 						<td><input type="text" name="rentalQuantity" id="quantity" /></td>
 					</tr>
 					<tr>
 						<td><strong>Rental Start Date:</strong> <label for="start2"></label></td>
-						<td><input type="text" name="startDate" id="start" /></td>
+						<td><input type="text" name="startDate" value="<%=c.getCurrentDate()%>" id="startDate" readonly/></td>
 					</tr>
 					<tr>
 						<td><strong>Rental End Date:&nbsp;&nbsp; </strong> <label
 							for="end"></label></td>
-						<td><input type="text" name="endDate" id="end" /></td>
+						<td><input type="text" name="endDate" id="endDate" /></td>
 					</tr>
 
 					<tr>

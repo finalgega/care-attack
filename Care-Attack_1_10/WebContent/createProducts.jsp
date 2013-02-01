@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Create Products</title>
+<title>Create New Products</title>
 <script type="text/javascript" language="javascript"></script>
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Paprika" />
@@ -64,43 +64,43 @@
 			}
 		}
 	</script>
+	<div class="content">
 	<br />
 	<center>
 		<h2 id="text">CREATE PRODUCTS!</h2>
 	</center>
+	<div id="img"><img src="images/heart.png"/></div>
+	
 	<form id="createProducts" method="POST" action="ProductServlet"
 		onSubmit="return validateForms()">
+		<div id = "table1">
 		<table>
 			<tr>
-				<td><h3>Name</h3></td>
-				<td><input type="text" name="productName" id="productName"
-					/></td>
+				<td><h3>Name:</h3></td>
+				<td><input type="text" name="productName" id="productName"/></td>
 			</tr>
 
 			<tr>
-				<td><h3>Description</h3></td>
-				<td><textarea name="productDescription" id="productDescription"
-						autocomplete="off" formnovalidate
-						></textarea></td>
+				<td><h3>Description:</h3></td>
+				<td><textarea name="productDescription" id="productDescription"></textarea></td>
 			</tr>
 			<tr>
-				<!--  <a href="javascript:TINY.box.hide()">close it</a>-->
-				<td><h3>Quantity</h3></td>
-				<td><input type="text" name="quantity" id="quantity"
-					autocomplete="off" formnovalidate="formnovalidate"/></td>
+				<td><h3>Quantity:</h3></td>
+				<td><input type="text" name="quantity" id="quantity"/></td>
 			</tr>
 			<tr>
-				<td><h3>Status</h3></td>
-				<td><input type="text" name="status" id="status"
-					autocomplete="off" formnovalidate/></td>
+				<td><h3>Status:</h3></td>
+				<td><input type="text" name="status" id="status"/></td>
 			</tr>
-			<tr>
-				<td><input type="submit" value="Create!" id="button"
-					name="button" class="button" /></td>
-				<td><input type="reset" value="Clear" class="button" id="clearAll"
-					name="clearAll" /></td>
-			</tr>
-		</table>
+			</table>
+			<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Create!" id="button" name="button" class="button" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear" class="button" id="clearAll" name="clearAll" />
+					</div>
 	</form>
+			
+				
+	</div>
+
 </body>
 </html>
