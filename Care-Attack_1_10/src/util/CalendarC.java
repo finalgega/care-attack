@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @since 2011-10-23
  * 
  */
-public class MyCalendar {
+public class CalendarC {
 
 	/**
 	 *Get the number of days for first date minus second date
@@ -96,15 +96,6 @@ public class MyCalendar {
 		return gc1;		
 	}
 	
-	public String getCurrentDate()
-	{
-		String date;
-		int day = Calendar.DAY_OF_MONTH;
-		int month = Calendar.MONTH;
-		int year = Calendar.YEAR;
-		date = year + "-" + month + "-" + day;
-		return date;
-	}
 	/**
 	 * 
 	 * @param date
@@ -151,14 +142,23 @@ public class MyCalendar {
 		return monthStr;
 	}
 	
-	public String getCurrentTime()
+	public String getCurrentDate()
 	{
 		GregorianCalendar gc = new GregorianCalendar();
 		Date date =	gc.getTime();
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String strDate = df.format(date);
 		return strDate;
 	}
 	
+	public String getCurrentTime()
+	{
+		GregorianCalendar gc = new GregorianCalendar();
+		Date date =	gc.getTime();
+		DateFormat df = new SimpleDateFormat("HH:mm:ss");
+		String strDate = df.format(date);
+		return strDate;
+	}
+
 }
 

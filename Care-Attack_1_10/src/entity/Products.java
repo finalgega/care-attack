@@ -9,7 +9,7 @@ public class Products {
 	private final String dsn = "careattack";
 	private String productName = null;
 	private String productDescription = null;
-	private int quantity = 0;
+	private int productQuantity = 0;
 	private String status = null;
 	private String productID = null;
 	
@@ -40,11 +40,11 @@ public class Products {
 	}
 
 	public int getQuantity() {
-		return quantity;
+		return productQuantity;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
 	}
 
 	public String getStatus() {
@@ -55,21 +55,21 @@ public class Products {
 		this.status = status;
 	}
 
-	public Products(String productName, String productDescription, int quantity, String status)
+	public Products(String productName, String productDescription, int productQuantity, String status)
 	{
 		this.productName = productName;
 		this.productDescription = productDescription;
-		this.quantity = quantity;
+		this.productQuantity = productQuantity;
 		this.status = status;
 	}
 
-	public boolean createProducts(int quantity, String productName, String productDescription, String status)
+	public boolean createProducts(int productQuantity, String productName, String productDescription, String status)
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
 		String sql ="INSERT INTO product(productQuantity, productName, productDescription, status)";
-		sql += "VALUES('" + quantity + "','" + productName + "','" + productDescription + "','" + status +"')";
+		sql += "VALUES('" + productQuantity + "','" + productName + "','" + productDescription + "','" + status +"')";
 		try{
 			if(mysql.updateRequest(sql) == 1)
 			{
@@ -82,6 +82,32 @@ public class Products {
 		mysql.terminate();
 		return success;
 	}
+	
+	
+	
+	
+	public boolean updateQuantity(){
+		boolean success = false;
+		MySQLController mysql = new MySQLController();
+		mysql.setUp(dsn);
+		String sql ="UPDATE product SET productQuantity = '" + productQuantity + "' WHERE productName = '" + productName + "'";
+	
+		try{
+			if(mysql.updateRequest(sql) == 1)
+			{
+				success = true;
+			}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		mysql.terminate();
+		return success;
+	}
+	
+	
+	
+	
 	
 	public String retrieveProductID(){
 
@@ -114,11 +140,11 @@ public class Products {
 			rs = db.readRequest(dbQuery);
 			while(rs.next())
 			{		
-				quantity = rs.getInt("productQuantity");
+				productQuantity = rs.getInt("productQuantity");
 				productName = rs.getString("productName");
 				productDescription = rs.getString("productDescription");
 				status = rs.getString("status");
-				Products p1 = new Products( productName, productDescription,quantity, status);
+				Products p1 = new Products( productName, productDescription, productQuantity, status);
 				product.add(p1);
 				
 				}

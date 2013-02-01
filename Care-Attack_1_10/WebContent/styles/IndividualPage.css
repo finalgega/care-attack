@@ -1,56 +1,60 @@
 #content{
+	padding-top: 3px;
+	padding-bottom: 8px;
+	padding-left: 1%;
+	padding-right: 10px;
+	float: right;
 	height: 1000px;
-	margin-top:2%;
-	width:auto;
-	background: white;
+	width: auto;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: inherit;
 	-moz-box-shadow: -5px 9px 18px #999;
 	-webkit-box-shadow: -5px 9px 18px #999;
 	box-shadow: -5px 9px 18px #999;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	position: relative;
+	background: #FFF;
 }
 
 #container {
 	width: 800px;
 	height: 500px;
-	font-family: Shadows Into Light Two, serif;
-	margin-top: 50px;
+	font-family: Rambla, serif;
+	margin-top: -800px;
 	margin-left: 90px;
 	float: left;
+}
+
+#list{
+	font-family: Rambla, serif;
+	width: 145px;
 }
 
 #info {
 	width: 780px;
 	height: auto;
-	margin-top: 0px;
+	margin-top: -20px;
 }
+
+
+#words {
+	height: 240px;
+	width: 600px;
+	margin-left: 3px;
+	font-size: 18px;
+	font-family: Rambla, serif;
+}
+
 
 body {
 	background-color: pink;
-}
-
-#list{
 	
 }
-
-/* p { */
-/* 	color: white; */
-/* } */
-
-/* h1 { */
-/* 	color: white; */
-/* 	font-family: Paprika, serif; */
-/* } */
 
 #rent {
 	width: 790px;
 	height: auto;
 	margin-left: -6px;
-}
-
-#info{
-	width: 790px;
-	height: 260px;
 }
 
 #rentrent{
@@ -82,7 +86,7 @@ body {
 	width: 200px;
 	height: 200px;
 	margin-left: 560px;
-	margin-top: -170px;
+	margin-top: -180px;
 }
 
 .button1 {
@@ -102,13 +106,6 @@ body {
 #form1 {
 	height: auto;
 	width: auto;
-}
-
-#words {
-	height: auto;
-	width: 550px;
-	margin-left: 3px;
-	font-family: Shadows Into Light Two, serif;
 }
 
 table {
@@ -154,5 +151,5 @@ table {
 
 h3 {
 	color: black;
-	font-family: Shadows Into Light Two, serif;
+	font-family: Rambla, serif;
 }

@@ -78,7 +78,6 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 		System.out.println("Start Date : " + startDate);
 		System.out.println("End Date : " + endDate);
 
-		
 		try
 		{
 			Rental rent = new Rental();
