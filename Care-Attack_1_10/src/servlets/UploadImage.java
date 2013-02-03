@@ -20,6 +20,8 @@ import org.apache.commons.fileupload.ProgressListener;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.sun.tools.internal.ws.processor.model.Response;
+
 import database.MySQLController;
 
 /**
@@ -155,21 +157,24 @@ public class UploadImage extends HttpServlet {
 			// in the constructor with the path of your directory
 			// Note that it is temporary until a soln is found.
 		try{
-			System.out.println("In try for uploadFile");
-			File path = new File("/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack_1_10/WebContent/images");
+			System.out.println("In try for uploadFile OI AI ");
+			File path = new File(getServletContext().getRealPath("/"));
+			System.out.println("file path is : "+ path.getAbsolutePath());
 			File uploadedFile = new File(path + "/" + fileName);
 			System.out.println("path of uploaded file : "
 					+ uploadedFile.getAbsolutePath());
 			if (path.exists()) {
+				System.out.println("Path exists!");
 				item.write(uploadedFile);
 			} else {
+				System.out.println("Path does not exist");
 				path.mkdirs();
 				item.write(uploadedFile);
 			}
 			success =uploadFileDataToDB(fileName); 
 			}catch(Exception e)
 			{
-				System.out.println("Something went wrong :(");
+				System.out.println("Something went wrong at uploadFile :(");
 				e.printStackTrace();
 			}
 		return success;
@@ -202,15 +207,16 @@ public class UploadImage extends HttpServlet {
 		int imgID = 0;
 		MySQLController mysql = new MySQLController();
 		ResultSet rs = null;
-		String dbQuery = "SELECT MAX(imgID) FROM image";
+		String dbQuery = "SELECT MAX(imageID) FROM image";
 		try
 		{
 			mysql.setUp();
 			rs = mysql.readRequest(dbQuery);
-			imgID = rs.getInt("imgID");
+			imgID = rs.getInt("imageID");
 			System.out.println("Image ID is : " + imgID);
 		}catch(SQLException sqlErr)
 		{
+			System.out.println("Something went wrong in getImgID()");
 			sqlErr.printStackTrace();
 		}
 		return imgID;

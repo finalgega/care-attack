@@ -1,119 +1,16 @@
-/* CSS Document */
-body {
-	margin: 20px;
-	background-color: #666;;
-}
-
-.search {
-	float: right;
-}
-
-#globalHeader {
-	height: 120px;
-	width: auto;
-	padding-top: 3px;
-	padding-left: 3px;
-	background: -webkit-gradient(radial, 24 105, 44, 298 -427, 698, from(#363632),
-		to(#FFFFFF) );
-	-moz-box-shadow: -5px 9px 18px #000000;
-	-webkit-box-shadow: -5px 9px 18px #000000;
-	box-shadow: -5px 9px 18px #000000;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-}
-
-#globalHeader h1 {
-	margin-left: 15%;
-	margin-top: 2%;
-	position: absolute;
-}
-
-#careAttackIcon {
-	float: left;
-	position: absolute;
-	height: 100px;
-	width: 150px;
-}
-
-#login {
-	float: right;
-	height: 25%;
-	width: 35%;
-}
-
-#loggedIn {
-	float: right;
-	height: 30%;
-	width: 35%;
-}
-
-#globalNav {
-	float: right;
-	margin-top: 4.2%;
-}
-
-#globalNav table {
-	border-collapse: collapse;
-	width: auto;
-	text-align: center;
-	padding: 10px 5px 10px 5px;
-}
-
-#globalNav td {
-	width: 150px;
-	padding-right: 1%;
-	padding-left: 0.3%;
-}
-
-#globalNav a {
-	text-decoration: none;
-	color: inherit;
-}
-
-#globalNav td:hover {
-	animation-timing-function: 3s ease-in-out;
-	background-color: #666;
-}
-
-.content {
+.content
+{
 	height: 100%;
-	width: 50%;
-	padding-top: 3px;
-	padding-bottom: 8px;
-	padding-left: 10px;
-	padding-right: 1%;
+	width: 90%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
 	background: white;
 	-moz-box-shadow: -5px 9px 18px #999;
 	-webkit-box-shadow: -5px 9px 18px #999;
 	box-shadow: -5px 9px 18px #999;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	margin: inherit;
 	position: relative;
-	float: left;
-}
-
-.sideContent {
-	padding-top: 3px;
-	padding-bottom: 8px;
-	padding-left: 1%;
-	padding-right: 10px;
-	float: right;
-	height: auto;
-	width: 35%;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	margin: inherit;
-	-moz-box-shadow: -5px 9px 18px #999;
-	-webkit-box-shadow: -5px 9px 18px #999;
-	box-shadow: -5px 9px 18px #999;
-	position: relative;
-	background: #FFF;
-}
-
-#copyrightInfo {
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.4);
-	color: #fff;
-	position: fixed;
 }

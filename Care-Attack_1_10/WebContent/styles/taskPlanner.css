@@ -19,7 +19,7 @@
 	padding-bottom: 8px;
 	padding-left: 10px;
 	padding-right: 1%;
-	background: white;
+	background-image: url('../images/Leather_Texture.jpg');
 	-moz-box-shadow: -5px 9px 18px #999;
 	-webkit-box-shadow: -5px 9px 18px #999;
 	box-shadow: -5px 9px 18px #999;
@@ -28,4 +28,7 @@
 	margin: inherit;
 	position: relative;
 	float: left;
+}
+#popCal{
+	margin-left:50%;
 }

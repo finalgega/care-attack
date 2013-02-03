@@ -36,10 +36,10 @@ public class TaskPlannerServlet extends HttpServlet {
 		Gson gson = new Gson();
 		MyCalendar mc = new MyCalendar();
 		ArrayList<TaskPlanner> tasks = new ArrayList<TaskPlanner>();
-		TaskPlanner t = new TaskPlanner("Bash Test",false,mc.getCurrentTime());
-		TaskPlanner t1 = new TaskPlanner("Sad life",false,"2013-02-01T14:00Z");
-		TaskPlanner t3 = new TaskPlanner("Calendar TEst!",false,"2013-02-01T17:45Z");
-		TaskPlanner t2 = new TaskPlanner("YAY",false,"2013-02-02T14:00Z");
+		TaskPlanner t = new TaskPlanner(1,"Feed Insulin",false,mc.getCurrentTime());
+		TaskPlanner t1 = new TaskPlanner(1,"Feed Insulin",false,"2013-02-01T14:00Z");
+		TaskPlanner t3 = new TaskPlanner(2 ,"Calendar TEst!",false,"2013-02-01T17:45Z");
+		TaskPlanner t2 = new TaskPlanner(3,"YAY",false,"2013-02-02T14:00Z");
 		tasks.add(t);
 		tasks.add(t1);
 		tasks.add(t2);

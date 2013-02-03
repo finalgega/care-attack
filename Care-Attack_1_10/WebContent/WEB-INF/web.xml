@@ -171,4 +171,34 @@
     <servlet-name>CreateCommentsServlet</servlet-name>
     <url-pattern>/CreateCommentsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RetrieveAnnouncementServlet</display-name>
+    <servlet-name>RetrieveAnnouncementServlet</servlet-name>
+    <servlet-class>servlets.RetrieveAnnouncementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveAnnouncementServlet</servlet-name>
+    <url-pattern>/RetrieveAnnouncementServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>To facilitate update requests</description>
+    <display-name>UpdateAnnouncementServlet</display-name>
+    <servlet-name>UpdateAnnouncementServlet</servlet-name>
+    <servlet-class>servlets.UpdateAnnouncementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateAnnouncementServlet</servlet-name>
+    <url-pattern>/UpdateAnnouncementServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAnnouncementServlet</display-name>
+    <servlet-name>DeleteAnnouncementServlet</servlet-name>
+    <servlet-class>servlets.DeleteAnnouncementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAnnouncementServlet</servlet-name>
+    <url-pattern>/DeleteAnnouncementServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

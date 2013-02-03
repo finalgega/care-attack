@@ -1,5 +1,6 @@
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,8 +38,20 @@ import announcements.Announcement;
 	 * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		File folder = new File(getServletContext().getRealPath("/"));
+		 File[] listOfFiles = folder.listFiles();
+
+		    for (int i = 0; i < listOfFiles.length; i++) {
+		      if (listOfFiles[i].isFile()) {
+		        System.out.println("File " + listOfFiles[i].getName());
+		      } else if (listOfFiles[i].isDirectory()) {
+		        System.out.println("Directory " + listOfFiles[i].getName());
+		      }
+		    }
+
+		HttpSession session = request.getSession(true);
 		try{
+			System.out.println("Path of announcementServlet : " + getServletContext().getRealPath("/"));
 		UploadImage ui = new UploadImage();
 		ArrayList<String> dataValues = new ArrayList<String>();
 		dataValues = ui.processFileForm(request);
@@ -46,7 +59,6 @@ import announcements.Announcement;
 		{
 			System.out.println("In if(ui.processFileForm(request)!");
 			System.out.println("datavalues size : " + dataValues.size() );
-			response.getWriter().println("<script>alert('Sucess at file upload! And Back to AnnouncementServlet!');</script>");
 			String aTopic = dataValues.get(0).toString();
 			String aContent = dataValues.get(1).toString();
 			int imageID = ui.getImgID();
