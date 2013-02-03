@@ -37,13 +37,15 @@ public class createQuestionsServlet extends HttpServlet {
 		String topic = request.getParameter("topicDDL");
 		String subject = request.getParameter("subject");
 		String question = request.getParameter("question");
+		String username = (String)session.getAttribute("username");
 		System.out.println("topic: " + topic);
 		System.out.println("subject : " + subject);
 		System.out.println("question : " + question);
+		System.out.println("username : " + username);
 		try
 		{
 			auntieSarah createQuestion  = new auntieSarah();
-			boolean success = createQuestion.createAQuestion(topic,subject,question);
+			boolean success = createQuestion.createAQuestion(topic,subject,question,username);
 			response.getWriter().println("Creation Success");
 		}catch(Exception e)
 		{

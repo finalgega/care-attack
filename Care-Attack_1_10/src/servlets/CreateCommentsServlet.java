@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import blog.BlogPost;
+import blog.Comment;
 
 /**
  * Servlet implementation class CreateCommentsServlet
@@ -27,7 +28,44 @@ public class CreateCommentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(true);
+		String blogid =(String)session.getAttribute("BlogID");
+		String comment = request.getParameter("comment");
+		String username = (String)session.getAttribute("username");
+		String referer = request.getHeader("referer");
+		System.out.println("blog id : " + blogid);
+		System.out.println("comments: " + comment);
+		System.out.println("username : " + username);
+		try
+		{
+			Comment createblogpost  = new Comment();
+			boolean success = createblogpost.createAComment(blogid,comment,username);
+			if(success){
+			//response.getWriter().println("<script>alert('Congratulations, comments created!! ')</script>");
+			response.sendRedirect(referer);
+			//request.getRequestDispatcher("MainBlogPage.jsp").forward(request, response);
+			}
+			else{
+				
+				if (username == null){
+					//response.getWriter().println("<script>alert('try again. You are probably not logged in!! ')</script>");   
+					//request.getRequestDispatcher("MainBlogPage.jsp").forward(request, response);
+					response.sendRedirect(referer);
+				}
+				else{
+				//response.getWriter().println("<script>alert('Something went wrong! Might have connection problems ')</script>");
+				//request.getRequestDispatcher("MainBlogPage.jsp").forward(request, response);
+					response.sendRedirect(referer);
+				}
+			}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("End of doPost");
+		}
 	}
 
 	/**
@@ -35,26 +73,33 @@ public class CreateCommentsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		String comments = request.getParameter("comments");
+		String blogid =request.getParameter("blogid");
+		String comment = request.getParameter("comments");
 		String username = (String)session.getAttribute("username");
-		System.out.println("title: " + comments);
+		String referer = request.getHeader("referer");
+		System.out.println("blog id : " + blogid);
+		System.out.println("comments: " + comment);
 		System.out.println("username : " + username);
 		try
 		{
-			BlogPost createblogpost  = new BlogPost();
-			boolean success = createblogpost.createABlogPost(comments,username);
+			Comment createblogpost  = new Comment();
+			boolean success = createblogpost.createAComment(blogid,comment,username);
 			if(success){
-			//response.getWriter().println("<script>alert('Congratulations, blog post created!! ')</script>");
-			response.sendRedirect("MainBlogPage.jsp");
+			//response.getWriter().println("<script>alert('Congratulations, comments created!! ')</script>");
+			response.sendRedirect(referer);
+			//request.getRequestDispatcher("MainBlogPage.jsp").forward(request, response);
 			}
 			else{
 				
 				if (username == null){
-					//response.getWriter().println("<script>alert('try again. You are probably not logged in!! ')</script>");
-					response.getWriter().println("<script>alert('try again. You are probably not logged in!! ')</script>");   
-					}
+					//response.getWriter().println("<script>alert('try again. You are probably not logged in!! ')</script>");   
+					//request.getRequestDispatcher("MainBlogPage.jsp").forward(request, response);
+					response.sendRedirect(referer);
+				}
 				else{
-				response.getWriter().println("<script>alert('Something went wrong! Might have connection problems ')</script>");
+				//response.getWriter().println("<script>alert('Something went wrong! Might have connection problems ')</script>");
+				//request.getRequestDispatcher("MainBlogPage.jsp").forward(request, response);
+					response.sendRedirect(referer);
 				}
 			}
 		}catch(Exception e)

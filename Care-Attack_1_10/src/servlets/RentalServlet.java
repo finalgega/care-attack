@@ -41,6 +41,9 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 				session.setAttribute("productQuantity", p.getProductQuantity());
 				session.setAttribute("status", p.getStatus());
 				session.setAttribute("price", p.getPrice());
+				session.setAttribute("imageID", p.getImageID());
+				
+				System.out.println("REntalServlet imageID" + p.getImageID());
 			
 			}else
 			{
