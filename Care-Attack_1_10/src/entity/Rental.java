@@ -9,15 +9,39 @@ public class Rental {
 	private final String dsn = "careattack";
 	private String name = null;
 	private String nric = null;
+	private int phone = 0;
 	private String rentalName = null;
 	private int rentalQuantity = 0;
 	private String startDate = null;
 	private String endDate = null;
+	private int totalPrice = 0;
 	
 	
 	
 	public Rental(){}
 	
+	
+	
+	public int getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -73,14 +97,16 @@ public class Rental {
 	}
 
 
-	public Rental(String name, String nric, String rentalName, int rentalQuantity, String startDate, String endDate)
+	public Rental(String name, String nric, int phone, String rentalName, int rentalQuantity, String startDate, String endDate, int totalPrice)
 	{
 		this.name = name;
 		this.nric = nric;
+		this.phone = phone;
 		this.rentalName = rentalName;
 		this.rentalQuantity = rentalQuantity;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.totalPrice = totalPrice;
 	}
 	
 	
@@ -96,7 +122,7 @@ public class Rental {
 			rs = db.readRequest (dbQuery);
 			if(rs.next())
 			{		
-				Products p = new Products(rs.getString("productName"),rs.getString("productDescription"), rs.getInt("productQuantity"), rs.getString("status"));
+				Products p = new Products(rs.getString("productName"),rs.getString("productDescription"), rs.getInt("productQuantity"), rs.getString("status"), rs.getInt("price"));
 				
 				return p;
 			}
@@ -106,15 +132,39 @@ public class Rental {
 		return null;
 	}
 	
-	
+	public Rental retrieveRental(String nric){
+
+		ResultSet rs = null;
+		MySQLController db = new MySQLController();
+		db.setUp();
+		System.out.println("NRIC : " + nric);
+		String dbQuery = "SELECT * FROM rental WHERE nric = '" + nric + "'";
+		System.out.println(" SQL Statement : " + dbQuery);
+		try{
+			rs = db.readRequest (dbQuery);
+			if(rs.next())
+			{		
+				rs.getString("name");
+				rs.getString("nric");
+				rs.getInt("rentalName");
+				rs.getInt("rentalQuantity");
+				rs.getString("startDate");
+				rs.getString("endDate");
+				rs.getInt("totalPrice");
+			}
+		}
+		catch (Exception e){e.printStackTrace();}
+		db.terminate();
+		return null;
+	}
 		
-	public boolean createRental(String name, String nric, String rentalName, int rentalQuantity, String startDate, String endDate)
+	public boolean createRental(String name, String nric, int phone, String rentalName, int rentalQuantity, String startDate, String endDate, int totalPrice)
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
-		String sql ="INSERT INTO rental(name, nric, rentalName, rentalQuantity, startDate, endDate)";
-		sql += "VALUES('" + name + "','" + nric + "','" + rentalName + "','" + rentalQuantity + "','" + startDate +"','" + endDate +"')";
+		String sql ="INSERT INTO rental(name, nric, phone, rentalName, rentalQuantity, startDate, endDate, totalPrice)";
+		sql += "VALUES('" + name + "','" + nric + "','" + phone + "','" + rentalName + "','" + rentalQuantity + "','" + startDate +"','" + endDate+ "','" + totalPrice +"')";
 		try{
 			if(mysql.updateRequest(sql) == 1)
 			{

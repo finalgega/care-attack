@@ -99,14 +99,14 @@
 		</description>
     <display-name>CreateBlogPostServlet</display-name>
     <servlet-name>CreateBlogPostServlet</servlet-name>
-    <servlet-class>servlets.CreateBlogPostServlet</servlet-class>
+    <servlet-class>servlet.CreateBlogPostServlet</servlet-class>
   </servlet>
   <servlet>
     <description>
 		</description>
     <display-name>searchEngineServlet</display-name>
     <servlet-name>searchEngineServlet</servlet-name>
-    <servlet-class>servlets.searchEngineServlet</servlet-class>
+    <servlet-class>servlet.searchEngineServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreatePostServlet</servlet-name>
@@ -153,13 +153,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>MedicineServlet</display-name>
-    <servlet-name>MedicineServlet</servlet-name>
-    <servlet-class>servlets.MedicineServlet</servlet-class>
+    <display-name>LetterServlet</display-name>
+    <servlet-name>LetterServlet</servlet-name>
+    <servlet-class>servlets.LetterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MedicineServlet</servlet-name>
-    <url-pattern>/MedicineServlet</url-pattern>
+    <servlet-name>LetterServlet</servlet-name>
+    <url-pattern>/LetterServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

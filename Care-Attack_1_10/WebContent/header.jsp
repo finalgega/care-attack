@@ -53,7 +53,7 @@
 			<%
 				}
 			%>
-			<form action="Logout" method="POST">
+			<form action="Logout" method="POST" id="loggedout">
 				<input type="submit" name="logout" id="logout" value="Log out" />
 			</form>
 		</div>

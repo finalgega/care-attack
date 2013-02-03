@@ -12,11 +12,12 @@
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Rambla"/>
 		
-<link rel="stylesheet" type="text/css" href="styles/index.css" />
+<link rel="stylesheet" type="text/css" href="styles/header.css" />
 <link rel="stylesheet" type="text/css" href="styles/IndividualPage.css" />
 <title>Rental Services</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<script language="JavaScript">
 		function clear() {
@@ -31,6 +32,7 @@
 		function validateForms() {
 			var name = document.forms["IndividualProductPage"]["name"].value;
 			var nric = document.forms["IndividualProductPage"]["nric"].value;
+			var phone = document.forms["IndividualProductPage"]["phone"].value;
 			var quantity = document.forms["IndividualProductPage"]["quantity"].value;
 			var end = document.forms["IndividualProductPage"]["endDate"].value;
 			
@@ -42,6 +44,11 @@
 			
 			else if (nric == null || nric == "") {
 				alert("Please enter your NRIC!");
+				return false;
+			} 
+			
+			else if (phone == null || phone == "") {
+				alert("Please enter your phone number!");
 				return false;
 			} 
 			
@@ -61,7 +68,6 @@
 		}
 	</script>
 
-	<jsp:include page="header.jsp"></jsp:include>
 
 	<%@ page import="entity.*, util.*, java.util.*"%>
 	<%-- <% 
@@ -150,9 +156,11 @@
 						<h3><%=session.getAttribute("productName").toString()%></h3>
 					</div>
 					<p><%=session.getAttribute("productDescription").toString()%></p>
-<!-- 					<div id="picture"> -->
-<!-- 					<img src="images/wheelchair.jpg" /> -->
-<!-- 				</div> -->
+				<%if(pro.getImageID() != 0) {
+					Image img = new Image();%>
+				<img class="annonImage" src="<%= img.getImagePath(pro.getImageID()) %>" height="200px" width="150px"/>
+			
+				<%}else{} %>
 				</div>
 				<%} else{ %>
 				<div id="words">
@@ -187,6 +195,12 @@
 					</tr>
 					
 					<tr>
+						<td><strong>Price: &nbsp;</strong></td>
+						<td>$<%=session.getAttribute("price").toString()%></td>
+										
+					</tr>
+					
+					<tr>
 						<td><strong>Name: &nbsp;</strong></td>
 						<td><input type="text" name="name" id="name" /></td>
 					</tr>
@@ -194,6 +208,10 @@
 					<tr>
 						<td><strong>NRIC: &nbsp;</strong></td>
 						<td><input type="text" name="nric" id="nric" /></td>
+					</tr>
+					<tr>
+						<td><strong>Phone Number: &nbsp;</strong></td>
+						<td><input type="text" name="phone" id="phone" /></td>
 					</tr>
 					<tr>
 						<td><strong>Quantity for rent: &nbsp;</strong></td>

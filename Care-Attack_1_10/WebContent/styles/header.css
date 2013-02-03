@@ -23,14 +23,15 @@ body {
 }
 
 #loggedout{
-	margin-left: 265px;
-	margin-top: -23px;
+	width: 65px;
+	margin-top: -25px;
+	margin-left: 260px;
 	
 }
 
 #loggedIn{
 	padding-right: 2%;
-	margin-left: 900px;
+	margin-left: 950px;
 	width: 600px;
 	margin-top: 1%;
 	font-family: Shadows Into Light Two, serif;

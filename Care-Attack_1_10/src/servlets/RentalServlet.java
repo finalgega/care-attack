@@ -38,8 +38,9 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 			if (p !=null){
 				session.setAttribute("productName", productName);
 				session.setAttribute("productDescription", p.getProductDescription());
-				session.setAttribute("productQuantity", p.getQuantity());
+				session.setAttribute("productQuantity", p.getProductQuantity());
 				session.setAttribute("status", p.getStatus());
+				session.setAttribute("price", p.getPrice());
 			
 			}else
 			{
@@ -68,9 +69,11 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 		String nric = request.getParameter("nric");
 		String rentalName = session.getAttribute("productName").toString();
 		int rentalQuantity = Integer.parseInt(request.getParameter("rentalQuantity"));
+		int phone = Integer.parseInt(request.getParameter("phone"));
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String referer = request.getHeader("referer");
+		
 		System.out.println("Name : " + name);
 		System.out.println("NRIC : " + nric);
 		System.out.println("Rental Name : " + rentalName);
@@ -78,16 +81,37 @@ public class RentalServlet extends javax.servlet.http.HttpServlet implements jav
 		System.out.println("Start Date : " + startDate);
 		System.out.println("End Date : " + endDate);
 
+		int productQuantity = (Integer) session.getAttribute("productQuantity");
+		
+		productQuantity = productQuantity - rentalQuantity;
+		System.out.println(productQuantity);
+		
+		Products p = new Products();
+		int price = (Integer)session.getAttribute("price");
+		int totalPrice = price * rentalQuantity;
+		System.out.println(totalPrice);
+		
+		
+		Rental r = new Rental();
+		r.retrieveRental(nric);
+		session.setAttribute("name", name);
+		session.setAttribute("nric", nric);
+		session.setAttribute("phone", phone);
+		session.setAttribute("rentalQuantity", rentalQuantity);
+		session.setAttribute("startDate", startDate);
+		session.setAttribute("endDate", endDate);
+		session.setAttribute("totalPrice", totalPrice);
+		
 		try
 		{
 			Rental rent = new Rental();
-			boolean success = rent.createRental(name, nric, rentalName, rentalQuantity, startDate, endDate);
+			boolean success = rent.createRental(name, nric, phone, rentalName, rentalQuantity, startDate, endDate, totalPrice);
 			if(success)
 			{
 				session.setAttribute("rentalName", rentalName);
-				response.sendRedirect(referer);
+				response.sendRedirect("ViewRentDetails.jsp");
 			}
-			//response.getWriter().println("Product Created Successfully!");
+
 		}catch(Exception e)
 		{
 			e.printStackTrace();
