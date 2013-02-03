@@ -51,8 +51,8 @@ $('#delAnnon').submit(function(event){
 </table>
 </form>
 <table id="annonDetails">
-<% if(session.getAttribute("annonID") != null){ 
-	annon = (Announcement)session.getAttribute("annonID");
+<% if(session.getAttribute("annon") != null){ 
+	annon = (Announcement)session.getAttribute("annon");
 %>
 <tr>
 <td>Announcement Topic : 

@@ -14,10 +14,10 @@ import database.MySQLController;
  * @category Java Bean
  */
 public class Announcement {
-	private String aTopic = null;
-	private String aContent = null;
+	private String annonTopic = null;
+	private String annonContent = null;
 	private String aDate = null;
-	private int aID = 0;
+	private int annonID = 0;
 	private int aImageID = 0;
 	
 	public Announcement()
@@ -25,64 +25,64 @@ public class Announcement {
 		
 	}
 	
-	public Announcement(String aTopic, String aContent)
+	public Announcement(String annonTopic, String annonContent)
 	{
-		this.aTopic = aTopic;
-		this.aContent = aContent;
+		this.annonTopic = annonTopic;
+		this.annonContent = annonContent;
 	}
 	
-	public Announcement(String aTopic, String aContent, String date)
+	public Announcement(String annonTopic, String annonContent, String date)
 	{
-		this.aTopic = aTopic;
-		this.aContent = aContent;
+		this.annonTopic = annonTopic;
+		this.annonContent = annonContent;
 		this.aDate = date;
 	}
 	
-	public Announcement(int aID,String aTopic,String aContent,String date)
+	public Announcement(int annonID,String annonTopic,String annonContent,String date)
 	{
-		this.setaID(aID);
-		this.aTopic = aTopic;
-		this.aContent = aContent;
+		this.setaID(annonID);
+		this.annonTopic = annonTopic;
+		this.annonContent = annonContent;
 		this.aDate = date;
 	}
 	
-	public Announcement(int aID,String aTopic,String aContent,String date,int aImageID)
+	public Announcement(int annonID,String annonTopic,String annonContent,String date,int aImageID)
 	{
-		this.setaID(aID);
-		this.aTopic = aTopic;
-		this.aContent = aContent;
+		this.setaID(annonID);
+		this.annonTopic = annonTopic;
+		this.annonContent = annonContent;
 		this.aDate = date;
 		this.setaImageID(aImageID);
 	}
 	
 	/**
-	 * @return the aID
+	 * @return the annonID
 	 */
 	public int getaID() {
-		return aID;
+		return annonID;
 	}
 
 	/**
-	 * @param aID the aID to set
+	 * @param annonID the annonID to set
 	 */
-	public void setaID(int aID) {
-		this.aID = aID;
+	public void setaID(int annonID) {
+		this.annonID = annonID;
 	}
 
 	public String getaTopic() {
-		return aTopic;
+		return annonTopic;
 	}
 
-	public void setaTopic(String aTopic) {
-		this.aTopic = aTopic;
+	public void setaTopic(String annonTopic) {
+		this.annonTopic = annonTopic;
 	}
 
 	public String getaContent() {
-		return aContent;
+		return annonContent;
 	}
 
-	public void setaContent(String aContent) {
-		this.aContent = aContent;
+	public void setaContent(String annonContent) {
+		this.annonContent = annonContent;
 	}
 
 	public String getaDate() {
@@ -104,20 +104,20 @@ public class Announcement {
 	/**
 	 * Creates announcements and stores them in the database
 	 * 
-	 * @param aTopic (String)
-	 * @param aContent (String)
+	 * @param annonTopic (String)
+	 * @param annonContent (String)
 	 * @param date (String)
 	 * @param imageID 
 	 * @return success (boolean)
 	 * @throws SQLException
 	 */
-	public boolean createAnnouncement(String aTopic, String aContent, String date, int imageID) throws SQLException
+	public boolean createAnnouncement(String annonTopic, String annonContent, String date, int imageID) throws SQLException
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp();
 		String sql ="INSERT INTO announcement(announceTopic, announceContent,announceDate,imageID)";
-		sql += "VALUES('" + aTopic + "','" + aContent + "','" + date + "','" + imageID +"')";
+		sql += "VALUES('" + annonTopic + "','" + annonContent + "','" + date + "','" + imageID +"')";
 		if(mysql.updateRequest(sql) == 1)
 		{
 			success = true;
@@ -144,17 +144,20 @@ public class Announcement {
 		}catch(SQLException sqlErr)
 		{
 			sqlErr.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return annonIDs;
 		
 	}
-	public Announcement retrieveAnnouncement(int aID)
+	public Announcement retrieveAnnouncement(int annonID)
 	{
 		Announcement annon = null;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp();
 		ResultSet rs = null;
-		String dbQuery = "SELECT * FROM announcement WHERE announceID = '" + aID + "'";
+		String dbQuery = "SELECT * FROM announcement WHERE announceID = '" + annonID + "'";
 		try
 		{
 			rs = mysql.readRequest(dbQuery);
@@ -166,6 +169,9 @@ public class Announcement {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return annon;
 	}
@@ -195,15 +201,41 @@ public class Announcement {
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			mysql.terminate();
+		}
 		return announce;
 	}
 	
-	public boolean deleteAnnouncement(int aID)
+	public boolean updateAnnouncenet(int annonID,String annonTopic,String annonContent,String date)
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
 		mysql.setUp();
-		String dbQuery = "DELETE FROM announcement WHERE announceID = '" + aID + "'";
+		String dbQuery = "UPDATE announcement SET announceTopic = '" + annonTopic + "',' announceContent = '" + annonContent + "',' announceDate = '" + date +"' WHERE announceID = '" + annonID + "'";
+		try{
+			if(mysql.updateRequest(dbQuery) == 1)
+			{
+				success = true;
+			}
+		}catch(SQLException sqlErr)
+		{
+			System.out.println("Something went wrong with updating the annnouncements");
+			sqlErr.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
+		}
+		return success;
+	}
+	
+	public boolean deleteAnnouncement(int annonID)
+	{
+		boolean success = false;
+		MySQLController mysql = new MySQLController();
+		mysql.setUp();
+		String dbQuery = "DELETE FROM announcement WHERE announceID = '" + annonID + "'";
 		try
 		{
 			if(mysql.updateRequest(dbQuery) == 1)
@@ -215,6 +247,7 @@ public class Announcement {
 			System.out.println("Unable to delete record. Connection to DB terminated unexpectedly.");
 			sqlErr.printStackTrace();
 		}
+		mysql.terminate();
 		return success;
 	}
 }

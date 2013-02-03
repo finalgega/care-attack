@@ -28,6 +28,7 @@ width:auto;
 	String password = "******************";
 %>
 	<h1>User Control Panel</h1>
+	<form action="AccountServlet" method="POST"></form>
 	<table>
 		<tr>
 			<p>
@@ -38,7 +39,7 @@ width:auto;
 			<td><p>
 					Password :
 					<%= password %></p></td>
-			<td><input type="button" onclick="index.jsp"
+			<td><input type="submit"
 				value="Change Password" />
 		</tr>
 		<tr>

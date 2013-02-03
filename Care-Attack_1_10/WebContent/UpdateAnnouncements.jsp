@@ -51,25 +51,25 @@ $('#delAnnon').submit(function(event){
 </table>
 </form>
 <table id="annonDetails">
-<% if(session.getAttribute("annonID") != null){ 
-	annon = (Announcement)session.getAttribute("annonID");
+<% if(session.getAttribute("annon") != null){ 
+	annon = (Announcement)session.getAttribute("annon");
 %>
 <tr>
 <td>Announcement Topic : 
 </td>
 <td>
-	<%= annon.getaTopic()  %>
+	<input type="text" name="annonTopic" value="<%= annon.getaTopic() %>"/>
 </td>
 </tr>
 <tr>
 <td>Announcement Details : </td>
 <td>
-	<%= annon.getaContent() %>
+	<input type="text" name="annonContent" value="<%= annon.getaContent() %>"/>
 </td>
 </tr>
 <% }else{} %>
 <tr>
-<td><input type="submit" value="Update Announcement" form="updateAnnon" formaction="UpdateAnnouncementServlet"></td>
+<td><input type="submit" value="Update Announcement" form="updateAnnon" formaction="UpdateAnnouncementServlet" formmethod="POST"></td>
 </tr>
 </table>
 </div>

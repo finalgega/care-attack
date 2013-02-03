@@ -122,6 +122,9 @@ public class Medicine {
         {
         	sqlErr.printStackTrace();
         	System.out.println("Couldn't create record!");
+        }finally
+        {
+        	mysql.terminate();
         }
         return success;
     }
@@ -151,6 +154,9 @@ public class Medicine {
         {
         	sqlErr.printStackTrace();
         	System.out.println("Couldn't create record!");
+        }finally
+        {
+        	mysql.terminate();
         }
         return success;
     }
@@ -180,6 +186,9 @@ public class Medicine {
     	 {
     		 sqlErr.printStackTrace();
     		 System.out.println("Something went wrong : ( Can't retrieve data");
+    	 }finally
+    	 {
+    		 mysql.terminate();
     	 }
     	 return medArr;
     }

@@ -111,7 +111,7 @@ public class User {
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "INSERT INTO account(username,pwd,email) VALUES('"+ username + "','";
 				dbQuery += password + "','" + email + "')";
 		try {
@@ -122,6 +122,9 @@ public class User {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return success;
 	}
@@ -137,7 +140,7 @@ public class User {
 	{
 		boolean success = false;
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "INSERT INTO account(username,pwd,email,secretQuestion) VALUES('"+ username + "','";
 				dbQuery += password + "','" + email + "','" + secret +"')";
 		try {
@@ -148,6 +151,9 @@ public class User {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return success;
 	}
@@ -161,7 +167,7 @@ public class User {
 	public User getUserInfo(String username)
 	{
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "SELECT * FROM account WHERE username = '" + username + "'";
 		ResultSet rs = null;
 		User userAcc = null;
@@ -175,6 +181,9 @@ public class User {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return userAcc;
 	}
@@ -189,7 +198,7 @@ public class User {
 	{
 		boolean result = false;
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "SELECT * FROM account WHERE username = '" + username + "' and pwd = SHA('" + password + "')";
 		ResultSet rs = null;
 		try
@@ -202,6 +211,9 @@ public class User {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return result;
 	}
@@ -216,7 +228,7 @@ public class User {
 		String privilege = "user";
 		String user = username;
 		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
+		mysql.setUp();
 		String dbQuery = "SELECT privilege FROM account WHERE username = '"+user + "'";
 		ResultSet rs = null;
 		try
@@ -229,6 +241,9 @@ public class User {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return privilege;
 	}

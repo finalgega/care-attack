@@ -10,7 +10,7 @@
 </head>
 <body>
 	<script>
-	function clear() 
+	function clear()
 	{
 		//$("#createAnnouncements").prop('input')
 		alert("Testing bash 1,2,3");

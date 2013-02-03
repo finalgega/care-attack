@@ -155,11 +155,16 @@ public class UploadImage extends HttpServlet {
 			// in the constructor with the path of your directory
 			// Note that it is temporary until a soln is found.
 		try{
+
+			System.out.println("In try for uploadFile OI AI ");
+			File path = new File("~/images");
+			System.out.println("file path is : "+ path.getAbsolutePath());
 			System.out.println("In try for uploadFile");
 			//	Local Path Name for Hui Wen's Computer
 			File path = new File("C:\\Users\\user\\Desktop\\Care-Attack_1_10\\WebContent\\images");
 			//	Local Path Name for Aaron's Computer
 			//			File path = new File("/Users/macpro/Documents/IT2299_JEDEVPJ/Care-Attack/Care-Attack_1_10/WebContent/images");
+>>>>>>> .r25
 			File uploadedFile = new File(path + "/" + fileName);
 			System.out.println("path of uploaded file : "
 					+ uploadedFile.getAbsolutePath());
@@ -175,7 +180,7 @@ public class UploadImage extends HttpServlet {
 				System.out.println("Something went wrong :(");
 				e.printStackTrace();
 			}
-		return success;
+			return success;
 	}
 	
 	/**
@@ -197,6 +202,8 @@ public class UploadImage extends HttpServlet {
 		{
 			success = true;
 		}
+			mysql.terminate();
+
 		return success;
 	}
 	
@@ -218,6 +225,9 @@ public class UploadImage extends HttpServlet {
 		}catch(SQLException sqlErr)
 		{
 			sqlErr.printStackTrace();
+		}finally
+		{
+			mysql.terminate();
 		}
 		return imgID;
 	}
