@@ -10,7 +10,7 @@
 </head>
 <body>
 <% System.out.println("What is my privilege level? " + (String)session.getAttribute("privilege"));
-if(((String)session.getAttribute("privilege") != "admin") || (session.getAttribute("username") == null))
+if(((String)session.getAttribute("privilege") == "admin") || (session.getAttribute("username") != null))
 	{%>
 		<h1>You are not authorized to view this page!</h1>
 	<script type="text/javascript">

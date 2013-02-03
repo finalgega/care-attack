@@ -41,7 +41,7 @@ public class TaskPlannerServlet extends HttpServlet {
 		med = med.retrieveMedicine(illnessName);
 		int timesPerDay = med.getTimesperDay();
 		System.out.println("Times Per Day : " + timesPerDay);
-		String instructions = "Feed " + med.getMedicineName();
+		String instructions = "Feed " + illnessName + " medication";
 		System.out.println("Instructions  : " + instructions);
 		switch(timesPerDay)
 		{

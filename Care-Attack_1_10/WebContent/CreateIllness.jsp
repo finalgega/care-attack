@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import="java.util.*,medicine.*,illness.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,6 +42,19 @@
 				<th>Severity *If Applicable*</th>
 				<td><input type="text" name="severity" /></td>
 			<tr />
+			<tr>
+			<th>Medicine : </th>
+			<td><select name="medicine"><%Medicine med = new Medicine();
+			ArrayList<Medicine> medarr = new ArrayList<Medicine>();
+			medarr = med.retrieveMedicine();
+			for(int i = 0 ; i < medarr.size();i++)
+			{
+				med = medarr.get(i);
+			%>
+			<option value="<%=med.getMedicineID() %>"><%= med.getMedicineName() %></option>
+			<%} %>
+			</select>
+			</tr>
 			<tr>
 				<td><input type="submit" value="Create Illness" />
 			</tr>

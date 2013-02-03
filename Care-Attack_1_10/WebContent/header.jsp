@@ -4,17 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Header</title>
+<title></title>
 <link href="styles/header.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Shadows Into Light Two" />
 	<link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/css?family=Paprika" />
+	<link href="styles/notifications.css" rel="stylesheet"/>
 <script src="scripts/jquery-1.8.2.js"></script>
 <script src="scripts/jquery-ui-1.9.1.custom.js"></script>
 <script src="scripts/jquery.easing.1.3.js"></script>
 <script src="scripts/animated-menu.js"></script>
 <script src="scripts/fullcalendar.js"></script>
+<script type="text/javascript" src="scripts/purr-notifications.js"></script>
 </head>
 <body>
 	<header>
@@ -72,7 +74,7 @@
 			</li>
 			<li class="yellow">
 				<p>
-					<a href="taskPlanner.jsp">Task Planner</a>
+					<a href="TaskPlanner.jsp">Task Planner</a>
 				</p>
 				<p class="subtext">Visit the App</p>
 			</li>
