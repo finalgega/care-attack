@@ -193,6 +193,35 @@ public class Medicine {
     	 return medArr;
     }
     
+    public Medicine retrieveMedicine(String illnessName)
+    {
+    	Medicine med = new Medicine();
+    	String dbQuery = "SELECT m.medicineID, medicineName, timesperDay FROM medicine m INNER JOIN illness i ON m.medicineID = i.medicineID WHERE illnessName ='" + illnessName + "'"; 
+    	MySQLController mysql = new MySQLController();
+    	mysql.setUp();
+    	ResultSet rs = null;
+    	System.out.println("In retrieve Medicine ");
+    	System.out.println(dbQuery);
+    	try{
+    		rs = mysql.readRequest(dbQuery);
+    		if(rs.next())
+    		{
+    			med.setMedicineID(rs.getInt("m.medicineID"));
+    			System.out.println("Medicine ID : " + med.getMedicineID());
+    			med.setMedicineName(rs.getString("medicineName"));
+    			System.out.println("Medicine Name : " + med.getMedicineName());
+    			med.setTimesperDay(rs.getInt("timesperDay"));
+    			System.out.println("How many times a day to feed : " + med.getTimesperDay());
+    		}
+    	}catch(SQLException sqlErr)
+    	{
+    		sqlErr.printStackTrace();
+    	}finally{
+    		mysql.terminate();
+    	}
+    	return med;
+    }
+    
     public boolean updateMedicine(Medicine med)
     {
     	return false;

@@ -1,21 +1,9 @@
 /* CSS Document */
-body {
-	margin: 0;
-	padding: 0;
-	font-family: Georgia;
-	font-size: 0.9em;
-	line-height: 1.4em;
-	background-color: #FFF;
-}
 
 #example {
 	position: relative;
 	width: 500px;
 	padding: 20px;
-}
-
-p {
-	margin: 7px 0 0 0;
 }
 
 #purr-container {
@@ -36,13 +24,13 @@ p {
 	display: block;
 	width: 18px;
 	height: 17px;
-	background: url(/Images/notification-close.png) no-repeat 0 10px;
+	background: rgba(255,123,124,0.7) no-repeat 0 10px;
 }
 
 .notice-body {
 	min-height: 50px;
 	padding: 22px 22px 0 22px;
-	background: url(/Images/notification_bg.png) repeat left top;
+	background: rgba(100,230,102,0.4) repeat left top;
 	color: #f9f9f9;
 }
 
@@ -67,5 +55,5 @@ p {
 
 .notice-bottom {
 	height: 22px;
-	background: url(/Images/notification_bg.png) repeat left top;
+	background: rgba(100,230,102,0.4) repeat left top;
 }

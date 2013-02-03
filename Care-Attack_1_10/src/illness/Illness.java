@@ -10,8 +10,9 @@ public class Illness {
     
     private int illnessID,medicineID;
     private String illnessName,illnessDescription,illnessCategory,severity;
-
-
+    
+    public Illness()
+    {}
 	public Illness(String illnessName, String illnessDescription,
 			String illnessCategory, String severity) {
 		super();

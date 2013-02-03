@@ -36,9 +36,8 @@ public class DeleteAnnouncementServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String strAnnonID = request.getParameter("annonID");
-		Scanner sc = new Scanner(strAnnonID);
-		int annonID = sc.nextInt();
+		HttpSession session = request.getSession(true);
+		int annonID = (Integer)session.getAttribute("annonID");
 		Announcement annon = new Announcement();
 		boolean success = annon.deleteAnnouncement(annonID);
 		if(success)

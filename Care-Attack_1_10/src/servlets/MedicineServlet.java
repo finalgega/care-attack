@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import medicine.Medicine;
 
@@ -28,7 +29,11 @@ public class MedicineServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(true);
+		String illnessName = request.getParameter("illness");
+		System.out.println("illnessName : " + illnessName);
+		session.setAttribute("illnessName", illnessName);
+		response.sendRedirect("taskPlanner.jsp");
 	}
 
 	/**

@@ -12,18 +12,37 @@
 <body>
 <div class="content">
 <script language="JavaScript">
-function validate(){
-$('#delAnnon').submit(function(event){
-	if($('#annonID').val() == "")
+function notify()
 		{
-		alert('You have not selected a valid choice!');
-	event.preventDefault();
+			var notice = '<div class="notice">'
+							  + '<div class="notice-body">' 
+								  + '<img src="/Images/excla-04.gif" alt="" />'
+								  + '<h3>Invalid Choice!</h3>'
+								  + '<p>No data can be retrieved. Please select a valid choice!</p>'
+							  + '</div>'
+							  + '<div class="notice-bottom">'
+							  + '</div>'
+						  + '</div>';
+						  
+					$( notice ).purr(
+						{
+							usingTransparentPNG: true
+						}
+					);
+					
+					return false;
+		};
+
+function validate(){
+	var annonID = $('#annonID').val();
+	if(annonID == null || annonID == "")
+		{
+		notify();
 		return false;
 		}
 	else
 		{return true;}
-	});
-}
+	};
 </script>
 <form onsubmit="return validate()" id="delAnnon">
 <table id="annonIDTbl" name="annonIDTbl">

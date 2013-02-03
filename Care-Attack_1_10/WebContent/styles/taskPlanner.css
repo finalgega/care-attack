@@ -13,7 +13,7 @@
 }
 
 .taskMgr {
-	height: 90%;
+	height: 100%;
 	width: 95%;
 	padding-top: 3px;
 	padding-bottom: 8px;
@@ -28,7 +28,4 @@
 	margin: inherit;
 	position: relative;
 	float: left;
-}
-#popCal{
-	margin-left:50%;
 }
