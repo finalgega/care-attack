@@ -203,6 +203,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>RetrieveArchivePostServlet</display-name>
+    <servlet-name>RetrieveArchivePostServlet</servlet-name>
+    <servlet-class>servlets.RetrieveArchivePostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveArchivePostServlet</servlet-name>
+    <url-pattern>/RetrieveArchivePostServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>AccountServlet</display-name>
     <servlet-name>AccountServlet</servlet-name>
     <servlet-class>servlets.AccountServlet</servlet-class>
@@ -212,13 +222,23 @@
     <url-pattern>/AccountServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-      <description></description>
-       <display-name>MedicineServlet</display-name>
-      <servlet-name>MedicineServlet</servlet-name>
-      <servlet-class>servlets.MedicineServlet</servlet-class>
+    <description></description>
+    <display-name>MedicineServlet</display-name>
+    <servlet-name>MedicineServlet</servlet-name>
+    <servlet-class>servlets.MedicineServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>MedicineServlet</servlet-name>
-      <url-pattern>/MedicineServlet</url-pattern>
+    <servlet-name>MedicineServlet</servlet-name>
+    <url-pattern>/MedicineServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>retrieveAS</display-name>
+    <servlet-name>retrieveAS</servlet-name>
+    <servlet-class>servlets.retrieveAS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>retrieveAS</servlet-name>
+    <url-pattern>/retrieveAS</url-pattern>
   </servlet-mapping>
 </web-app>

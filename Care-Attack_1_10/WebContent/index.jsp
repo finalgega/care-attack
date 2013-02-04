@@ -85,14 +85,34 @@
 
 			</article>
 		</div>
+		
 		<div class="sideContent">
 			<div class="auntSarahCorner">
-				<aside>
 					<h1>Auntie Sarah's Corner</h1>
-					<h2>Tip Per Day</h2>
-					<p>Some text here~</p>
-				</aside>
+					<%@ page import="blog.*,entity.*,java.util.*"%>
+			<%
+			ArrayList<auntieSarah> tipperday = new ArrayList<auntieSarah>();
+			auntieSarah ans = new auntieSarah();
+			tipperday = ans.retrieveTipPerDay();
+		%>
+
+			<article>
+				<h2>Tip Per Day</h2>
+				<%
+				for (int i =0 ;i<tipperday.size();i++) {
+					ans = tipperday.get(i);
+			%>
+
+				<p><%=ans.getTipperday()%></p>
+				<input type="button" value="Click to go to Auntie Sarah's official page" onClick="JavaScript:window.location='AuntieSarah.jsp';"/>
+			<%
+				}
+			%>
+		
+			</article>
 			</div>
+			
+	
 			
 			<aside><h1>Letters Of Gratitude</h1>
 			

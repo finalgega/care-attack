@@ -15,11 +15,6 @@
 	};
 </script>
 	<div id="layoutCreateComments">
-
-		<!-- <div id="heading">
-			<img src="images/add.png" width="44" height="35" /> Add New Post
-		</div>
- -->
 		<form id="createComments" method="POST" action="CreateCommentsServlet">
 			<div id="title">
 				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comments &nbsp;  <input type='text' id='comments' name='comments' /> </p>

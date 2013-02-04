@@ -21,7 +21,7 @@
 	height: 500px;
 	font-family: Rambla, serif;
 	margin-top: -800px;
-	margin-left: 90px;
+	margin-left: 70px;
 	float: left;
 }
 
@@ -39,11 +39,11 @@
 
 #words {
 	height: 240px;
-	width: 600px;
+	width: 530px;
 	margin-left: 3px;
 	font-size: 18px;
 	font-family: Rambla, serif;
-}
+	}
 
 
 body {
@@ -65,7 +65,7 @@ body {
 
 #testdiv {
 	width: 600px;
-	margin: 0 auto;
+	margin: auto;
 	border: 1px solid #ccc;
 	padding: 20px 25px;
 	background: grey;
@@ -80,13 +80,9 @@ body {
 	margin-right: 80px;
 }
 
-
-#picture {
-	border: 2px solid black;
-	width: 200px;
-	height: 200px;
-	margin-left: 560px;
-	margin-top: -180px;
+#productImage{
+	float: right;
+	margin-top: -245px;
 }
 
 .button1 {

@@ -1,6 +1,7 @@
 package blog;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import util.Cal;
@@ -8,14 +9,15 @@ import util.Cal;
 import database.MySQLController;
 
 public class auntieSarah {
-	private final static String dsn = "CareAttack";
+	private final static String dsn = "careattack";
 	private String topic = null;
 	private String subject = null;
 	private String question = null;
 	private String date = null;
 	private String username = null;
+	private String tipperday = null;
+	private String auntieSarahComment = null;
 	
-
 	public String getTopic() {
 		return topic;
 	}
@@ -56,64 +58,88 @@ public class auntieSarah {
 		this.username = username;
 	}
 
+	public String getTipperday() {
+		return tipperday;
+	}
+
+	public void setTipperday(String tipperday) {
+		this.tipperday = tipperday;
+	}
+
+	public String getAuntieSarahComment() {
+		return auntieSarahComment;
+	}
+
+	public void setAuntieSarahComment(String auntieSarahComment) {
+		this.auntieSarahComment = auntieSarahComment;
+	}
+
 	public auntieSarah(){}
 	
-	public auntieSarah(String topic, String subject,String question){
+	public auntieSarah(String tipperday){
+		this.tipperday = tipperday;
+	}
+	
+	public auntieSarah(String topic, String subject,String question,String username){
 		this.topic = topic;
 		this.subject = subject;
 		this.question = question;
+		this.username = username;
 	}
 	
 	
-	public auntieSarah(String topic, String subject,String question,String date){
+	public auntieSarah(String auntieSarahComment,String topic, String subject,String question,String username,String date){
+		this.auntieSarahComment = auntieSarahComment;
 		this.topic = topic;
 		this.subject = subject;
 		this.question = question;
+		this.username = username;
 		this.date =date;
 	}
 	
-	public boolean createAQuestion(String topic, String subject,String question)
-	{
+public boolean createAQuestion(String topic,String subject, String question,String username){
+		
 		boolean success = false;
+		ResultSet rs = null;
 		MySQLController mysql = new MySQLController();
+		String owner = null;
 		Cal date = new Cal();
 		mysql.setUp(dsn);
-		String sql ="insert into careattack.auntiesarah (topic,subject,question,date)";
-		sql += "VALUES('" + topic + "','" + subject + "','" + question + "','" + date.dated() + "')";
-		try{
-			if(mysql.updateRequest(sql) == 1)
-			{
-				success = true;
-			}
-		}catch(Exception e)
-		{
-			e.printStackTrace();
+		String dbQuery ="select accID from account where username = '"+username+"'";
+		try {
+			rs = mysql.readRequest(dbQuery);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
+		try {
+			if(rs.next()){
+				 owner= rs.getString("accID");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			}
+		try{
+			String sql ="INSERT INTO auntieSarah(topic,subject,question, accID,date)";
+			sql += "VALUES('" + topic + "','" + subject + "','" + question + "','" + owner + "','" + date.dated() + "')";
+		
+			try{
+				rs = mysql.readRequest(sql);
+				if(mysql.updateRequest(sql) == 1)
+				{
+					success = true;
+				}
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+	}finally
+	{
 		mysql.terminate();
-		return success;
-	}
 	
-	/*public boolean createAQuestion(String topic, String subject,String question,String username)
-	{
-		boolean success = false;
-		MySQLController mysql = new MySQLController();
-		Cal date = new Cal();
-		mysql.setUp(dsn);
-		String sql ="insert into careattack.auntiesarah (topic,subject,question,date,accID)";
-		sql += "VALUES('" + topic + "','" + subject + "','" + question + "','" + date.dated()  + "','" + username + "')";
-		try{
-			if(mysql.updateRequest(sql) == 1)
-			{
-				success = true;
-			}
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		mysql.terminate();
-		return success;
 	}
-	*/
+		return success;
+}
 	
 	public ArrayList<auntieSarah> retrieveQuestion()
 	{
@@ -121,12 +147,12 @@ public class auntieSarah {
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
 		ResultSet rs = null;
-		String dbQuery = "select topic,subject,question,date from careattack.auntiesarah";
+		String dbQuery = "select auntieSarahComment,topic,subject,question,date,account.username from auntieSarah inner join account on account.accID = auntieSarah.accID";
 		
 		try{
 			rs = mysql.readRequest(dbQuery);
 				while(rs.next()){
-					auntieSarah raq = new auntieSarah(rs.getString("topic"),rs.getString("subject"),rs.getString("question"),rs.getString("date"));
+					auntieSarah raq = new auntieSarah(rs.getString("auntieSarahComment"),rs.getString("topic"),rs.getString("subject"),rs.getString("question"),rs.getString("date"),rs.getString("account.username"));
 					retrieveAQuestion.add(raq);
 					}
 		}catch(Exception e){
@@ -135,6 +161,45 @@ public class auntieSarah {
 		return retrieveAQuestion;
 	}
 
+	public ArrayList<auntieSarah> retrieveTipPerDay()
+	{
+		ArrayList<auntieSarah> retrieveATip = new ArrayList<auntieSarah>();
+		MySQLController mysql = new MySQLController();
+		mysql.setUp(dsn);
+		ResultSet rs = null;
+		String dbQuery = "select tipperday from tipperday order by rand() limit 1";
+		
+		try{
+			rs = mysql.readRequest(dbQuery);
+				while(rs.next()){
+					auntieSarah raq = new auntieSarah(rs.getString("tipperday"));
+					retrieveATip.add(raq);
+					}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return retrieveATip;
+	}
 	
+	/*//Correct One
+	public ArrayList<auntieSarah> retrieveTipPerDay()
+	{
+		ArrayList<auntieSarah> retrieveATip = new ArrayList<auntieSarah>();
+		MySQLController mysql = new MySQLController();
+		mysql.setUp(dsn);
+		ResultSet rs = null;
+		String dbQuery = "select tipperday from auntiesarah order by rand() limit 1";
+		
+		try{
+			rs = mysql.readRequest(dbQuery);
+				while(rs.next()){
+					auntieSarah raq = new auntieSarah(rs.getString("tipperday"));
+					retrieveATip.add(raq);
+					}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return retrieveATip;
+	}*/
 	
 }

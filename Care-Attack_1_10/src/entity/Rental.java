@@ -122,7 +122,7 @@ public class Rental {
 			rs = db.readRequest (dbQuery);
 			if(rs.next())
 			{		
-				Products p = new Products(rs.getString("productName"),rs.getString("productDescription"), rs.getInt("productQuantity"), rs.getString("status"), rs.getInt("price"));
+				Products p = new Products(rs.getString("productName"),rs.getString("productDescription"), rs.getInt("productQuantity"), rs.getString("status"), rs.getInt("price"), rs.getInt("imageID"));
 				
 				return p;
 			}

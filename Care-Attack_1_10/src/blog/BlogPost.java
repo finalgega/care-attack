@@ -10,13 +10,17 @@ import util.*;
 import database.MySQLController;
 
 public class BlogPost {
-
+	
 	private final static String dsn = "careattack";
 	private String title = null;
 	private String content = null;
 	private String date = null;
-	private String username = null;
+	private String accUsernameComment = null;
+	private String accUsername = null;
 	private String count = null;
+	private String blogUsername = null;
+	private String blogid = null; 
+	private String comment = null;
 
 	public String getTitle() {
 		return title;
@@ -42,12 +46,20 @@ public class BlogPost {
 		this.date = date;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getAccUsernameComment() {
+		return accUsernameComment;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAccUsernameComment(String accUsernameComment) {
+		this.accUsernameComment = accUsernameComment;
+	}
+
+	public String getAccUsername() {
+		return accUsername;
+	}
+
+	public void setAccUsername(String accUsername) {
+		this.accUsername = accUsername;
 	}
 
 	public String getCount() {
@@ -58,15 +70,51 @@ public class BlogPost {
 		this.count = count;
 	}
 
+	public String getBlogUsername() {
+		return blogUsername;
+	}
+
+	public void setBlogUsername(String blogUsername) {
+		this.blogUsername = blogUsername;
+	}
+
+	public String getBlogid() {
+		return blogid;
+	}
+
+	public void setBlogid(String blogid) {
+		this.blogid = blogid;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public BlogPost(){}
 	
-	public BlogPost(String title, String content,String date, String username) {
+	public BlogPost(String blogid,String title,String content,String blogUsername,String date,String accUsernameComment){
 		super();
+		this.blogid = blogid;
 		this.title = title;
 		this.content = content;
+		this.blogUsername= blogUsername;
 		this.date = date;
-		this.username = username;
+		this.accUsernameComment = accUsernameComment;
 	}
+	
+	public BlogPost(String blogid,String title,String content,String blogUsername,String date){
+		super();
+		this.blogid = blogid;
+		this.title = title;
+		this.content = content;
+		this.blogUsername= blogUsername;
+		this.date = date;
+	}
+	
 	public BlogPost(String title,String count){
 		super();
 		this.title=title;
@@ -75,49 +123,74 @@ public class BlogPost {
 	
 	public BlogPost(String title){
 		super();
-		this.title = title;
+		this.title= title;
 	}
 	
-
-	public ArrayList<BlogPost> retrieveBlogTitle()
+	/*public BlogPost(String accUsernameComment,String count){
+		super();
+		this.accUsernameComment = accUsernameComment;
+		this.count = count;
+	}*/
+	
+	public ArrayList<BlogPost> retrieveSelectedBlogTitle()
 	{
-		ArrayList<BlogPost> retrieveTitle = new ArrayList<BlogPost>();
+		ArrayList<BlogPost> retrieveSelectedTitle = new ArrayList<BlogPost>();
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
 		ResultSet rs = null;
-		String dbQuery = "select distinct blogTitle from careattack.blog group by blogID order by rand() limit 3";
+		String dbQuery = "select blogTitle from careattack.blog group by blogID order by rand() limit 3";
 		
 		try{
 			rs = mysql.readRequest(dbQuery);
 				while(rs.next()){
 					BlogPost rbt = new BlogPost(rs.getString("blogTitle"));
-					retrieveTitle.add(rbt);
+					retrieveSelectedTitle.add(rbt);
 					}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return retrieveTitle;
+		return retrieveSelectedTitle;
 	}
 	
-	public ArrayList<BlogPost> retrieveBlogPost()
+	public ArrayList<BlogPost> retrieveAllBlogTitle()
+	{
+		ArrayList<BlogPost> retrieveAllTitle = new ArrayList<BlogPost>();
+		MySQLController mysql = new MySQLController();
+		mysql.setUp(dsn);
+		ResultSet rs = null;
+		String dbQuery = "select blogTitle from careattack.blog group by blogID";
+		
+		try{
+			rs = mysql.readRequest(dbQuery);
+				while(rs.next()){
+					BlogPost rbt = new BlogPost(rs.getString("blogTitle"));
+					retrieveAllTitle.add(rbt);
+					}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return retrieveAllTitle;
+	}
+	
+	/*public ArrayList<BlogPost> retrieveBlogPost()
 	{
 		ArrayList<BlogPost> retrieveBlogPost = new ArrayList<BlogPost>();
 		MySQLController mysql = new MySQLController();
 		mysql.setUp(dsn);
 		ResultSet rs = null;
-		String dbQuery = "Select blog.blogTitle , blog.blogContent,blog.date,account.username from careattack.blog inner join careattack.account on blog.accID = account.accID";
+		String dbQuery = "Select blog.blogID, blog.blogTitle , blog.blogContent,blog.date,account.username from careattack.blog inner join careattack.account on blog.accID = account.accID";
 		
 		try{
 			rs = mysql.readRequest(dbQuery);
 				while(rs.next()){
-					BlogPost rbp = new BlogPost(rs.getString("blog.blogTitle"),rs.getString("blog.blogContent"),rs.getString("blog.date"),rs.getString("account.username"));
+					BlogPost rbp = new BlogPost(rs.getString("blog.blogID"),rs.getString("blog.blogTitle"),rs.getString("blog.blogContent"),rs.getString("blog.date"),rs.getString("account.username"));
 					retrieveBlogPost.add(rbp);
 					}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return retrieveBlogPost;
-	}
+	}*/
 
 	public ArrayList<BlogPost> retrieveTopRatedBlogTitle()
 	{
@@ -139,29 +212,6 @@ public class BlogPost {
 			e.printStackTrace();
 		}
 		return retrieveTopRatedTitle;
-	}
-
-	public ArrayList<BlogPost> searchPost(String words)
-	{
-		String searchTerm = "%";
-		searchTerm += words;
-		searchTerm += "%";
-		ArrayList<BlogPost> searchBlogPost = new ArrayList<BlogPost>();
-		MySQLController mysql = new MySQLController();
-		mysql.setUp(dsn);
-		ResultSet rs = null;
-		String dbQuery = "select blog.blogTitle , blog.blogContent,blog.date,account.username from careattack.blog inner join careattack.account on blog.accID = account.accID where blog.blogTitle LIKE '" + searchTerm + "' or blog.blogContent LIKE '" + searchTerm+ "'" ;
-		
-		try{
-			rs = mysql.readRequest(dbQuery);
-				while(rs.next()){
-					BlogPost rbp = new BlogPost(rs.getString("blog.blogTitle"),rs.getString("blog.blogContent"),rs.getString("blog.date"),rs.getString("account.username"));
-					searchBlogPost.add(rbp);
-					}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return searchBlogPost;
 	}
 	
 
@@ -207,6 +257,58 @@ public boolean createABlogPost(String title, String content,String username){
 	
 	}
 		return success;
+}
+
+public ArrayList<BlogPost> retrieveBlog()
+{
+	ArrayList<BlogPost> retrieveBlog = new ArrayList<BlogPost>();
+	MySQLController mysql = new MySQLController();
+	mysql.setUp(dsn);
+	ResultSet rs = null;
+	String dbQuery = "select blog.blogID, blog.blogTitle,blog.blogContent,account.username,blog.date,group_concat(account.username, ' : ' ,commentContent , '     ') from comment  inner join account on comment.accID = account.accID inner join blog on comment.blogID = blog.blogID  group by blog.blogID";
+	
+	try{
+		rs = mysql.readRequest(dbQuery);
+			while(rs.next()){
+				blogid = rs.getString("blog.blogID");
+				title = rs.getString("blog.blogTitle");
+				content = rs.getString("blog.blogContent");
+				blogUsername = rs.getString("account.username");
+				date = rs.getString("blog.date");
+				accUsernameComment = rs.getString("group_concat(account.username, ' : ' ,commentContent , '     ')");
+				BlogPost com = new BlogPost(blogid,title,content,blogUsername,date,accUsernameComment);
+				retrieveBlog.add(com);
+				}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	return retrieveBlog;
+}
+
+public ArrayList<BlogPost> retrievePostTitle(String title)
+{
+	ArrayList<BlogPost> retrieveBlog = new ArrayList<BlogPost>();
+	MySQLController mysql = new MySQLController();
+	mysql.setUp(dsn);
+	ResultSet rs = null;
+	String dbQuery = "select blog.blogID, blog.blogTitle,blog.blogContent,account.username,blog.date,group_concat(account.username, ' : ' ,commentContent , '     ') from comment  inner join account on comment.accID = account.accID inner join blog on comment.accID = blog.accID where blog.blogTitle = '" + title + "' group by blog.blogID";
+	
+	try{
+		rs = mysql.readRequest(dbQuery);
+			while(rs.next()){
+				blogid = rs.getString("blog.blogID");
+				title = rs.getString("blog.blogTitle");
+				content = rs.getString("blog.blogContent");
+				blogUsername = rs.getString("account.username");
+				date = rs.getString("blog.date");
+				accUsernameComment = rs.getString("group_concat(account.username, ' : ' ,commentContent , '     ')");
+				BlogPost com = new BlogPost(blogid,title,content,blogUsername,date,accUsernameComment);
+				retrieveBlog.add(com);
+				}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	return retrieveBlog;
 }
 
 }

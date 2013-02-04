@@ -1,11 +1,28 @@
 @CHARSET "ISO-8859-1";
 
+#content{
+	padding-top: 3px;
+	padding-bottom: 8px;
+	padding-left: 1%;
+	padding-right: 10px;
+	float: right;
+	height: 1000px;
+	width: 1250px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: inherit;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	position: relative;
+	background: #FFF;
+}
+
 #layout {
-	margin-left: 20%;
+	margin-left: 15%;
 	margin-right: 20%;
 	width: 750px;
 	height: auto;
-	background-color: #E5E5E5;
 }
 
 #heed{
@@ -17,6 +34,7 @@
 #blogcontent {
 	width: 480px;
 	float: left;
+	
 }
 
 #searchcontent {
@@ -36,6 +54,7 @@
 #sidebar {
 	width: 240px;
 	float: right;
+	margin-right: 15%;
 }
 
 #categories {
@@ -60,9 +79,13 @@
 	font-weight: bold;
 }
 
+#comment{
+	width:470px;
+	border: 1px solid  #A52A2A;
+	padding:-20px;
+}
 
 <!-- Auntie sarah -->
-
 #heading {
 	width:300px;
 	float:right;
@@ -82,7 +105,7 @@
 #introduction {
 	font-size: 14px;
 	width: 350px;
-	float: right;
+	float:right;
 }
 
 #image {
@@ -154,12 +177,75 @@
 }
 
 #layoutCreateBlogPost {
-	width: 220px;
-	margin: 0 auto;
-	border: 1px solid #ccc;
-	padding: 10px 10px;
-	background: grey;
-	margin-top:-10px;
-	margin-left:-10px;
+	height: 210px;
+	width: 410px;
+	padding-top: 3px;
+	padding-bottom: 8px;
+	padding-left: 10px;
+	padding-right: 1%;
+	background: purple;
+	-moz-box-shadow: -5px 9px 18px #999;
+	-webkit-box-shadow: -5px 9px 18px #999;
+	box-shadow: -5px 9px 18px #999;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: inherit;
+	position: relative;
+	float: left;
 	}
+	
+	
+	
+/* root element for accordion. */
+#accordion {
+	background-color:#F0F0F0;
+	border:1px solid #333;
+}
+
+/* accordion header */
+#accordion h2 {
+	background-color:#D0D0D0;
+	margin:0;
+  color: #000000;
+	padding:5px 15px;
+	font-size:14px;
+	font-weight:normal;
+  border-color: #F0F0F0 #707070 #707070 #F0F0F0;
+  border-width: 1px;
+  border-style: solid;
+	cursor:pointer;
+}
+
+/* The h2.hover caters for IE which doesn't support :hover */
+#accordion h2:hover, #accordion h2.hover {
+  background-color:#909090;
+  color: #FFFFFF;
+}
+
+/* currently active header */
+#accordion h2.current {
+	cursor:default;
+	background-color:#707070;
+  border-color: #F0F0F0 #303030 #303030 #F0F0F0;
+  border-width: 1px;
+  border-style: solid;
+  color: #FFFFFF;
+}
+
+/* accordion pane */
+#accordion div.pane {
+	border:1px solid #fff;
+	border-width:0 2px;
+	display:none;
+	height:250px;
+	padding:15px;
+	font-size:12px;
+}
+
+/* a title inside pane */
+#accordion div.pane h3 {
+	font-weight:normal;
+	margin:0 0 -5px 0;
+	font-size:16px;
+	color:#999;
 }

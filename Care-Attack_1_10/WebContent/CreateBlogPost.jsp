@@ -10,30 +10,19 @@
 <script type="text/javascript" language="javascript"></script>
 </head>
 <body>
-<!-- <script language="javascript">
-	function clear() 
-	{
-		$("#createBlogPost").prop('input')
-	};
-</script> -->
-
 
 	<div id="layoutCreateBlogPost">
 
 		<div id="heading">
 			<img src="images/add.png" width="44" height="35" /> Add New Post
 		</div>
-
+		
 		<form id="createBlogPost" method="POST" action="CreateBlogPostServlet">
-			<div id="title">
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Title: &nbsp;  <input type='text' id='title' name='title' /> </p>
-			</div>
-			<div id="content">
-				<p>Content: &nbsp; <textarea name="content" rows="5" cols="16"> </textarea> </p>			
-			</div>
-			<div id="button">
-				<input type="submit" id="publish" value="Publish" /> 
-			</div>
+				
+				<p>Title: <input type="text" name="title" id="title" /> </p>
+				<p>Content: <textarea name="content" rows="4" cols="13"> </textarea></p>
+				<input type="submit" value="submit" />
+				<input type="reset" value="Clear" id="clear" name="clear" />
 		</form>
 		
 	</div>

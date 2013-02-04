@@ -15,6 +15,13 @@
 <link rel="stylesheet" type="text/css" href="styles/header.css" />
 <link rel="stylesheet" type="text/css" href="styles/IndividualPage.css" />
 <title>Rental Services</title>
+<script language="JavaScript" src="scripts/ts_picker.js">
+
+//Script by Denis Gritcyuk: tspicker@yahoo.com
+//Submitted to JavaScript Kit (http://javascriptkit.com)
+//Visit http://javascriptkit.com for this script
+
+</script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -22,6 +29,16 @@
 	<script language="JavaScript">
 		function clear() {
 			$("#IndividualProductPage").prop('input')
+		}
+		
+		function Validate()
+		{
+		if(document.getElementById('list').selectedIndex == 0)
+		{
+		alert("Please select a product.");
+		return false;
+		}
+		return true;
 		}
 		
 		function hideshow() {
@@ -70,25 +87,6 @@
 
 
 	<%@ page import="entity.*, util.*, java.util.*"%>
-	<%-- <% 
-	Products pd = new Products();	
-	Rental rent = new Rental();
-	String productID = pd.retrieveProductID();
-	String rentalName = pd.getProductName();
-	String rentalQuantity = rent.getRentalQuantity();
-	String startDate = rent.getStartDate();
-	String quantity = pd.getQuantity();
-	String status = pd.getStatus();
-%>
-<%
-	if(productID==null){
-		System.out.println("NO ID FOUND!!!!!!!");
-	}
-	else{
-		rent.createRental(rentalName, rentalQuantity, startDate);
-	}
-%> --%>
-
 <div id ="content">
 <% if((session.getAttribute("productName") !=null)||(session.getAttribute("username")) != null){ %>
 				
@@ -114,7 +112,7 @@
 	</center>
 
 		<h3>Hello! Welcome to care attack rental services. Over here, we
-			provide rental services for disabled people for FREE! You can
+			provide rental services for disabled people at a lower price! You can
 			select the items that you want to view and log in to rent the products!<br/> If the product is faulty, please let us know as soon as possible.</h3>
 		<div id="rent">
 
@@ -143,7 +141,7 @@
 						</select></td>
 				
 						<td style="width: 131px;"><input type="submit" name="button"
-							id="button" class="button" value="Submit" /></td>
+							id="button" class="button" value="Submit" onclick="return Validate()" /></td>
 							
 					</tr>
 				</table>
@@ -153,22 +151,26 @@
 				<div id="info">
 				<div id="words">
 					<div id="name">
-						<h3><%=session.getAttribute("productName").toString()%></h3>
+						<h3 id="3"><%=session.getAttribute("productName").toString()%></h3>
 					</div>
-					<p><%=session.getAttribute("productDescription").toString()%></p>
-				<%if(pro.getImageID() != 0) {
-					Image img = new Image();%>
-				<img class="annonImage" src="<%= img.getImagePath(pro.getImageID()) %>" height="200px" width="150px"/>
-			
-				<%}else{} %>
+					<p id="4"><%=session.getAttribute("productDescription").toString()%></p>
 				</div>
-				<%} else{ %>
+				<%if(session.getAttribute("imageID") != null) {
+					Image img = new Image();
+					int imgID = (Integer)session.getAttribute("imageID");
+					%>
+				<img id="productImage" src="<%=img.getImagePath(imgID) %>" height="240px" width="240px"/>
+			
+				<%}else{System.out.println(pro.getImageID());} %>
+				
+				<%} else { %>
 				<div id="words">
 					<div id="name">
 				</div>
 				</div>
 				<% } %>
 				</div>
+				
 	
 		<% if(session.getAttribute("username") != null){ %>
 		<div class="button1" id="testclick1" onclick="hideshow()">
@@ -178,7 +180,7 @@
 		<% if(session.getAttribute("productName") != null){ %>
 		<div id="rentrent">
 		<br/>
-			<form id="IndividualProductPage" method="POST" action="RentalServlet" onSubmit="return validateForms()">
+			<form id="IndividualProductPage" method="POST" action="RentalServlet" name="test" onSubmit="return validateForms()">
 				<table width="394" border="1">
 					<tr>
 						<td><strong>Name of product: &nbsp;</strong></td>
@@ -224,7 +226,9 @@
 					<tr>
 						<td><strong>Rental End Date:&nbsp;&nbsp; </strong> <label
 							for="end"></label></td>
-						<td><input type="text" name="endDate" id="endDate" /></td>
+						<td><input type="text" name="endDate" id="endDate" value="" readonly><a href="javascript:show_calendar('document.test.endDate', document.test.endDate.value);"><img src="images/cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the timestamp"></a></td>
+	
+
 					</tr>
 
 					<tr>
